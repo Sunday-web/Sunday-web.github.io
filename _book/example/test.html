@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>example</title>
 </head>
 <body>
-  <h1>hello sunday</h1>
-  <h1><a href="/_book/index.html">查看文档</a></h1>
+  <p>example</p>
+  <script src="../release/bundle.js"></script>
+  <script>
+  var SC=window.SundayCache;
+  var cache=new SC();
+  cache.set('a',100);
+  alert(cache.get('a'));
+  </script>
 </body>
 </html>
