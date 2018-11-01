@@ -94,16 +94,81 @@
   // }
   //免费接口地址： https://www.jianshu.com/p/e6f072839282
 
+  //今日诗词api
   $.ajax({
     url: 'https://v2.jinrishici.com/one.json',
     xhrFields: {
       withCredentials: true
     },
     success: function (result, status) {
+      console.log('今日诗词');
       console.log(result);
       if (status == 'success') {
-      $('#sici').text(result.data.content);
+        $('#sici').text(result.data.content);
       }
+    }
+  })
+
+
+  //百度百科
+  // var kurl =
+  //   'http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=%E9%93%B6%E9%AD%82&bk_length=600';
+  // $.ajax({
+  //   type: "GET",
+  //   url: kurl,
+  //   dataType: "jsonp",
+  //   success: function (data) { //成功的回调函数
+  //     console.log(data);
+  //   }
+  // })
+
+  //菜谱接口
+  function formatterDateTime() {
+    var date = new Date()
+    var month = date.getMonth() + 1
+    var datetime = date.getFullYear() +
+      "" // "年"
+      +
+      (month >= 10 ? month : "0" + month) +
+      "" // "月"
+      +
+      (date.getDate() < 10 ? "0" + date.getDate() : date
+        .getDate()) +
+      "" +
+      (date.getHours() < 10 ? "0" + date.getHours() : date
+        .getHours()) +
+      "" +
+      (date.getMinutes() < 10 ? "0" + date.getMinutes() : date
+        .getMinutes()) +
+      "" +
+      (date.getSeconds() < 10 ? "0" + date.getSeconds() : date
+        .getSeconds());
+    return datetime;
+  }
+  console.log(formatterDateTime());
+
+  $.ajax({
+    type: 'post',
+    url: 'https://route.showapi.com/1164-1',
+    dataType: 'json',
+    data: {
+      "showapi_timestamp": formatterDateTime(),
+      "showapi_appid": '79211', //这里需要改成自己的appid
+      "showapi_sign": '33714eb851a84bd2a06c806d09935c1e', //这里需要改成自己的应用的密钥secret
+      "type": "蛋类",
+      "id": "5819e55df2954c15f83d3bbd",
+      "cpName": "爆浆鸡蛋", //菜谱名称
+      "maxResults": "20", //每页返回的最大结果集,取值在1-50之间
+      "page": "1" //请求页数
+
+    },
+
+    error: function (XmlHttpRequest, textStatus, errorThrown) {
+      alert("操作失败!");
+    },
+    success: function (result) {
+      console.log(result) //console变量在ie低版本下不能用
+      // alert(result.showapi_res_code)
     }
   });
 </script>
