@@ -80,19 +80,32 @@
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  $.get('http://api.apiopen.top/singlePoetry', {}, function (res) {
-    if (res.code === 200) {
-      siciSuccess(res);
+  // $.get('http://api.apiopen.top/singlePoetry', {}, function (res) {
+  //   if (res.code === 200) {
+  //     siciSuccess(res);
+  //   }
+  // });
+
+  // function siciSuccess(res) {
+  //   console.log(res.result.origin);
+  //   console.log(res.result.author);
+  //   console.log(res.result.content);
+  //   $('#sici').text(res.result.content);
+  // }
+  //免费接口地址： https://www.jianshu.com/p/e6f072839282
+
+  $.ajax({
+    url: 'https://v2.jinrishici.com/one.json',
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function (result, status) {
+      console.log(result);
+      if (status == 'success') {
+      $('#sici').text(result.data.content);
+      }
     }
   });
-
-  function siciSuccess(res) {
-    console.log(res.result.origin);
-    console.log(res.result.author);
-    console.log(res.result.content);
-    $('#sici').text(res.result.content);
-  }
-  //免费接口地址： https://www.jianshu.com/p/e6f072839282
 </script>
 
 </html>
