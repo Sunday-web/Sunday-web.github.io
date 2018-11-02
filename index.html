@@ -123,24 +123,71 @@
   //   }
   // })
 
-  //新闻
-  var kurl = 'http://api.avatardata.cn/TouTiao/Query';
+  //豆瓣电影
+  // var kurl =
+  //   'https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=somemessage';
+  // $.ajax({
+  //   type: "GET",
+  //   url: kurl,
+  //   dataType: "jsonp",
+  //   success: function (result) { //成功的回调函数
+  //     console.log('豆瓣电影');
+  //     console.log(result);
+  //   }
+  // });
+
+  //每日一文
+  //https://github.com/jokermonn/-Api/blob/master/OneArticle.md
+  var mryw = 'https://interface.meiriyiwen.com/article/today?dev=1';
   $.ajax({
     type: "GET",
-    url: kurl,
-    dataType: "jsonp",
-    data: {
-      "key": 'c5e842ea368c4e1a85f13d2fd4050fda',
-      "type": 'top',
-      "format": 'true',
-      "dtype": 'JSON'
-    },
+    url: mryw,
     success: function (result) { //成功的回调函数
+      console.log('每日一文');
       console.log(result);
     }
   });
 
-  //菜谱接口
+  //今日头条
+  //https://github.com/jokermonn/-Api/blob/master/Todaynews.md
+  var sgw = 'http://is.snssdk.com/api/news/feed/v51/';
+  $.ajax({
+    type: "GET",
+    url: sgw,
+    dataType: "jsonp",
+    success: function (result) { //成功的回调函数
+      console.log('今日头条');
+      console.log(result);
+    }
+  });
+
+  //内涵段子
+  //https://github.com/jokermonn/-Api/blob/master/Neihan.md#recommend
+  var nhdz = 'http://iu.snssdk.com/neihan/stream/mix/v1/';
+  $.ajax({
+    type: "GET",
+    url: nhdz,
+    dataType: "jsonp",
+    success: function (result) { //成功的回调函数
+      console.log('内涵段子');
+      console.log(result);
+    }
+  });
+
+
+  //新华字典 不支持jsonp
+  // $.ajax({
+  //   type: "GET",
+  //   url: "https://www.pwxcoo.com/dictionary?type=word&word=吴",
+  //   dataType: "jsonp",
+  //   success: function (result) { //成功的回调函数
+  //     console.log('新华字典');
+  //     console.log(result);
+  //   }
+  // });
+
+
+  //菜谱接口 每日有使用限制
   function formatterDateTime() {
     var date = new Date()
     var month = date.getMonth() + 1
@@ -163,7 +210,6 @@
         .getSeconds());
     return datetime;
   }
-  console.log(formatterDateTime());
 
   function getCp() {
     $.ajax({
