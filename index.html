@@ -174,6 +174,30 @@
     }
   });
 
+  //万年历
+  var wnl = 'https://v.juhe.cn/calendar/day?date=2018-11-2&key=b96a4c6622706ae64b963c8dc16b16f9';
+  $.ajax({
+    type: "GET",
+    url: wnl,
+    dataType: "jsonp",
+    success: function (result) { //成功的回调函数
+      console.log('万年历');
+      console.log(result);
+    }
+  });
+
+  //身份证查询
+  var xwtt = 'http://apis.juhe.cn/idcard/index?cardno=XXXXXX&dtype=&key=6e337acf66fabf9a91b5f379c7342cd1';
+  $.ajax({
+    type: "GET",
+    url: xwtt,
+    dataType: "jsonp",
+    success: function (result) { //成功的回调函数
+      console.log('身份证查询');
+      console.log(result);
+    }
+  });
+
 
   //新华字典 不支持jsonp
   // $.ajax({
