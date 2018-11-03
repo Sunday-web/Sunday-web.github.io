@@ -75,6 +75,19 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 ">
+        <div class="thumbnail" style="height: 336px;">
+          <a href="/apiExample/mypf/index.html" title="sunday" target="_blank">
+            <div class="itemBg">猫眼实时票房</div>
+          </a>
+          <div class="caption">
+            <h3>
+              <a href="/apiExample/mypf/index.html" title="sunday" target="_blank">猫眼实时票房</a>
+            </h3>
+            <p>猫眼实时票房</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -138,65 +151,119 @@
 
   //每日一文
   //https://github.com/jokermonn/-Api/blob/master/OneArticle.md
-  var mryw = 'https://interface.meiriyiwen.com/article/today?dev=1';
-  $.ajax({
-    type: "GET",
-    url: mryw,
-    success: function (result) { //成功的回调函数
-      console.log('每日一文');
-      console.log(result);
-    }
-  });
-
+  function get_mryw() {
+    var mryw = 'https://interface.meiriyiwen.com/article/today?dev=1';
+    $.ajax({
+      type: "GET",
+      url: mryw,
+      success: function (result) { //成功的回调函数
+        console.log('每日一文');
+        console.log(result);
+      }
+    });
+  }
   //今日头条
   //https://github.com/jokermonn/-Api/blob/master/Todaynews.md
-  var sgw = 'https://is.snssdk.com/api/news/feed/v51/';
-  $.ajax({
-    type: "GET",
-    url: sgw,
-    dataType: "jsonp",
-    success: function (result) { //成功的回调函数
-      console.log('今日头条');
-      console.log(result);
-    }
-  });
-
+  function get_jrtt() {
+    var jrtt = 'https://is.snssdk.com/api/news/feed/v51/';
+    $.ajax({
+      type: "GET",
+      url: jrtt,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('今日头条');
+        console.log(result);
+      }
+    });
+  }
   //内涵段子
   //https://github.com/jokermonn/-Api/blob/master/Neihan.md#recommend
-  var nhdz = 'https://iu.snssdk.com/neihan/stream/mix/v1/';
-  $.ajax({
-    type: "GET",
-    url: nhdz,
-    dataType: "jsonp",
-    success: function (result) { //成功的回调函数
-      console.log('内涵段子');
-      console.log(result);
-    }
-  });
+  function get_nhdz() {
+    var nhdz = 'https://iu.snssdk.com/neihan/stream/mix/v1/';
+    $.ajax({
+      type: "GET",
+      url: nhdz,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('内涵段子');
+        console.log(result);
+      }
+    });
+  }
+
 
   //万年历
-  var wnl = 'https://v.juhe.cn/calendar/day?date=2018-11-2&key=b96a4c6622706ae64b963c8dc16b16f9';
+  function get_wnl() {
+    var wnl = 'https://v.juhe.cn/calendar/day?date=2018-11-2&key=b96a4c6622706ae64b963c8dc16b16f9';
+    $.ajax({
+      type: "GET",
+      url: wnl,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('万年历');
+        console.log(result);
+      }
+    });
+  }
+
+
+  //身份证查询
+  function get_sfzcx() {
+    var sfzcx = 'http://apis.juhe.cn/idcard/index?cardno=XXXXXX&dtype=&key=6e337acf66fabf9a91b5f379c7342cd1';
+    $.ajax({
+      type: "GET",
+      url: sfzcx,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('身份证查询');
+        console.log(result);
+      }
+    });
+  }
+
+
+  //https://www.shenjian.io/index.php?r=market/search&keyword=&type=api&price=1&plan=-1
+  //腾讯滚动新闻
+  function get_txgdxw() {
+    var txgdxw = 'https://api.shenjian.io/?appid=50b1f18df7a8706bcf3d40febdd3f30b';
+    $.ajax({
+      type: "GET",
+      url: txgdxw,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('腾讯滚动新闻');
+        console.log(result);
+      }
+    });
+  }
+
+  //城市天气
+  function get_cstq() {
+    var cstq = 'https://api.shenjian.io/weather/city?appid=03339bb65b173f40396274ac6160839f&city_name=北京&only_now=false';
+    $.ajax({
+      type: "GET",
+      url: cstq,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('城市天气');
+        console.log(result);
+      }
+    });
+  }
+
+//猫眼实时票房
+  var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=2018-08-25';
   $.ajax({
     type: "GET",
-    url: wnl,
+    url: mypf,
     dataType: "jsonp",
     success: function (result) { //成功的回调函数
-      console.log('万年历');
+      console.log('猫眼实时票房');
       console.log(result);
     }
   });
 
-  //身份证查询
-  var xwtt = 'http://apis.juhe.cn/idcard/index?cardno=XXXXXX&dtype=&key=6e337acf66fabf9a91b5f379c7342cd1';
-  $.ajax({
-    type: "GET",
-    url: xwtt,
-    dataType: "jsonp",
-    success: function (result) { //成功的回调函数
-      console.log('身份证查询');
-      console.log(result);
-    }
-  });
+
 
 
   //新华字典 不支持jsonp
