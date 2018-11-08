@@ -1,28 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>猫眼实时票房</title>
-   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://assets-cdn.github.com/favicon.ico">
 </head>
+
 <body>
-  猫眼实时票房
+  <h1>猫眼实时票房</h1>
+
+  <form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
+      </div>
+    </div>
+    <a id="search" class="btn btn-primary">查询</a>
+  </form>
+  <div class="loading"></div>
+
+  <div class="result">
+
+  </div>
+
+
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
-//猫眼实时票房
-  var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=2018-08-25';
-  $.ajax({
-    type: "GET",
-    url: mypf,
-    dataType: "jsonp",
-    success: function (result) { //成功的回调函数
-      console.log('猫眼实时票房');
-      console.log(result);
-    }
+  //猫眼实时票房
+  //参数名：data  (默认当天  传入格式：2018-08-25)
+  //返回结果说明
+  //  "movie_name":"毒液：致命守护者",  /*片名*/
+  //  "duration":"",  /*时间*/
+  //  "totle_office":"699.8万",  /*总票房*/
+  //  "real_office":"516.51",  /*实时票房(万元)*/
+  //  "office_ratio":"41.6%",  /*票房占比*/
+  //  "show_rate":"2.1%",  /*排片占比*/
+  //  "avg_seat_view":"11.8%"  /*上座率*/
+  $('#search').click(function () {
+    $('.loading').text('加载中...');
+    var data = $('#inputDate').text();
+    var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=' + data;
+    $.ajax({
+      type: "GET",
+      url: mypf,
+      dataType: "jsonp",
+      success: function (res) { //成功的回调函数
+        console.log('猫眼实时票房');
+        if (res.error_code == 0) {//返回成功
+          $('.loading').hide();
+          setdata(res);
+        } else {//返回失败
+          console.log(res.reason);
+        }
+      }
+    });
   });
+
+  function setdata(res) {
+    //console.log(res);
+    var data = res.data;
+    var list = '';
+    for (var k in data) {
+      this.data = data[k];
+      this.movie_name = this.data.movie_name;//片名
+      this.duration = this.data.duration ? this.data.duration : '未上映';//时间
+      this.totle_office = this.data.totle_office;//总票房
+      this.real_office = this.data.real_office;//实时票房(万元)
+      this.office_ratio = this.data.office_ratio;//票房占比
+      this.show_rate = this.data.show_rate;//排片占比
+      this.avg_seat_view = this.data.avg_seat_view;//上座率
+      list += '<div style="background: #ccc;margin-bottom: 15px;">' +
+              '<p>片名：' + this.movie_name + '</p>' +
+              '<p>时间：' + this.duration + '</p>' +
+              '<p>总票房：' + this.totle_office + '</p>' +
+              '<p>实时票房：' + this.totle_office + '(万元)</p>' +
+              '<p>票房占比：' + this.office_ratio + '</p>' +
+              '<p>排片占比：' + this.show_rate + '</p>' +
+              '<p>上座率：' + this.avg_seat_view + '</p>' +
+              '</div>';
+    }
+    $('.result').append(list);
+  }
+
+
 </script>
+
 </html>
