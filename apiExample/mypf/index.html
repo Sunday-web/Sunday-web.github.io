@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
   <meta charset="UTF-8">
@@ -8,24 +8,45 @@
   <title>猫眼实时票房</title>
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://assets-cdn.github.com/favicon.ico">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1>猫眼实时票房</h1>
-
-  <form class="form-inline">
-    <div class="form-group">
-      <div class="input-group">
-        <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
+  <div class="container">
+    <h1 class="text-center">猫眼实时票房查询</h1>
+    <div class="text-center" style="margin-bottom: 15px;">
+      <div style="width:200px;display:inline-block">
+      <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
       </div>
+      <a id="search" class="btn btn-success">查询</a>
     </div>
-    <a id="search" class="btn btn-primary">查询</a>
-  </form>
-  <div class="loading"></div>
+        
+      
+      
+   
 
-  <div class="result">
+    <!-- <form class="form-inline text-center">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
+        </div>
+      </div>
+      <a id="search" class="btn btn-success">查询</a>
+    </form> -->
+    <div class="loading text-center" style="display:none">
+      <i style="font-size:5rem" class="fa fa-spinner fa-spin"></i>
+      <h4>加载中</h4>
+    </div>
+
+    <div class="result row">
+
+    </div>
 
   </div>
+
+
+
+
 
 
 </body>
@@ -43,21 +64,21 @@
   //  "avg_seat_view":"11.8%"  /*上座率*/
   $('#search').click(function () {
     $('.result').empty();
-    $('.loading').show().text('加载中...');
+    $('.loading').show();
     var data = $('#inputDate').val();
     var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=' + data;
     console.log(mypf);
-    
+
     $.ajax({
       type: "GET",
       url: mypf,
       dataType: "jsonp",
       success: function (res) { //成功的回调函数
         console.log('猫眼实时票房');
-        if (res.error_code == 0) {//返回成功
+        if (res.error_code == 0) { //返回成功
           $('.loading').hide();
           setdata(res);
-        } else {//返回失败
+        } else { //返回失败
           console.log(res.reason);
         }
       }
@@ -70,27 +91,27 @@
     var list = '';
     for (var k in data) {
       this.data = data[k];
-      this.movie_name = this.data.movie_name;//片名
-      this.duration = this.data.duration ? this.data.duration : '未上映';//时间
-      this.totle_office = this.data.totle_office;//总票房
-      this.real_office = this.data.real_office;//实时票房(万元)
-      this.office_ratio = this.data.office_ratio;//票房占比
-      this.show_rate = this.data.show_rate;//排片占比
-      this.avg_seat_view = this.data.avg_seat_view;//上座率
-      list += '<div style="background: #ccc;margin-bottom: 15px;">' +
-              '<p>片名：' + this.movie_name + '</p>' +
-              '<p>时间：' + this.duration + '</p>' +
-              '<p>总票房：' + this.totle_office + '</p>' +
-              '<p>实时票房：' + this.totle_office + '(万元)</p>' +
-              '<p>票房占比：' + this.office_ratio + '</p>' +
-              '<p>排片占比：' + this.show_rate + '</p>' +
-              '<p>上座率：' + this.avg_seat_view + '</p>' +
-              '</div>';
+      this.movie_name = this.data.movie_name; //片名
+      this.duration = this.data.duration ? this.data.duration : '未上映'; //时间
+      this.totle_office = this.data.totle_office; //总票房
+      this.real_office = this.data.real_office; //实时票房(万元)
+      this.office_ratio = this.data.office_ratio; //票房占比
+      this.show_rate = this.data.show_rate; //排片占比
+      this.avg_seat_view = this.data.avg_seat_view; //上座率
+      list +='<div class="col-sm-6 col-md-4">'+
+        '<div class="thumbnail">'+
+        '<p>片名：' + this.movie_name + '</p>' +
+        '<p>时间：' + this.duration + '</p>' +
+        '<p>总票房：' + this.totle_office + '</p>' +
+        '<p>实时票房：' + this.totle_office + '(万元)</p>' +
+        '<p>票房占比：' + this.office_ratio + '</p>' +
+        '<p>排片占比：' + this.show_rate + '</p>' +
+        '<p>上座率：' + this.avg_seat_view + '</p>' +
+        '</div>'+
+        '</div>';
     }
     $('.result').append(list);
   }
-
-
 </script>
 
 </html>
