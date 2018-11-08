@@ -42,9 +42,12 @@
   //  "show_rate":"2.1%",  /*排片占比*/
   //  "avg_seat_view":"11.8%"  /*上座率*/
   $('#search').click(function () {
-    $('.loading').text('加载中...');
-    var data = $('#inputDate').text();
+    $('.result').empty();
+    $('.loading').show().text('加载中...');
+    var data = $('#inputDate').val();
     var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=' + data;
+    console.log(mypf);
+    
     $.ajax({
       type: "GET",
       url: mypf,
