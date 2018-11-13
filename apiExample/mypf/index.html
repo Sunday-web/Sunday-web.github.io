@@ -9,6 +9,11 @@
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://assets-cdn.github.com/favicon.ico">
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+  .progress{
+    margin-bottom: 15px;
+  }
+  </style>
 </head>
 
 <body>
@@ -16,14 +21,14 @@
     <h1 class="text-center">猫眼实时票房查询</h1>
     <div class="text-center" style="margin-bottom: 15px;">
       <div style="width:200px;display:inline-block">
-      <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
+        <input type="text" class="form-control" id="inputDate" placeholder="例：2018-10-10">
       </div>
       <a id="search" class="btn btn-success">查询</a>
     </div>
-        
-      
-      
-   
+
+
+
+
 
     <!-- <form class="form-inline text-center">
       <div class="form-group">
@@ -39,7 +44,7 @@
     </div>
 
     <div class="result row">
-
+    
     </div>
 
   </div>
@@ -98,16 +103,39 @@
       this.office_ratio = this.data.office_ratio; //票房占比
       this.show_rate = this.data.show_rate; //排片占比
       this.avg_seat_view = this.data.avg_seat_view; //上座率
-      list +='<div class="col-sm-6 col-md-4">'+
-        '<div class="thumbnail">'+
+      list += '<div class="col-sm-6 col-md-4">' +
+        '<div class="thumbnail" style="font-size: 18px;">' +
         '<p>片名：' + this.movie_name + '</p>' +
         '<p>时间：' + this.duration + '</p>' +
         '<p>总票房：' + this.totle_office + '</p>' +
-        '<p>实时票房：' + this.totle_office + '</p>' +
-        '<p>票房占比：' + this.office_ratio + '</p>' +
-        '<p>排片占比：' + this.show_rate + '</p>' +
-        '<p>上座率：' + this.avg_seat_view + '</p>' +
-        '</div>'+
+        // '<p>实时票房：' + this.totle_office + '</p>' +
+        '<div>'+
+          '<span>票房占比：</span>' +
+          '<div class="progress">' +
+            '<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: '+ this.office_ratio+';">' +
+              ''+this.office_ratio+'' +
+              '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div>' +
+        '<span>排片占比：</span>' +
+        '<div class="progress">' +
+        '<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: ' + this.office_ratio + ';">' +
+        '' + this.show_rate + '' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div>' +
+        '<span>上座率：</span>' +
+        '<div class="progress">' +
+        '<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: ' + this.office_ratio + ';">' +
+        '' + this.avg_seat_view + '' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+    
+        '</div>' +
         '</div>';
     }
     $('.result').append(list);
