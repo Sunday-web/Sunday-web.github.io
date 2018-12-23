@@ -28,11 +28,12 @@
             <el-form ref="form" :model="form" label-width="80px">
               <el-form-item label="出生日期">
                 <el-col :span="11">
-                  <el-date-picker type="date" value-format="yyyy-MM-dd" format="yyyy 年 MM 月 dd 日" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+                  <el-date-picker type="date" value-format="yyyyMMdd" format="yyyy 年 MM 月 dd 日" placeholder="选择日期"
+                    v-model="form.date1" style="width: 100%;"></el-date-picker>
                 </el-col>
               </el-form-item>
               <el-form-item>
-                {{ form.date1 }}
+                <!-- {{ form.date1 }} -->
                 <el-button type="primary" @click="onSubmit">立即查询</el-button>
                 <el-button type="default" @click="restar">清空结果</el-button>
               </el-form-item>
@@ -43,7 +44,9 @@
 
         <el-row :gutter="20">
           <el-col :span="12" :offset="4">
-            <div v-if="isresult==1">结果部分</div>
+            <div v-if="isresult==1">
+              <el-tag type="success">生命数:{{lifeNum}}</el-tag>
+            </div>
           </el-col>
         </el-row>
 
@@ -63,19 +66,46 @@
     data: function () {
       return {
         form: {
-          date1: '',
+          date1: '19900101',
         },
-        isresult:0
+        isresult: 0,
+        lifeNum: ''
       }
     },
     methods: {
       onSubmit() {
-        console.log('submit!');
-        this.isresult=1;
+        var self = this;
+        self.isresult = 1;
+        var dateNum = parseInt(self.form.date1);
+        //console.log(dateNum.split("-"));
+        var dateNumSum = self.getLifeNum(dateNum);
+
+        if (dateNumSum > 10) {
+          var lifeNum = self.getLifeNum(dateNumSum);
+        } else if (dateNumSum == 10) {
+          var lifeNum = 1;
+        } else {
+          var lifeNum = dateNumSum;
+        }
+
+        if (lifeNum==10) {
+          var lifeNum = 1;
+        }
+        self.lifeNum = lifeNum;
+
+
       },
-      restar(){
+      restar() {
         this.isresult = 0;
         this.form.date1 = '';
+      },
+      getLifeNum(m) {
+        var a = 0;
+        while (m) {　　　　//循环m；
+          a += m % 10;　　//计和，每次的余数相加；
+          m = parseInt(m / 10);　　//取整，直到为0，退出循环；
+        }
+        return a;　　//返回a；
       }
     }
   })
