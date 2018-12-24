@@ -45,7 +45,7 @@
         <el-row :gutter="20">
           <el-col :span="12" :offset="4">
             <div v-if="isresult==1">
-              <el-tag type="success">生命数:{{lifeNum}}</el-tag>
+              <el-tag type="success">生日数:{{birthNum}}</el-tag>
             </div>
           </el-col>
         </el-row>
@@ -69,30 +69,16 @@
           date1: '19900101',
         },
         isresult: 0,
-        lifeNum: ''
+        birthNum: ''
       }
     },
     methods: {
       onSubmit() {
         var self = this;
         self.isresult = 1;
+        //birthday number
         var dateNum = parseInt(self.form.date1);
-        //console.log(dateNum.split("-"));
-        var dateNumSum = self.getLifeNum(dateNum);
-
-        if (dateNumSum > 10) {
-          var lifeNum = self.getLifeNum(dateNumSum);
-        } else if (dateNumSum == 10) {
-          var lifeNum = 1;
-        } else {
-          var lifeNum = dateNumSum;
-        }
-
-        if (lifeNum==10) {
-          var lifeNum = 1;
-        }
-        self.lifeNum = lifeNum;
-
+        self.birthNum = self.getLifeNum(dateNum);
 
       },
       restar() {
@@ -105,7 +91,12 @@
           a += m % 10;　　//计和，每次的余数相加；
           m = parseInt(m / 10);　　//取整，直到为0，退出循环；
         }
-        return a;　　//返回a；
+        if (a>10) {
+           return this.getLifeNum(a);
+        }else{
+           return a;　　//返回a；
+        }
+       
       }
     }
   })
