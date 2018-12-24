@@ -11,6 +11,21 @@
     .text-center{
     text-align: center
   }
+  .wrap{
+    max-width: 1200px;
+        margin: 0 auto;
+  }
+  .dig_width{
+   width: 50%!important;
+  }
+  @media screen and (max-width: 1000px) {
+    .wrap {
+        max-width: 100%;
+    }
+    .dig_width{
+    width: 90%!important;
+    }
+  }
   </style>
 </head>
 
@@ -22,34 +37,67 @@
         <h1 class="text-center">生命数字</h1>
       </el-header>
       <el-main>
+        <div class="wrap">
 
-        <el-row :gutter="20">
-          <el-col :span="12" :offset="4">
-            <el-form ref="form" :model="form" label-width="80px">
-              <el-form-item label="出生日期">
-                <el-col :span="11">
-                  <el-date-picker type="date" value-format="yyyyMMdd" format="yyyy 年 MM 月 dd 日" placeholder="选择日期"
-                    v-model="form.date1" style="width: 100%;"></el-date-picker>
-                </el-col>
-              </el-form-item>
-              <el-form-item>
-                <!-- {{ form.date1 }} -->
-                <el-button type="primary" @click="onSubmit">立即查询</el-button>
-                <el-button type="default" @click="restar">清空结果</el-button>
-              </el-form-item>
+          <el-row>
+            <el-col :span="2" :xs="8"><span style="line-height: 40px;">出生日期:</span></el-col>
+            <el-col :span="8" :xs="14">
+              <el-date-picker type="date" value-format="yyyyMMdd" format="yyyy 年 MM 月 dd 日" placeholder="选择日期" v-model="form.date1"
+                style="width: 100%;"></el-date-picker>
+            </el-col>
+          </el-row>
+          <div style="height:15px"></div>
+          <el-row>
+            <el-col :span="20" :xs="20">
+              <el-button type="primary" @click="onSubmit">立即查询</el-button>
+              <el-button type="default" @click="restar">清空结果</el-button>
+            </el-col>
+          </el-row>
+          <div style="height:15px"></div>
+          <el-row :gutter="20">
+            <el-col :span="20" :xs="20">
+              <div v-if="isresult==1">
+                <el-tag type="success">生日数:{{birthNum}}</el-tag>
+                <el-button type="text" @click="centerDialogVisible = true">查看解析</el-button>
+                <el-dialog title="生日数解析" :visible.sync="centerDialogVisible" custom-class="dig_width"
+                  center>
+                  <span v-if="birthNum==1">
+                    生日數字 1
+                    - 當你出生於每月1日、10日、19日、28日時，你的生日數相加最終結果為1，你便是不折不扣的1號人。
 
-            </el-form>
-          </el-col>
-        </el-row>
+                    生日數為1的人，性格上會有唯我獨尊的強勢一面，你們非常進取，渴望成為所在團隊內的佼佼者。雖然給人唯我獨尊的感覺，但正是因為這種自信的魅力也讓你擁有極強的存在感。對於自己的選擇及判斷你們非常自信，他人的意見很難左右你的決定。
 
-        <el-row :gutter="20">
-          <el-col :span="12" :offset="4">
-            <div v-if="isresult==1">
-              <el-tag type="success">生日数:{{birthNum}}</el-tag>
-            </div>
-          </el-col>
-        </el-row>
+                    雖然每月1日、10日、19日、28日出生的人均為1號人，但是不同的1號人在具體性格上還存在細微的差別。
 
+                    每月1日出生的1號人
+                    可是說是最純粹的1號人，他們獨立、堅強，是所有1號人中意志最堅定的。你們並不喜歡多言，看待問題的角度非常實際，執行力頗強。雖然你們擁有極強的創造力，卻常常因為過分腳踏實地而埋沒了自己這方面的天賦。你們不僅獨立完成工作的能力很強，還擁有極強的掌控欲，對於周遭的一切都了若指掌，只有這樣才能令自身獲得更​​多的安全感及自信。但是在外人眼中，你賦予自己的壓力實在太大，操心也實在太多了。你的獨斷專行、過分嚴謹還會給周遭的人帶去不適感。
+
+                    每月10日出生的1號人
+                    10日出生的1號人雖然也是執行力頗強、自信決斷的一員，但是你們的興趣更為廣泛，對眾多領域都有所涉獵。他人非常信任你的決定，往往在生活或是工作上遭遇困擾，都會將你的意見視作指路明燈。但是當你遇到問題時卻甚少有人向你伸出援手。並不是因為別人不願幫助你，而是因為平日你給大家的感覺總是無所不能，讓人無法接受你也有需要幫助的時候。內心的孤獨將是伴隨你一生的課題，在很多時候你會覺得自己是孤立存在於世界的，這種與外界的疏離感是你自己的選擇。
+
+                    每月19日出生的1號人
+                    19日出生的人受到1與9的共同影響，導致你的性格擁有多面性。既擁有堅忍不拔的一面，也會有理性客觀的特質。你們擁有更為開闊的世界觀，性格上也多了一份包容性。你們的特立獨行表現在並不會為現有的秩序影響，反而會挑戰一切可能，將自己的創造力發揮到極致，另外你的情緒化也會非常明顯，容易出現極端的表現。面對群體，你們並不喜歡時常同人保持交際，也不喜歡湊熱鬧，非常注重個人空間。正因為如此，你們反而是1號人裡最善於在社交關係中拿捏分寸的一族。
+
+                    每月28日出生的1號人
+                    28日出生的1號人受到2與8的影響，跟其他的1號人存在明顯的區別。他們的性格更為圓潤，處理人際關係的手段非常圓滑，但是遇到應該堅持的選擇時也保留了1號人絕不退縮的特質。在跟人相處時，很容易因為平時好說話與關鍵時刻的固執形成強烈落差，讓他人難以適應。跟其他1號人相同，雖然你擁有極強的執行能力，但是你卻比他們多了一份理想主義的​​夢幻色彩，所以當現實與理想不符時，你常常因為難以接受現實而受到打擊。所以，當你有想法的時候就需要立刻行動，當你在理想與現實中找到平衡點時，你便更加容易成功。
+                  </span>
+                  <span v-if="birthNum==2">2</span>
+                  <span v-if="birthNum==3">3</span>
+                  <span v-if="birthNum==4">4</span>
+                  <span v-if="birthNum==5">5</span>
+                  <span v-if="birthNum==6">6</span>
+                  <span v-if="birthNum==7">7</span>
+                  <span v-if="birthNum==8">8</span>
+                  <span v-if="birthNum==9">9</span>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+                  </span>
+                </el-dialog>
+              </div>
+            </el-col>
+          </el-row>
+
+        </div>
       </el-main>
     </el-container>
 
@@ -69,7 +117,8 @@
           date1: '19900101',
         },
         isresult: 0,
-        birthNum: ''
+        birthNum: '',
+        centerDialogVisible: false
       }
     },
     methods: {
@@ -91,12 +140,12 @@
           a += m % 10;　　//计和，每次的余数相加；
           m = parseInt(m / 10);　　//取整，直到为0，退出循环；
         }
-        if (a>10) {
-           return this.getLifeNum(a);
-        }else{
-           return a;　　//返回a；
+        if (a >= 10) {
+          return this.getLifeNum(a);
+        } else {
+          return a;　　//返回a；
         }
-       
+
       }
     }
   })
