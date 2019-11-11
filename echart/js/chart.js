@@ -740,10 +740,10 @@ $(function () {
     //柱形图-3
     !(function () {
         var mychart = echarts.init(document.getElementById('bar-3'));
-        var rankArr = [2, 1, 3, 5, 4, 6, 7];
-        var placeHolderArr = [0, 0, 0, 0, 0, 0, 0];
-        var labelArr = [98.38, 98.43, 98.94, 99.42, 99.44, 99.86, 100];
-        var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7'];
+        var rankArr = [2, 1, 3, 5, 4];
+        var placeHolderArr = [0, 0, 0, 0, 0];
+        var labelArr = [98.38, 98.43, 98.94, 99.42, 99.44];
+        var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5'];
         var seriesObj = [{
             name: '政务服务核心指标', //系列名称
             type: 'bar',
