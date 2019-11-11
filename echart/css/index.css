@@ -1,0 +1,10 @@
+.chart {
+    height: 100%;
+    background: #666;
+}
+.text-center {
+    text-align: center;
+}
+.row{
+  margin-bottom: .4rem;
+}
