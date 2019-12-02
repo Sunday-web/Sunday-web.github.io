@@ -1879,7 +1879,7 @@ $(function () {
                 axisLabel: { //刻度标签
                     show: true,
                     formatter: function (para) {
-                        console.log(para)
+                        // console.log(para)
                         if (para == 0 || para == 50 || para == 100) {
                             return para;
                         } else {
@@ -2063,26 +2063,26 @@ $(function () {
                 center: ['50%', '50%'],
                 radius: '55%',
                 indicator: [{
-                    text: '监测',
-                    max: 100
-                },
-                {
-                    text: '年代',
-                    max: 100
-                },
-                {
-                    text: '体系',
-                    max: 100
-                },
-                {
-                    text: '巡检',
-                    max: 100
-                }
+                        text: '监测',
+                        max: 100
+                    },
+                    {
+                        text: '年代',
+                        max: 100
+                    },
+                    {
+                        text: '体系',
+                        max: 100
+                    },
+                    {
+                        text: '巡检',
+                        max: 100
+                    }
                 ],
-                startAngle: 90,//起始角度
-                splitNumber: 4,//指示器轴的分割段数。
+                startAngle: 90, //起始角度
+                splitNumber: 4, //指示器轴的分割段数。
                 // shape: 'circle',//雷达图绘制类型
-                name: {//雷达图每个指示器名称的配置项。
+                name: { //雷达图每个指示器名称的配置项。
                     formatter: '{value}',
                     textStyle: {
                         color: '#fff'
@@ -2096,13 +2096,13 @@ $(function () {
                         color: '#217ed2'
                     }
                 },
-                splitLine: {//坐标轴在 grid 区域中的分隔线
+                splitLine: { //坐标轴在 grid 区域中的分隔线
                     lineStyle: {
                         color: '#217ed2',
                         width: 1,
                     }
                 },
-                splitArea: {//坐标轴在 grid 区域中的分隔区域，默认不显示
+                splitArea: { //坐标轴在 grid 区域中的分隔区域，默认不显示
                     show: false,
                     areaStyle: {
                         color: ['#2c2c2d', '#333334', '#3a3a3b', '#333334']
@@ -2264,16 +2264,16 @@ $(function () {
     //文档地址 https://github.com/TheBolliwood/circleChart
     !(function () {
         $("#circle-1").circleChart({
-            size:150,
+            size: 150,
             color: "#0078D2",
             backgroundColor: "#fff",
-            backgroundFix:true,
+            backgroundFix: true,
             value: 60.45,
             startAngle: 180,
             text: 0,
             textSize: '.4rem',
             onDraw: function (el, circle) {
-                $(".circleChart_text").css('color','#fff')
+                $(".circleChart_text").css('color', '#fff')
                 $(".circleChart_text", el).html((circle.value).toFixed(2) + '%');
             }
         });
@@ -2281,7 +2281,24 @@ $(function () {
     //bootstrap进度条
     $('.progress-bar').each(function () {
         var percent = $(this).attr('aria-valuenow');
-        $(this).css('width',percent+'%')
+        $(this).css('width', percent + '%')
+    })
+
+    //步骤条
+    $('.box').step({
+        stepDirection: 'x',
+        showStepButton: false,
+        stepCount: 5,
+        stepTitles: ['标题一', '标题二', '标题三', '标题四', '标题5'],
+    });$('.box2').step({
+        stepDirection: 'y',
+        showStepButton: false,
+        stepCount: 3,
+        stepTitles: ['标题一', '标题二', '标题三'],
+    });
+    $('.eis-step-icon').click(function () {
+        var index=$(this).closest('.eis-form-step').index()
+        console.log(index);
     })
 
 
