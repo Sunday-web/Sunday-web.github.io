@@ -522,7 +522,203 @@ $(function () {
         };
         mychart.setOption(option);
     })();
+    //折线图-5
+    !(function () {
+        var mychart = echarts.init(document.getElementById('line-5'));
+        var dataArr = [0.8, 1.3, 0.9, 1.2, 0.5, 0.9, 1.2, 0.6, 0.7];
+        var xArr = ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'];
+        var title = '昨日市一周边停车指数趋势';
+        var max = Math.max.apply(null, dataArr);
+        var min = Math.min.apply(null, dataArr);
+        var seriesObj = {
+            name: '', //系列名称
+            type: 'line',
+            smooth: true, //是否平滑曲线显示
+            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+            symbol: 'circle', //标记的图形。
+            symbolSize: 6, //标记的大小
+            lineStyle: { //线条样式。
+                normal: {
+                    color: "#21CEE1", // 线条颜色
+                    shadowOffsetY: 0,
+                },
+            },
+            markLine: {
+                label: {
+                    show: true,
+                    // formatter: '',
+                    formatter: 'avg: {c}',
+                    position: 'end',
+                    padding: [-20, 0, 0, -60]
+                },
+                silent: true,
+                symbol: 'none',
+                data: [{
+                    name: '平均线',
+                    // 支持 'average', 'min', 'max'
+                    type: 'average'
+                }]
+            },
+            itemStyle: { //折线拐点标志的样式。
+                normal: {
+                    color: "#21CEE1",
+                }
+            },
+            tooltip: { //提示框
+                show: true
+            },
+            // data: dataArr
+            data: function () {
+                var itemArr = [],
+                    item;
+                var max_index = dataArr.indexOf(max);
+                var min_index = dataArr.indexOf(min);
+                for (var i = 0; i < dataArr.length; i++) {
+                    if (i == max_index) {
+                        item = {
+                            value: dataArr[i],
+                            label: {
+                                show: true,
+                                position: 'insideLeft',
+                                // position: ['25%', '10%'],
+                                color: '#fff',
+                                formatter: '{b}\nmax:{c}',
+                                backgroundColor: 'rgba(1,60,119,0.86)',
+                                // zlevel:10
+                                padding: [5, 5, 5, 5]
+                            },
+                            itemStyle: { //折线拐点标志的样式。
+                                normal: {
+                                    color: "#fff",
+                                    borderColor: '#00f6ff',
+                                    borderWidth: 3,
+                                }
+                            },
+                        };
+                    } else if (i == min_index) {
+                        item = {
+                            value: dataArr[i],
+                            label: {
+                                show: true,
+                                position: 'insideLeft',
+                                color: '#fff',
+                                formatter: '{b}\nmin:{c}',
+                                backgroundColor: 'rgba(1,60,119,0.86)',
+                                padding: [5, 5, 5, 5]
+                            },
+                            itemStyle: { //折线拐点标志的样式。
+                                normal: {
+                                    color: "#fff",
+                                    borderColor: '#ffcc00',
+                                    borderWidth: 3
+                                }
+                            },
+                        };
+                    } else {
+                        item = {
+                            value: dataArr[i],
+                            label: {
+                                show: false,
+                                color: '#fff'
+                            },
+                            symbolSize: 0,
+                            itemStyle: {
+                                normal: {
 
+                                }
+                            }
+                        };
+                    }
+                    itemArr.push(item);
+                }
+                return itemArr;
+            }()
+        };
+        var option = {
+            title: {
+                show: true,
+                text: title,
+                left: 'center',
+                textStyle: {
+                    color: '#fff',
+                    fontSize: getSize(.26),
+                    fontWeight: 'normal'
+                }
+            },
+            tooltip: { //提示框组件
+                show: true,
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: { //直角坐标系
+                top: '35%',
+                left: '0%',
+                right: '4%',
+                bottom: '8%',
+                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+            },
+            xAxis: [{ //直角坐标系 grid 中的 x 轴
+                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+                boundaryGap: true,
+                margin: getSize(0.1),
+                axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                    show: true,
+                    lineStyle: {
+                        color: '#3196fa'
+                    },
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置
+                    textStyle: {
+                        fontSize: getSize(0.2),
+                        color: '#fff',
+                    },
+                },
+                axisTick: {
+                    show: false,
+                },
+                data: xArr
+            }],
+            yAxis: [{ //直角坐标系 grid 中的 y 轴
+                type: 'value', ////直角坐标系 grid 中的 x 轴
+                name: '',
+                nameTextStyle: {
+                    fontSize: getSize(0.2),
+                    color: '#fff',
+                    padding: [getSize(0.2), 0, 0, 0]
+                },
+                margin: getSize(0.1),
+                splitNumber: 2,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        type: 'dashed',
+                        color: '#3196fa'
+                    }
+                },
+                axisLine: { //坐标轴轴线相关设置。
+                    show: true,
+                    lineStyle: {
+                        color: '#3196fa'
+                    }
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置。
+                    margin: 10, //刻度标签与轴线之间的距离。
+                    textStyle: {
+                        fontSize: getSize(0.24),
+                        color: '#fff',
+                    },
+                },
+                axisTick: { //坐标轴刻度相关设置。
+                    show: false,
+                },
+            }],
+            series: seriesObj
+        };
+        mychart.setOption(option);
+    })();
     //柱形图-1
     !(function () {
         var myChart = echarts.init(document.getElementById('bar-1'));
@@ -1449,7 +1645,235 @@ $(function () {
         mychart.clear();
         mychart.setOption(option);
     }
+    //柱形图-8
+    !(function () {
+        var myChart = echarts.init(document.getElementById('bar-8'));
+        var xdata = ['11-20', '11-21', '11-22', '11-23', '11-24', '11-25', '11-26', '11-27', '11-28', '11-29', '11-30', '11-31', '12-01', '12-02', '12-03', '12-04'];
+        var ydata = [3.1, 2.8, 3.3, 3.3, 2.8, 3.0, 3.2, 2.6, 3.0, 3.1, 2.8, 3.0, 3.1, 2.8, 3.0, 2.9];
+        // var title = '近15日市一周边泊位指数趋势';
+        var max = Math.max.apply(null, ydata);
+        var min = Math.min.apply(null, ydata);
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            // title: {
+            //     show: false,
+            //     text: title,
+            //     left: 'center',
+            //     textStyle: {
+            //         color: '#fff',
+            //         fontSize: getSize(.26),
+            //         fontWeight: 'normal'
+            //     }
+            // },
+            grid: {
+                left: '0%',
+                top: "10%",
+                right: '4%',
+                bottom: '5%',
+                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+            },
+            xAxis: [{
+                nameLocation: "start",
+                nameTextStyle: {
+                    color: "#fff",
+                },
+                nameGap: '1',
+                type: 'category',
+                data: xdata,
+                axisLabel: {
+                    interval: 1,
+                    color: "#fff",
+                    fontSize: getSize(0.2),
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#579dff",
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                },
+            }],
+            yAxis: [{
+                // show:false,
+                type: 'value',
+                name: '',
+                nameTextStyle: {
+                    color: "#fff",
+                    fontSize: getSize(0.24),
+                },
+                axisLabel: {
+                    show: true,
+                    interval: 'auto',
+                    color: "#fff",
+                    fontSize: getSize(0.2),
+                },
+                splitNumber: 2,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#10447C',
+                        opacity: 1,
+                        width: 1,
+                        type: 'solid',
+                    }
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#579dff",
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+            }],
+            series: [{
+                type: 'bar',
+                barGap: 0,
+                barWidth: "40%",
+                markLine: {
+                    label: {
+                        show: true,
+                        // formatter: '',
+                        formatter: 'avg: {c}',
+                        position: 'end',
+                        padding: [-20, 0, 0, -60]
+                    },
+                    silent: true,
+                    symbol: 'none',
+                    lineStyle: {
+                        color: '#00F6FF'
+                    },
+                    data: [{
+                        name: '平均线',
+                        // 支持 'average', 'min', 'max'
+                        type: 'average'
+                    }]
+                },
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [{
+                                    offset: 0,
+                                    color: 'rgba(0,246,255,1)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(0,246,255,0.1)'
+                                }
+                            ]
+                        ),
+                        barBorderRadius: [4, 4, 0, 0]
+                    },
+                },
+                yAxisIndex: 0,
+                // data: ydata
+                data: function () {
+                    var itemArr = [],
+                        item;
+                    var max_index = ydata.indexOf(max);
+                    var min_index = ydata.indexOf(min);
+                    for (var i = 0; i < ydata.length; i++) {
+                        if (i == max_index) {
+                            item = {
+                                value: ydata[i],
+                                label: {
+                                    show: true,
+                                    position: 'insideLeft',
+                                    color: '#fff',
+                                    formatter: '{b}\nmax:{c}',
+                                    backgroundColor: 'rgba(1,60,119,0.86)',
+                                    padding: [5, 5, 5, 5]
+                                    // zlevel:10
+                                    // padding:[20,0,0,0]
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        color: new echarts.graphic.LinearGradient(
+                                            0, 0, 0, 1,
+                                            [{
+                                                    offset: 0,
+                                                    color: 'rgba(239, 72, 100, 1)'
+                                                },
+                                                {
+                                                    offset: 1,
+                                                    color: 'rgba(0,246,255,0.1)'
+                                                }
+                                            ]
+                                        ),
+                                        barBorderRadius: [4, 4, 0, 0]
+                                    },
+                                },
+                            };
+                        } else if (i == min_index) {
+                            item = {
+                                value: ydata[i],
+                                label: {
+                                    show: true,
+                                    position: 'insideLeft',
+                                    color: '#fff',
+                                    formatter: '{b}\nmin:{c}',
+                                    backgroundColor: 'rgba(1,60,119,0.86)',
+                                    padding: [5, 5, 5, 5]
+                                },
+                                zlevel: 100,
+                                emphasis: {
+                                    label: {
+                                        show: true
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        color: new echarts.graphic.LinearGradient(
+                                            0, 0, 0, 1,
+                                            [{
+                                                    offset: 0,
+                                                    color: 'rgba(0, 205, 96, 1)'
+                                                },
+                                                {
+                                                    offset: 1,
+                                                    color: 'rgba(0,246,255,0.1)'
+                                                }
+                                            ]
+                                        ),
+                                        barBorderRadius: [4, 4, 0, 0]
+                                    },
+                                },
+                            };
+                        } else {
+                            item = {
+                                value: ydata[i],
+                                label: {
+                                    show: false,
+                                    color: '#fff'
+                                },
+                                itemStyle: {
+                                    normal: {
 
+                                    }
+                                }
+                            };
+                        }
+                        itemArr.push(item);
+                    }
+                    return itemArr;
+                }()
+            }, ]
+        };
+        myChart.setOption(option);
+
+    })();
     //饼图-1
     !(function () {
         var mychart = echarts.init(document.getElementById('pie-1'));
