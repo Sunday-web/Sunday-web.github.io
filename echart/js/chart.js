@@ -1922,14 +1922,29 @@ $(function () {
         var dataArr = [];
         var legendArr = [];
         for (var i = 0; i < nameArr.length; i++) {
-            dataArr.push({
-                name: nameArr[i],
-                value: valueArr[i]
-            });
-            legendArr.push({
-                icon: 'roundRect',
-                name: nameArr[i],
-            });
+            if (i === 0) {
+                dataArr.push({
+                    name: nameArr[i],
+                    value: valueArr[i],
+                    label: {
+                        show: true
+                    }
+                });
+                legendArr.push({
+                    icon: 'roundRect',
+                    name: nameArr[i],
+                });
+            } else {
+                dataArr.push({
+                    name: nameArr[i],
+                    value: valueArr[i]
+                });
+                legendArr.push({
+                    icon: 'roundRect',
+                    name: nameArr[i],
+                });
+            }
+
         }
         var mychart = echarts.init(document.getElementById('pie-6'));
         var option = {
