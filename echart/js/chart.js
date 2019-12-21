@@ -2056,7 +2056,7 @@ $(function () {
                 radius: ['70%', '90%'],
                 startAngle: 90,
                 label: {
-                    show: true,
+                    show: false,
                     position: 'center',
                     formatter: '{a|总量}\n{b|9316}',
                     rich: {
@@ -2067,7 +2067,7 @@ $(function () {
                         },
                         b: {
                             fontSize: getSize(0.43),
-                            color: '#fff'
+                            color: '#3196fa'
                         }
                     }
                 },
@@ -2078,6 +2078,94 @@ $(function () {
         mychart.setOption(option);
     }
 
+    //饼图-7
+    void(function () {
+        var myChart = echarts.init(document.getElementById('pie-7'));
+        var colorArr = ['#00ff4e', '#ffa800', '#3196fa'];
+        var dataArr = [];
+        var legendArr = [];
+        var nameArr = ['在建项目', '开工项目', '竣工项目'];
+        var valueArr = [46, 23, 31];
+        for (var i = 0; i < nameArr.length; i++) {
+            if (i === 0) {
+                dataArr.push({
+                    name: nameArr[i],
+                    value: valueArr[i],
+                    label: {
+                        show: true
+                    }
+                });
+            } else {
+                dataArr.push({
+                    name: nameArr[i],
+                    value: valueArr[i],
+                });
+            }
+
+            legendArr.push({
+                icon: 'roundRect',
+                name: nameArr[i]
+            });
+        }
+        var option = {
+            color: colorArr,
+            title: {
+                text: '项目总数量',
+                x: 'center',
+                top: '0%',
+                textStyle: {
+                    fontWeight: 'normal',
+                    fontSize: getSize(0.32),
+                    color: '#fff'
+                }
+            },
+            legend: {
+                top: '30%',
+                right: '2%',
+                itemWidth: getSize(0.34),
+                itemHeight: getSize(0.27),
+                itemGap: getSize(0.2),
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff'
+                },
+                orient: 'vertical',
+                data: legendArr
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)",
+            },
+            series: [{
+                name: '建设工程',
+                type: 'pie',
+                clockWise: true,
+                radius: ['40%', '55%'],
+                center: ['35%', '52%'],
+                startAngle: 90,
+                label: {
+                    show: false,
+                    position: 'center',
+                    formatter: '{a|40%}\n{b|在建}',
+                    rich: {
+                        a: {
+                            fontSize: getSize(0.44),
+                            color: '#00ff4e'
+                        },
+                        b: {
+                            fontSize: getSize(0.24),
+                            color: '#fff'
+                        }
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: dataArr,
+            }]
+        }
+        myChart.setOption(option);
+    })();
 
     //仪表盘-1
     !(function () {
