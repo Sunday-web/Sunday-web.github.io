@@ -469,7 +469,7 @@ $(function () {
                     padding: [0, getSize(0.3), 0, 0]
                 },
                 margin: getSize(0.1),
-                splitNumber: 3,
+                splitNumber: 0,
                 splitLine: { //坐标轴在 grid 区域中的分隔线
                     show: true,
                     lineStyle: {
@@ -503,19 +503,19 @@ $(function () {
             series: [{
                     name: '图例1',
                     type: 'line',
-                    stack: '总量',
+                    // stack: '总量',
                     data: [1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, ]
                 },
                 {
                     name: '图例2',
                     type: 'line',
-                    stack: '总量',
+                    // stack: '总量',
                     data: [0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1]
                 },
                 {
                     name: '图例3',
                     type: 'line',
-                    stack: '总量',
+                    // stack: '总量',
                     data: [0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1]
                 }
             ]
