@@ -1894,6 +1894,7 @@ $(function () {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
+                    type:'shadow',
                     lineStyle: {
                         color: '#39627d'
                     }
