@@ -1874,6 +1874,142 @@ $(function () {
         myChart.setOption(option);
 
     })();
+    //柱形图-9
+    !(function () {
+        var myChart = echarts.init(document.getElementById('bar-9'));
+        var nameArr = ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
+        var dataArr = [2000, 1500, 1400, 1300, 1200, 1100, 1000];
+        var total = 0;
+        for (var i = 0; i < dataArr.length; i++) {
+            total += dataArr[i];
+        }
+        var option = {
+            grid: {
+                top: '8%',
+                bottom: '8%',
+                left: '5%',
+                right: '7%',
+                containLabel: true,
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    lineStyle: {
+                        color: '#39627d'
+                    }
+                },
+                formatter: '{b} {c}家'
+            },
+            yAxis: [{
+                type: 'category',
+                zlevel: 1,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                    show: true,
+                    lineStyle: {
+                        color: '#00ffff'
+                    },
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置
+                    fontSize: getSize(0.28),
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+                inverse: true,
+                data: nameArr
+            }, {
+                type: 'category',
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                    show: false,
+                    lineStyle: {
+                        color: '#00ffff'
+                    },
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置
+                    fontSize: getSize(0.28),
+                    formatter: function (para) {
+                        var value = dataArr[nameArr.indexOf(para)];
+                        var percent = (value / total * 100).toFixed(0) + '%';
+                        return value + '家  ' + percent;
+                    },
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+                inverse: true,
+                data: nameArr
+            }],
+            xAxis: [{
+                type: 'value',
+                boundaryGap: true,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: '#fff'
+                    },
+                },
+                axisLabel: {
+                    show: false,
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+            }],
+            series: [{
+                name: '',
+                type: 'bar',
+                barGap: 0,
+                barWidth: '30%',
+                label: {
+                    show: true,
+                    position: 'insideRight',
+                    // formatter: '{c}件',
+                    formatter: function (para) {
+                        var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr)* 100).toFixed(2);
+                        return pct + '%  '
+                    },
+                    color: '#fff',
+                    fontSize: getSize(0.2)
+                },
+                itemStyle: {
+                    barBorderRadius: getSize(0.05),
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0, //// 0% 处的颜色
+                        color: 'rgba(49,150,250,0.1)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgba(49,150,250,1)'
+                    }
+                    ], false),
+                },
+                data: dataArr
+            }]
+        };
+        myChart.setOption(option);
+
+    })();
     //饼图-1
     !(function () {
         var mychart = echarts.init(document.getElementById('pie-1'));
