@@ -19,6 +19,9 @@ $(function () {
         var fz = $('html').css('fontSize').replace(/px/, '');
         return v * fz;
     };
+    var random = function (min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
     //获取数组的和
     var getArrSum = function (arr) {
         return eval(arr.join("+"));
@@ -719,6 +722,215 @@ $(function () {
         };
         mychart.setOption(option);
     })();
+    chart_line6();
+
+    function chart_line6(pdata1, pdata2) {
+        // 初始化实例
+        var myChart = echarts.init(document.getElementById('line-6'));
+        var Xdata = [];
+        var Ydata = pdata1 || [];
+        var Ydata2 = pdata2 || [];
+        var colorArr = ['#00DEFE', '#00FF00'];
+        var ynameArr = ['今日新增隔离', '今日解除隔离'];
+        var legendArr = [];
+        for (var i = 22; i <= 31; i++) {
+            Xdata.push(i + '日');
+            Ydata.push(random(40, 120));
+            Ydata2.push(random(60, 140));
+        }
+        for (var key in ynameArr) {
+            legendArr.push({
+                name: ynameArr[key],
+                textStyle: {
+                    color: '#fff'
+                }
+            })
+        }
+        var option = {
+            tooltip: { //提示框组件
+                show: true,
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: '{a}</br>{b}:{c}万'
+
+            },
+            color: colorArr,
+            grid: {
+                left: '4%',
+                top: "25%",
+                right: '4%',
+                bottom: '5%',
+                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+            },
+            legend: {
+                data: legendArr,
+            },
+            xAxis: [{ //直角坐标系 grid 中的 x 轴
+                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+                boundaryGap: true,
+                axisLabel: {
+                    interval: 0,
+                    color: "#fff",
+                    fontSize: getSize(0.24),
+                },
+
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#579dff",
+                    }
+                },
+                axisTick: {
+                    show: false,
+                },
+                data: Xdata,
+            }],
+            yAxis: [{ //直角坐标系 grid 中的 y 轴
+                type: 'value', ////直角坐标系 grid 中的 x 轴
+                min: 0, //坐标轴刻度最小值。
+                name: '单位：人',
+                nameTextStyle: {
+                    color: "#fff",
+                    fontSize: getSize(0.24),
+                },
+                axisLabel: {
+                    interval: 0,
+                    color: "#fff",
+                    fontSize: getSize(0.24),
+                },
+                splitNumber: 3,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: true,
+                    lineStyle: {
+                        color: '#579dff',
+                        opacity: 1,
+                        width: 1,
+                        type: 'dashed',
+                    }
+                },
+
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#579dff",
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+            }],
+            series: [{
+                name: ynameArr[0], //系列名称
+                type: 'line',
+                smooth: false, //是否平滑曲线显示
+                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+                symbol: 'circle', //标记的图形。
+                // symbolSize: 2,//标记的大小
+                lineStyle: { //线条样式。
+                    normal: {
+                        color: "#1A9BA9", // 线条颜色
+                        shadowOffsetY: 2,
+                        shadowColor: '#0AA2C6',
+                    },
+                },
+                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                    show: false,
+                    formatter: '{c}',
+                    position: 'top',
+                    textStyle: {
+                        color: '#fff',
+                    }
+                },
+                itemStyle: { //折线拐点标志的样式。
+                    normal: {
+                        color: "#16D4F1",
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                    }
+                },
+                tooltip: { //提示框
+                    show: true
+                },
+                areaStyle: { //区域填充样式
+                    normal: {
+                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0, //// 0% 处的颜色
+                                color: 'rgba(0, 222, 254, 1)'
+                            }, {
+                                offset: 0.4, //// 0% 处的颜色
+                                color: 'rgba(0, 222, 254, 0.6)'
+                            },
+                            {
+                                offset: 1,
+                                color: 'rgba(0, 222, 254, 0)'
+                            }
+                        ], false),
+                        shadowColor: '#177477', //阴影颜色
+                        shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                    }
+                },
+                data: Ydata
+            }, {
+                name: ynameArr[1], //系列名称
+                type: 'line',
+                smooth: false, //是否平滑曲线显示
+                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+                symbol: 'circle', //标记的图形。
+                // symbolSize: 2,//标记的大小
+                lineStyle: { //线条样式。
+                    normal: {
+                        color: "#00FF00", // 线条颜色
+                        shadowOffsetY: 1,
+                        shadowColor: '#0AD63E',
+                    },
+                },
+                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                    show: false,
+                    formatter: '{c}',
+                    position: 'top',
+                    textStyle: {
+                        color: '#fff',
+                    }
+                },
+                itemStyle: { //折线拐点标志的样式。
+                    normal: {
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                        color: "#1DF01A",
+                    }
+                },
+                tooltip: { //提示框
+                    show: true
+                },
+                areaStyle: { //区域填充样式
+                    normal: {
+                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0, //// 0% 处的颜色
+                                color: 'rgba(1, 241, 8, 1)'
+                            }, {
+                                offset: 0.4, //// 0% 处的颜色
+                                color: 'rgba(1, 241, 8, 0.6)'
+                            },
+                            {
+                                offset: 1,
+                                color: 'rgba(1, 241, 8, 0)'
+                            }
+                        ], false),
+                        shadowColor: '#177477', //阴影颜色
+                        shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                    }
+                },
+                data: Ydata2
+            }]
+        };
+        myChart.setOption(option);
+    }
     //柱形图-1
     !(function () {
         var myChart = echarts.init(document.getElementById('bar-1'));
