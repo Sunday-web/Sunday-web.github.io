@@ -2106,7 +2106,7 @@ $(function () {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
-                    type:'shadow',
+                    type: 'shadow',
                     lineStyle: {
                         color: '#39627d'
                     }
@@ -2199,7 +2199,7 @@ $(function () {
                     position: 'insideRight',
                     // formatter: '{c}件',
                     formatter: function (para) {
-                        var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr)* 100).toFixed(2);
+                        var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr) * 100).toFixed(2);
                         return pct + '%  '
                     },
                     color: '#fff',
@@ -2208,16 +2208,172 @@ $(function () {
                 itemStyle: {
                     barBorderRadius: getSize(0.05),
                     color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                        offset: 0, //// 0% 处的颜色
-                        color: 'rgba(49,150,250,0.1)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgba(49,150,250,1)'
-                    }
+                            offset: 0, //// 0% 处的颜色
+                            color: 'rgba(49,150,250,0.1)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(49,150,250,1)'
+                        }
                     ], false),
                 },
                 data: dataArr
+            }]
+        };
+        myChart.setOption(option);
+
+    })();
+    //柱形图-10
+    !(function () {
+        var myChart = echarts.init(document.getElementById('bar-10'));
+        var nameArr = ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
+        var dataArr = [2000, 1500, 1400, 1300, 1200, 1100, 1000];
+        var dataArr2 = [500, 1500, 1400, 1300, 1200, 1100, 1000];
+        var total = 0;
+        for (var i = 0; i < dataArr.length; i++) {
+            total += dataArr[i];
+        }
+        var option = {
+            grid: {
+                top: '8%',
+                bottom: '8%',
+                left: '5%',
+                right: '7%',
+                containLabel: true,
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow',
+                    lineStyle: {
+                        color: '#39627d'
+                    }
+                },
+                // formatter: '{b} {c}家'
+                formatter: '{b0}: <br /> {a0}:{c0}人<br />{a1}:{c1}人'
+            },
+            legend: {
+                textStyle: {
+                    color: '#fff'
+                },
+                data: [
+                    '学生', '教职工'
+                ]
+            },
+            yAxis: [{
+                type: 'category',
+                zlevel: 1,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                    show: true,
+                    lineStyle: {
+                        color: '#00ffff'
+                    },
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置
+                    fontSize: getSize(0.28),
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+                inverse: true,
+                data: nameArr
+            }, {
+                type: 'category',
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                    show: false,
+                    lineStyle: {
+                        color: '#00ffff'
+                    },
+                },
+                axisLabel: { //坐标轴刻度标签的相关设置
+                    fontSize: getSize(0.28),
+                    formatter: function (para) {
+                        var value = dataArr[nameArr.indexOf(para)];
+                        var value2 = dataArr2[nameArr.indexOf(para)];
+                        return value + '人 / ' + value2 + '人';
+                    },
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+                inverse: true,
+                data: nameArr
+            }],
+            xAxis: [{
+                type: 'value',
+                boundaryGap: true,
+                splitLine: { //坐标轴在 grid 区域中的分隔线
+                    show: false,
+                    lineStyle: {
+                        color: '#6b85a3'
+                    }
+                },
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: '#fff'
+                    },
+                },
+                axisLabel: {
+                    show: false,
+                    color: '#fff',
+                },
+                axisTick: {
+                    show: false,
+                },
+            }],
+            series: [{
+                name: '学生',
+                type: 'bar',
+                barGap: 0,
+                stack: 'a',
+                barWidth: '30%',
+                itemStyle: {
+                    // barBorderRadius: getSize(0.05),
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0, //// 0% 处的颜色
+                            color: '#00CCFF'
+                        },
+                        {
+                            offset: 1,
+                            color: '#00CCFF'
+                        }
+                    ], false),
+                },
+                data: dataArr
+            }, {
+                name: '教职工',
+                type: 'bar',
+                barGap: 0,
+                stack: 'a',
+                barWidth: '30%',
+                itemStyle: {
+                    // barBorderRadius: getSize(0.05),
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                            offset: 0, //// 0% 处的颜色
+                            color: '#0090FF'
+                        },
+                        {
+                            offset: 1,
+                            color: '#0090FF'
+                        }
+                    ], false),
+                },
+                data: dataArr2
             }]
         };
         myChart.setOption(option);
@@ -3128,7 +3284,7 @@ $(function () {
             var color_pct = parseFloat(gauge_val.value)
         }
         var myChart = echarts.init(document.getElementById('gauge-3'));
-                var option = {
+        var option = {
             // backgroundColor: '#043654',
             series: [{
                     name: '刻度',
