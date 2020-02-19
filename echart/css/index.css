@@ -120,6 +120,12 @@ iframe {
   background: #333;
 }
 
+.daohang {
+  position: fixed;
+  left: 10%;
+  top: 10%;
+}
+
 /* 4k分辨率 */
 @media screen and (min-width: 2540px) {}
 

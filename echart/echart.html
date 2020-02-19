@@ -12,8 +12,24 @@
 </head>
 
 <body>
+  <div class="daohang">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation" class="active"><a href="#index_line">折线图</a></li>
+      <li role="presentation"><a href="#index_bar">柱形图</a></li>
+      <li role="presentation"><a href="#index_pie">饼图</a></li>
+      <li role="presentation"><a href="#index_gauge">仪表盘</a></li>
+      <li role="presentation"><a href="#index_water">水滴图</a></li>
+      <li role="presentation"><a href="#index_radar">雷达图</a></li>
+      <li role="presentation"><a href="#index_bing">3D饼图</a></li>
+      <li role="presentation"><a href="#index_other">其他</a></li>
+      <li role="presentation"><a href="#index_progress">进度条</a></li>
+      <li role="presentation"><a href="#index_bzt">步骤条</a></li>
+      <li role="presentation"><a href="#index_map">地图</a></li>
+    </ul>
+  </div>
+
   <div class="container">
-    <h1>折线图</h1>
+    <h1 id="index_line">折线图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -51,7 +67,7 @@
       </div>
     </div>
 
-    <h1>柱形图</h1>
+    <h1 id="index_bar">柱形图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -112,7 +128,7 @@
         </div>
       </div>
     </div>
-    <h1>饼图</h1>
+    <h1 id="index_pie">饼图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -156,7 +172,7 @@
         </div>
       </div>
     </div>
-    <h1>仪表盘</h1>
+    <h1 id="index_gauge">仪表盘</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -176,7 +192,7 @@
         </div>
       </div>
     </div>
-    <h1>水滴图</h1>
+    <h1 id="index_water">水滴图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -184,7 +200,7 @@
         </div>
       </div>
     </div>
-    <h1>雷达图</h1>
+    <h1 id="index_radar">雷达图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -192,7 +208,7 @@
         </div>
       </div>
     </div>
-    <h1>3D饼图</h1>
+    <h1 id="index_bing">3D饼图</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -205,7 +221,7 @@
         </div>
       </div>
     </div>
-    <h1>其他</h1>
+    <h1 id="index_other">其他</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="chart-wrap" style="height: 5rem;">
@@ -218,7 +234,7 @@
         </div>
       </div>
     </div>
-    <h1>进度条</h1>
+    <h1 id="index_progress">进度条</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <div class="chart-wrap" style="height: 5rem;">
@@ -338,7 +354,7 @@
         </div>
       </div>
     </div>
-    <h1>步骤条</h1>
+    <h1 id="index_bzt">步骤条</h1>
     <div class="row">
       <div class="col-sm-12 col-md-6 ">
         <div class="box">
@@ -377,7 +393,7 @@
         </div>
       </div>
     </div>
-    <h1>地图：基础版本</h1>
+    <h1 id="index_map">地图：基础版本</h1>
     <div class="row">
       <div class="col-sm-12 col-md-12">
         <div class="iframe-wrap">
@@ -395,6 +411,15 @@
       </div>
     </div>
 
+    <!-- <h1>地图：带坐标点</h1>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="iframe-wrap">
+          <iframe src="map_3.html" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div> -->
+
   </div>
 
   <script src="./js/rem.js"></script>
@@ -408,6 +433,12 @@
   <script src="./js/circleChart.min.js"></script>
   <script src="./js/step.js"></script>
   <script src="./js/chart.js"></script>
+  <script>
+    $('.daohang li').click(function () {
+      $(this).siblings().removeClass('active');
+      $(this).addClass('active');
+    })
+  </script>
 </body>
 
 </html>
