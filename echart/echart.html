@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>图表合集</title>
-    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/step.css">
   <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -393,6 +393,14 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="common-tabbar-wrap tabbar1">
+          <div class="common-tabbar-item tabbar-active" data-type="1">全市工业企业开工情况</div>
+          <div class="common-tabbar-item" data-type="2">全市第三产业复工情况</div>
+        </div>
+      </div>
+    </div>
     <h1 id="index_map">地图：基础版本</h1>
     <div class="row">
       <div class="col-sm-12 col-md-12">
@@ -437,6 +445,11 @@
     $('.daohang li').click(function () {
       $(this).siblings().removeClass('active');
       $(this).addClass('active');
+    })
+    $('.common-tabbar-item').click(function () {
+      $(this).siblings().removeClass('tabbar-active');
+      $(this).addClass('tabbar-active');
+      var type = $(this).attr('data-type');
     })
   </script>
 </body>

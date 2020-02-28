@@ -125,7 +125,23 @@ iframe {
   left: 10%;
   top: 10%;
 }
+.common-tabbar-wrap {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 0.2rem;
+  font-size: 0.32rem;
+}
 
+.common-tabbar-item {
+  cursor: pointer;
+  border: 1px solid #33A1FF;
+  border-radius: 0.15rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+.tabbar-active {
+  background: #33A1FF;
+}
 /* 4k分辨率 */
 @media screen and (min-width: 2540px) {}
 
