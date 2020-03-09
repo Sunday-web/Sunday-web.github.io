@@ -4,6 +4,130 @@
  * @Date: 2019-09-26 10:51:22 
  */
 
+//折线图-1
+var chart_line_1 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('line-1'));
+    var dataArr = pydata || [100, 200, 250, 300, 350];
+    var xArr = pxdata || ['2015', '2016', '2017', '2018', '2019']
+    var seriesObj = {
+        name: '耕地面积', //系列名称
+        type: 'line',
+        smooth: false, //是否平滑曲线显示
+        // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+        showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+        symbol: 'circle', //标记的图形。
+        symbolSize: 6, //标记的大小
+        lineStyle: { //线条样式。
+            normal: {
+                color: "#00FF4E", // 线条颜色
+                shadowOffsetY: 0,
+            },
+        },
+        label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+            show: true,
+            formatter: '{c}',
+            position: 'top',
+            textStyle: {
+                color: '#00FF4E',
+                fontSize: getSize(0.3)
+            }
+        },
+        itemStyle: { //折线拐点标志的样式。
+            normal: {
+                color: "#00FF4E",
+            }
+        },
+        tooltip: { //提示框
+            show: true
+        },
+        data: dataArr
+    };
+    var option = {
+        title: {
+            show: false,
+            text: '耕地面积历年趋势',
+            left: getSize(2.5),
+            textStyle: {
+                color: '#fff',
+                fontSize: getSize(.3),
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: { //直角坐标系
+            top: '25%',
+            left: '4%',
+            right: '4%',
+            bottom: '8%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+            data: xArr,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            name: '单位：公顷',
+            nameTextStyle: {
+                fontSize: getSize(0.24),
+                color: '#fff',
+                padding: [0, getSize(0.3), 0, 0]
+            },
+            margin: getSize(0.1),
+            splitNumber: 3,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#3196fa'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置。
+                margin: 10, //刻度标签与轴线之间的距离。
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: { //坐标轴刻度相关设置。
+                show: false,
+            },
+        }],
+        series: seriesObj
+    };
+    mychart.setOption(option);
+}
+
+
 $(function () {
     // 进度条
     $('.progress-item').each(function () {
@@ -50,128 +174,7 @@ $(function () {
             }
         });
     })();
-    //折线图-1
-    !(function () {
-        var mychart = echarts.init(document.getElementById('line-1'));
-        var dataArr = [100, 200, 250, 300, 350];
-        var xArr = ['2015', '2016', '2017', '2018', '2019']
-        var seriesObj = {
-            name: '耕地面积', //系列名称
-            type: 'line',
-            smooth: false, //是否平滑曲线显示
-            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-            symbol: 'circle', //标记的图形。
-            symbolSize: 6, //标记的大小
-            lineStyle: { //线条样式。
-                normal: {
-                    color: "#00FF4E", // 线条颜色
-                    shadowOffsetY: 0,
-                },
-            },
-            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                show: true,
-                formatter: '{c}',
-                position: 'top',
-                textStyle: {
-                    color: '#00FF4E',
-                    fontSize: getSize(0.3)
-                }
-            },
-            itemStyle: { //折线拐点标志的样式。
-                normal: {
-                    color: "#00FF4E",
-                }
-            },
-            tooltip: { //提示框
-                show: true
-            },
-            data: dataArr
-        };
-        var option = {
-            title: {
-                show: false,
-                text: '耕地面积历年趋势',
-                left: getSize(2.5),
-                textStyle: {
-                    color: '#fff',
-                    fontSize: getSize(.3),
-                    fontWeight: 'normal'
-                }
-            },
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            grid: { //直角坐标系
-                top: '25%',
-                left: '4%',
-                right: '4%',
-                bottom: '8%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: xArr,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                name: '单位：公顷',
-                nameTextStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#fff',
-                    padding: [0, getSize(0.3), 0, 0]
-                },
-                margin: getSize(0.1),
-                splitNumber: 3,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3196fa'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置。
-                    margin: 10, //刻度标签与轴线之间的距离。
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: { //坐标轴刻度相关设置。
-                    show: false,
-                },
-            }],
-            series: seriesObj
-        };
-        mychart.setOption(option);
-    })();
+
     //折线图-2
     !(function () {
         var mychart = echarts.init(document.getElementById('line-2'));
@@ -3859,16 +3862,14 @@ $(function () {
     !(function () {
         var myChart = echarts.init(document.getElementById('other-2'));
         var nameArr = ['办理', '办结', '退回']
-        var dataArr = [{
-            name: '办理',
-            value: 2448
-        }, {
-            name: '办结',
-            value: 2500
-        }, {
-            name: '退回',
-            value: 1000
-        }];
+        var item_data =  getRomArr(3, 100, 110)
+        var dataArr = [];
+        for (const key in item_data) {
+            dataArr.push({
+                name: nameArr[key],
+                value: item_data[key]
+            })
+        }
         var seriesObjs = [];
         var r = getSize(0.8);
         var colorArr = ['#5cfea8', '#00ccff', '#fb7075'];
@@ -3907,12 +3908,20 @@ $(function () {
                 },
                 hoverAnimation: false,
                 data: [{
-                    value: dataArr[i].value
+                    value: dataArr[i].value / getArrSum(item_data)
                 }, {
                     name: 'invisible',
-                    value: dataArr[0].value * 4 / 3 - dataArr[i].value,
+                    value: 1 - dataArr[i].value / getArrSum(item_data),
+                    // value: dataArr[0].value * 4 / 3 - dataArr[i].value,
                     itemStyle: placeHolderStyle
                 }]
+                // data: [{
+                //     value: dataArr[i].value
+                // }, {
+                //     name: 'invisible',
+                //     value: dataArr[0].value * 4 / 3 - dataArr[i].value,
+                //     itemStyle: placeHolderStyle
+                // }]
             }
             seriesObjs.push(seriesObj)
         }
