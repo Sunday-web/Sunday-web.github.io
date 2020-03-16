@@ -127,6 +127,112 @@ var chart_line_1 = function (pxdata, pydata) {
     mychart.setOption(option);
 }
 
+//饼图-1
+var chart_pie_1 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('pie-1'));
+    var color_arr = ['#3196fa', '#00ffc6', '#00cd60', '#ffa800'];
+    var name_arr = pxdata || ['项目1', '项目2', '项目3', '项目4'];
+    var ydata = pydata || getRomArr(4, 100, 200);
+    var seri_data = [];
+    for (const key in name_arr) {
+        if (key == 0) {
+            seri_data.push({
+                name: name_arr[key],
+                value: ydata[key],
+                label: {
+                    show: true
+                }
+            })
+        } else {
+            seri_data.push({
+                name: name_arr[key],
+                value: ydata[key]
+            })
+        }
+    }
+    var option = {
+        color: color_arr,
+        title: {
+            show: false,
+            left: 'center',
+            top: 'top',
+            text: '标题',
+            textStyle: {
+                fontWeight: 'normal',
+                color: '#facc14',
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        legend: {
+            y: 'center',
+            right: '4%',
+            // itemWidth: getSize(0.24),
+            // itemHeight: getSize(0.14),
+            // itemGap: getSize(0.2),
+            icon: 'roundRect',
+            formatter: function (para) {
+                var str = '{a|' + para + '} {b|';
+                str += ydata[name_arr.indexOf(para)] + '}  {c|项}';
+                if (para = '其他') {
+                    str = str.replace(/其他/, '其他       ');
+                }
+                return str;
+            },
+            textStyle: {
+                padding: [getSize(0.1), getSize(0.2), 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.3),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.3),
+                        color: '#facc14'
+                    },
+                    c: {
+                        fontSize: getSize(0.24),
+                        color: '#fff'
+                    }
+                }
+            },
+            orient: 'vertical',//horizontal 水平 vertical 垂直
+            data: name_arr
+        },
+        series: [{
+            name: '',
+            type: 'pie',
+            clockWise: false,
+            center: ['30%', '50%'],
+            radius: ['60%', '75%'],
+            startAngle: 90,
+            label: {
+                show: false,
+                fontSize: 16,
+                fontFamily: 'DIN',
+                position: 'center',
+                formatter: '{a|' + getArrSum(ydata) + '}\n{b|总计}',
+                rich: {
+                    a: {
+                        fontSize: getSize(0.44),
+                        color: '#FFA800'
+                    },
+                    b: {
+                        fontSize: getSize(0.24),
+                        color: '#fff'
+                    }
+                }
+            },
+            labelLine: {
+                show: true
+            },
+            data: seri_data
+        }]
+    }
+    mychart.setOption(option);
+};
 
 $(function () {
     // 进度条
@@ -2382,98 +2488,7 @@ $(function () {
         myChart.setOption(option);
 
     })();
-    //饼图-1
-    !(function () {
-        var mychart = echarts.init(document.getElementById('pie-1'));
-        var option = {
-            color: ['#3196fa', '#00ffc6', '#00cd60', '#ffa800'],
-            title: {
-                left: '25%',
-                top: '36%',
-                text: '{a|534}{b|件}',
-                textStyle: {
-                    fontWeight: 'normal',
-                    color: '#facc14',
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.44)
-                        },
-                        b: {
-                            fontSize: getSize(0.28)
-                        }
-                    }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)"
-            },
-            legend: {
-                y: 'center',
-                right: '4%',
-                itemWidth: getSize(0.24),
-                itemHeight: getSize(0.14),
-                itemGap: getSize(0.2),
-                textStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#cccccc'
-                },
-                orient: 'vertical',
-                data: [{
-                        icon: 'roundRect',
-                        name: '项目1'
-                    },
-                    {
-                        icon: 'roundRect',
-                        name: '项目2'
-                    },
-                    {
-                        icon: 'roundRect',
-                        name: '项目3'
-                    },
-                    {
-                        icon: 'roundRect',
-                        name: '项目4'
-                    }
-                ]
-            },
-            series: [{
-                name: '商贸综合体商家入占比',
-                type: 'pie',
-                clockWise: false,
-                center: ['30%', '50%'],
-                radius: ['60%', '75%'],
-                startAngle: 90,
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false,
-                            fontSize: 16,
-                            fontFamily: 'DIN',
-                            formatter: '{c}',
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    }
-                },
-                data: [{
-                    name: '项目1',
-                    value: 1032,
-                }, {
-                    name: '项目2',
-                    value: 608,
-                }, {
-                    name: '项目3',
-                    value: 608,
-                }, {
-                    name: '项目4',
-                    value: 608,
-                }]
-            }]
-        }
-        mychart.setOption(option);
-    })();
+
     //饼图-2
     !(function () {
         var colorArr = ['#FACC14', '#F44660', '#00FF00', '#9696FF', '#3196FA'];
@@ -3862,7 +3877,7 @@ $(function () {
     !(function () {
         var myChart = echarts.init(document.getElementById('other-2'));
         var nameArr = ['办理', '办结', '退回']
-        var item_data =  getRomArr(3, 100, 110)
+        var item_data = getRomArr(3, 100, 110)
         var dataArr = [];
         for (const key in item_data) {
             dataArr.push({
