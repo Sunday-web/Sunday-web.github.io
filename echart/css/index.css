@@ -149,4 +149,8 @@ iframe {
 @media screen and (min-width: 1919px) and (max-width: 1920px) {}
 
 /* 1600分辨率 */
-@media screen and (min-width: 1590px) and (max-width: 1601px) {}
+@media screen and (min-width: 1590px) and (max-width: 1601px) {
+  .daohang {
+    left: 7%;
+  }
+}

@@ -126,7 +126,883 @@ var chart_line_1 = function (pxdata, pydata) {
     };
     mychart.setOption(option);
 }
+//折线图-2
+var chart_line_2 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('line-2'));
+    var dataArr = pxdata || S_mock.array(5, 100, 200, '', 2);
+    var xArr = pydata || S_mock.xdata(2014, 2018, '')
+    var seriesObj = {
+        name: '', //系列名称
+        type: 'line',
+        smooth: false, //是否平滑曲线显示
+        // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+        showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+        symbol: 'circle', //标记的图形。
+        symbolSize: 6, //标记的大小
+        lineStyle: { //线条样式。
+            normal: {
+                color: "#21CEE1", // 线条颜色
+                shadowOffsetY: 0,
+            },
+        },
+        label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+            show: true,
+            formatter: '{c}',
+            position: 'top',
+            textStyle: {
+                color: '#fff',
+            }
+        },
+        itemStyle: { //折线拐点标志的样式。
+            normal: {
+                color: "#21CEE1",
+            }
+        },
+        tooltip: { //提示框
+            show: true
+        },
+        data: dataArr
+    };
+    var option = {
+        title: {
+            show: true,
+            text: '林地面积',
+            left: 'center',
+            textStyle: {
+                color: '#fff',
+                fontSize: getSize(.32),
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: { //直角坐标系
+            top: '25%',
+            left: '6%',
+            right: '4%',
+            bottom: '8%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+            data: xArr,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            name: '单位：万亩',
+            nameTextStyle: {
+                fontSize: getSize(0.24),
+                color: '#fff',
+                // padding: [0, getSize(0.3), 0, 0]
+            },
+            margin: getSize(0.1),
+            splitNumber: 3,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#3196fa'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置。
+                margin: 10, //刻度标签与轴线之间的距离。
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: { //坐标轴刻度相关设置。
+                show: false,
+            },
+        }],
+        series: seriesObj
+    };
+    mychart.setOption(option);
+}
+//折线图-3
+var chart_line_3 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('line-3'));
+    var Xdata = pxdata || S_mock.xdata(1, 12, '月');
+    var Ydata = pydata || S_mock.array(12, 100, 200);
+    var option = {
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            formatter: '{a}</br>{b}:{c}万'
 
+        },
+        grid: {
+            left: '4%',
+            top: "25%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false,
+            },
+            data: Xdata,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            min: 0, //坐标轴刻度最小值。
+            name: '单位：µg/m3',
+            nameTextStyle: {
+                color: "#ccc",
+                fontSize: getSize(0.24),
+                padding: [0, 0, 0, getSize(0.4)]
+            },
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+            splitNumber: 3,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    color: '#579dff',
+                    opacity: 1,
+                    width: 1,
+                    type: 'dashed',
+                }
+            },
+
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            name: 'PM2.5平均浓度', //系列名称
+            type: 'line',
+            smooth: false, //是否平滑曲线显示
+            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+            symbol: 'emptyCircle', //标记的图形。
+            // symbolSize: 2,//标记的大小
+            lineStyle: { //线条样式。
+                normal: {
+                    color: "#1A9BA9", // 线条颜色
+                    shadowOffsetY: 2,
+                    shadowColor: '#136258',
+                },
+            },
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: false,
+                formatter: '{c}',
+                position: 'top',
+                textStyle: {
+                    color: '#fff',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。
+                normal: {
+                    color: "#21CEE1",
+                }
+            },
+            tooltip: { //提示框
+                show: true
+            },
+            areaStyle: { //区域填充样式
+                normal: {
+                    //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0.2, //// 0% 处的颜色
+                            color: '#20C7DB'
+                        },
+                        {
+                            offset: 1,
+                            color: 'transparent'
+                        }
+                    ], false),
+                    shadowColor: '#177477', //阴影颜色
+                    shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                }
+            },
+            data: Ydata
+        }, ]
+    };
+    myChart.setOption(option);
+}
+//折线图-4
+var chart_line_4 = function (pxdata, pydata1, pydata2, pydata3) {
+    var mychart = echarts.init(document.getElementById('line-4'));
+    var colorArr = ['#00E0FF', '#00E65A', '#EF4864'];
+    var xdata = pxdata || S_mock.xdata(1, 12, '月');
+    var ydata1 = pydata1 || S_mock.array(12, 200, 250, '', 1);
+    var ydata2 = pydata2 || S_mock.array(12, 90, 190, '', 1);
+    var ydata3 = pydata3 || S_mock.array(12, 10, 80, '', 2);
+    var legend_arr = ["图例1", "图例2", "图例3"];
+    var option = {
+        color: colorArr,
+        title: {
+            show: true,
+            text: '标题',
+            left: 'center',
+            textStyle: {
+                color: '#fff',
+                fontSize: getSize(.32),
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '6%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#cccccc',
+                },
+            },
+            data: xdata
+        },
+        yAxis: {
+            type: 'value',
+            name: '单位：mg/L',
+            nameTextStyle: {
+                fontSize: getSize(0.24),
+                color: '#cccccc',
+                padding: [0, getSize(0.3), 0, 0]
+            },
+            margin: getSize(0.1),
+            splitNumber: 0,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#3196fa'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#cccccc',
+                },
+            },
+        },
+        legend: {
+            data: legend_arr,
+            textStyle: {
+                color: '#fff'
+            },
+            top: '10%',
+            // icon: "roundRect", //  这个字段控制形状  类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none
+            itemWidth: 10, // 设置宽度
+            itemHeight: 10, // 设置高度
+            itemGap: 5 // 设置间距
+        },
+        series: [{
+                name: legend_arr[0],
+                type: 'line',
+                // stack: '总量',
+                data: ydata1
+            },
+            {
+                name: legend_arr[1],
+                type: 'line',
+                // stack: '总量',
+                data: ydata2
+            },
+            {
+                name: legend_arr[2],
+                type: 'line',
+                // stack: '总量',
+                data: ydata3
+            }
+        ]
+    };
+    mychart.setOption(option);
+}
+//折线图-5
+var chart_line_5 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('line-5'));
+    var xArr = pxdata || ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'];
+    var dataArr = pydata || S_mock.array(9, 10, 20, true);
+    var title = '昨日市一周边停车指数趋势';
+    var max = Math.max.apply(null, dataArr);
+    var min = Math.min.apply(null, dataArr);
+    var seriesObj = {
+        name: '', //系列名称
+        type: 'line',
+        smooth: true, //是否平滑曲线显示
+        // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+        showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+        symbol: 'circle', //标记的图形。
+        symbolSize: 6, //标记的大小
+        lineStyle: { //线条样式。
+            normal: {
+                color: "#21CEE1", // 线条颜色
+                shadowOffsetY: 0,
+            },
+        },
+        markLine: {
+            label: {
+                show: true,
+                // formatter: '',
+                formatter: 'avg: {c}',
+                position: 'end',
+                padding: [-20, 0, 0, -60]
+            },
+            silent: true,
+            symbol: 'none',
+            data: [{
+                name: '平均线',
+                // 支持 'average', 'min', 'max'
+                type: 'average'
+            }]
+        },
+        itemStyle: { //折线拐点标志的样式。
+            normal: {
+                color: "#21CEE1",
+            }
+        },
+        tooltip: { //提示框
+            show: true
+        },
+        // data: dataArr
+        data: function () {
+            var itemArr = [],
+                item;
+            var max_index = dataArr.indexOf(max);
+            var min_index = dataArr.indexOf(min);
+            for (var i = 0; i < dataArr.length; i++) {
+                if (i == max_index) {
+                    item = {
+                        value: dataArr[i],
+                        label: {
+                            show: true,
+                            position: 'insideLeft',
+                            // position: ['25%', '10%'],
+                            color: '#fff',
+                            formatter: '{b}\nmax:{c}',
+                            backgroundColor: 'rgba(1,60,119,0.86)',
+                            // zlevel:10
+                            padding: [5, 5, 5, 5]
+                        },
+                        itemStyle: { //折线拐点标志的样式。
+                            normal: {
+                                color: "#fff",
+                                borderColor: '#00f6ff',
+                                borderWidth: 3,
+                            }
+                        },
+                    };
+                } else if (i == min_index) {
+                    item = {
+                        value: dataArr[i],
+                        label: {
+                            show: true,
+                            position: 'insideLeft',
+                            color: '#fff',
+                            formatter: '{b}\nmin:{c}',
+                            backgroundColor: 'rgba(1,60,119,0.86)',
+                            padding: [5, 5, 5, 5]
+                        },
+                        itemStyle: { //折线拐点标志的样式。
+                            normal: {
+                                color: "#fff",
+                                borderColor: '#ffcc00',
+                                borderWidth: 3
+                            }
+                        },
+                    };
+                } else {
+                    item = {
+                        value: dataArr[i],
+                        label: {
+                            show: false,
+                            color: '#fff'
+                        },
+                        symbolSize: 0,
+                        itemStyle: {
+                            normal: {
+
+                            }
+                        }
+                    };
+                }
+                itemArr.push(item);
+            }
+            return itemArr;
+        }()
+    };
+    var option = {
+        title: {
+            show: true,
+            text: title,
+            left: 'center',
+            textStyle: {
+                color: '#fff',
+                fontSize: getSize(.26),
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: { //直角坐标系
+            top: '35%',
+            left: '5%',
+            right: '4%',
+            bottom: '8%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.2),
+                    color: '#fff',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+            data: xArr
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            name: '',
+            nameTextStyle: {
+                fontSize: getSize(0.2),
+                color: '#fff',
+                padding: [getSize(0.2), 0, 0, 0]
+            },
+            margin: getSize(0.1),
+            splitNumber: 2,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#3196fa'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置。
+                margin: 10, //刻度标签与轴线之间的距离。
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: { //坐标轴刻度相关设置。
+                show: false,
+            },
+        }],
+        series: seriesObj
+    };
+    mychart.setOption(option);
+}
+//折线图-6
+var chart_line_6 = function (pxdata, pdata1, pdata2) {
+    // 初始化实例
+    var myChart = echarts.init(document.getElementById('line-6'));
+    var Xdata = pxdata || S_mock.xdata(22, 31, '日');
+    var Ydata = pdata1 || S_mock.array(10, 100, 200);
+    var Ydata2 = pdata2 || S_mock.array(10, 100, 200);
+    var colorArr = ['#00DEFE', '#00FF00'];
+    var ynameArr = ['今日新增隔离', '今日解除隔离'];
+    var legendArr = [];
+
+    for (var key in ynameArr) {
+        legendArr.push({
+            name: ynameArr[key],
+            textStyle: {
+                color: '#fff'
+            }
+        })
+    }
+    var option = {
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            formatter: '{a}</br>{b}:{c}万'
+
+        },
+        color: colorArr,
+        grid: {
+            left: '4%',
+            top: "25%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        legend: {
+            data: legendArr,
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            axisLabel: {
+                interval: 0,
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false,
+            },
+            data: Xdata,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            min: 0, //坐标轴刻度最小值。
+            name: '单位：人',
+            nameTextStyle: {
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+            axisLabel: {
+                interval: 0,
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+            splitNumber: 3,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    color: '#579dff',
+                    opacity: 1,
+                    width: 1,
+                    type: 'dashed',
+                }
+            },
+
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            name: ynameArr[0], //系列名称
+            type: 'line',
+            smooth: false, //是否平滑曲线显示
+            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+            symbol: 'circle', //标记的图形。
+            // symbolSize: 2,//标记的大小
+            lineStyle: { //线条样式。
+                normal: {
+                    color: "#1A9BA9", // 线条颜色
+                    shadowOffsetY: 2,
+                    shadowColor: '#0AA2C6',
+                },
+            },
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: false,
+                formatter: '{c}',
+                position: 'top',
+                textStyle: {
+                    color: '#fff',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。
+                normal: {
+                    color: "#16D4F1",
+                    borderWidth: 1,
+                    borderColor: '#fff',
+                }
+            },
+            tooltip: { //提示框
+                show: true
+            },
+            areaStyle: { //区域填充样式
+                normal: {
+                    //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0, //// 0% 处的颜色
+                            color: 'rgba(0, 222, 254, 1)'
+                        }, {
+                            offset: 0.4, //// 0% 处的颜色
+                            color: 'rgba(0, 222, 254, 0.6)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(0, 222, 254, 0)'
+                        }
+                    ], false),
+                    shadowColor: '#177477', //阴影颜色
+                    shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                }
+            },
+            data: Ydata
+        }, {
+            name: ynameArr[1], //系列名称
+            type: 'line',
+            smooth: false, //是否平滑曲线显示
+            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+            symbol: 'circle', //标记的图形。
+            // symbolSize: 2,//标记的大小
+            lineStyle: { //线条样式。
+                normal: {
+                    color: "#00FF00", // 线条颜色
+                    shadowOffsetY: 1,
+                    shadowColor: '#0AD63E',
+                },
+            },
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: false,
+                formatter: '{c}',
+                position: 'top',
+                textStyle: {
+                    color: '#fff',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。
+                normal: {
+                    borderWidth: 1,
+                    borderColor: '#fff',
+                    color: "#1DF01A",
+                }
+            },
+            tooltip: { //提示框
+                show: true
+            },
+            areaStyle: { //区域填充样式
+                normal: {
+                    //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0, //// 0% 处的颜色
+                            color: 'rgba(1, 241, 8, 1)'
+                        }, {
+                            offset: 0.4, //// 0% 处的颜色
+                            color: 'rgba(1, 241, 8, 0.6)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(1, 241, 8, 0)'
+                        }
+                    ], false),
+                    shadowColor: '#177477', //阴影颜色
+                    shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                }
+            },
+            data: Ydata2
+        }]
+    };
+    myChart.setOption(option);
+}
+//柱形图-1
+var chart_bar_1 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('bar-1'));
+    var xdata = pxdata || S_mock.xdata(2013,2019,'年');
+    var ydata = pydata || S_mock.array(7,100,200);
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '2%',
+            top: "22%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{
+            nameLocation: "start",
+            nameTextStyle: {
+                color: "#fff",
+            },
+            nameGap: '1',
+            type: 'category',
+            data: xdata,
+            axisLabel: {
+                interval: 0,
+                color: "#fff",
+                fontSize: getSize(0.2),
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+            },
+        }],
+        yAxis: [{
+            // show:false,
+            type: 'value',
+            name: '单位：万人次',
+            nameTextStyle: {
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+            axisLabel: {
+                interval: 0,
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+            splitNumber: 5,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    color: '#10447C',
+                    opacity: 1,
+                    width: 1,
+                    type: 'solid',
+                }
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            type: 'bar',
+            barGap: 0,
+            barWidth: "40%",
+            label: {
+                show: false,
+                position: 'top',
+                color: '#facc14'
+            },
+
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#01F1FC'
+                            },
+                            {
+                                offset: 1,
+                                color: '#1B729E'
+                            }
+                        ]
+                    )
+                },
+            },
+            data: ydata
+        }, ]
+    };
+    myChart.setOption(option);
+}
 //饼图-1
 var chart_pie_1 = function (pxdata, pydata) {
     var mychart = echarts.init(document.getElementById('pie-1'));
@@ -198,7 +1074,7 @@ var chart_pie_1 = function (pxdata, pydata) {
                     }
                 }
             },
-            orient: 'vertical',//horizontal 水平 vertical 垂直
+            orient: 'vertical', //horizontal 水平 vertical 垂直
             data: name_arr
         },
         series: [{
@@ -281,874 +1157,6 @@ $(function () {
         });
     })();
 
-    //折线图-2
-    !(function () {
-        var mychart = echarts.init(document.getElementById('line-2'));
-        var dataArr = [1, 2, 3, 4, 5];
-        var xArr = ['2014', '2015', '2016', '2017', '2018']
-        var seriesObj = {
-            name: '耕地面积', //系列名称
-            type: 'line',
-            smooth: false, //是否平滑曲线显示
-            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-            symbol: 'circle', //标记的图形。
-            symbolSize: 6, //标记的大小
-            lineStyle: { //线条样式。
-                normal: {
-                    color: "#21CEE1", // 线条颜色
-                    shadowOffsetY: 0,
-                },
-            },
-            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                show: true,
-                formatter: '{c}',
-                position: 'top',
-                textStyle: {
-                    color: '#fff',
-                }
-            },
-            itemStyle: { //折线拐点标志的样式。
-                normal: {
-                    color: "#21CEE1",
-                }
-            },
-            tooltip: { //提示框
-                show: true
-            },
-            data: dataArr
-        };
-        var option = {
-            title: {
-                show: false,
-                text: '林地面积',
-                left: getSize(2.5),
-                textStyle: {
-                    color: '#fff',
-                    fontSize: getSize(.3),
-                    fontWeight: 'normal'
-                }
-            },
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            grid: { //直角坐标系
-                top: '25%',
-                left: '6%',
-                right: '4%',
-                bottom: '8%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: xArr,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                name: '单位：万亩',
-                nameTextStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#fff',
-                    padding: [0, getSize(0.3), 0, 0]
-                },
-                margin: getSize(0.1),
-                splitNumber: 3,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3196fa'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置。
-                    margin: 10, //刻度标签与轴线之间的距离。
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: { //坐标轴刻度相关设置。
-                    show: false,
-                },
-            }],
-            series: seriesObj
-        };
-        mychart.setOption(option);
-    })();
-    //折线图-3
-    !(function () {
-        // 初始化实例
-        var myChart = echarts.init(document.getElementById('line-3'));
-        var Xdata = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
-        var Ydata = [10, 20, 30, 40, 50, 40, 30, 20, 10, 20, 30, 40];
-        var option = {
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                formatter: '{a}</br>{b}:{c}万'
-
-            },
-            grid: {
-                left: '4%',
-                top: "25%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: Xdata,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                min: 0, //坐标轴刻度最小值。
-                name: '单位：µg/m3',
-                nameTextStyle: {
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                    padding: [0, 0, 0, getSize(0.4)]
-                },
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-                splitNumber: 3,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        color: '#579dff',
-                        opacity: 1,
-                        width: 1,
-                        type: 'dashed',
-                    }
-                },
-
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                name: 'PM2.5平均浓度', //系列名称
-                type: 'line',
-                smooth: false, //是否平滑曲线显示
-                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-                symbol: 'emptyCircle', //标记的图形。
-                // symbolSize: 2,//标记的大小
-                lineStyle: { //线条样式。
-                    normal: {
-                        color: "#1A9BA9", // 线条颜色
-                        shadowOffsetY: 2,
-                        shadowColor: '#136258',
-                    },
-                },
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: false,
-                    formatter: '{c}',
-                    position: 'top',
-                    textStyle: {
-                        color: '#fff',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。
-                    normal: {
-                        color: "#21CEE1",
-                    }
-                },
-                tooltip: { //提示框
-                    show: true
-                },
-                areaStyle: { //区域填充样式
-                    normal: {
-                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0.2, //// 0% 处的颜色
-                                color: '#20C7DB'
-                            },
-                            {
-                                offset: 1,
-                                color: '#115482'
-                            }
-                        ], false),
-                        shadowColor: '#177477', //阴影颜色
-                        shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-                    }
-                },
-                data: Ydata
-            }, ]
-        };
-        myChart.setOption(option);
-    })();
-    //折线图-4
-    !(function () {
-        var colorArr = ['#00E0FF', '#00E65A', '#EF4864'];
-        var mychart = echarts.init(document.getElementById('line-4'));
-        var option = {
-            color: colorArr,
-            title: {
-                show: false,
-                text: '水质变化情况'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                data: ['图例1', '图例2', '图例3']
-            },
-            grid: {
-                left: '6%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#cccccc',
-                    },
-                },
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '102月', '11月', '12月']
-            },
-            yAxis: {
-                type: 'value',
-                name: '单位：mg/L',
-                nameTextStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#cccccc',
-                    padding: [0, getSize(0.3), 0, 0]
-                },
-                margin: getSize(0.1),
-                splitNumber: 0,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3196fa'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#cccccc',
-                    },
-                },
-            },
-            legend: {
-                data: ["图例1", "图例2", "图例3"],
-                textStyle: {
-                    color: '#fff'
-                },
-                icon: "roundRect", //  这个字段控制形状  类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none
-                itemWidth: 10, // 设置宽度
-                itemHeight: 10, // 设置高度
-                itemGap: 0 // 设置间距
-            },
-            series: [{
-                    name: '图例1',
-                    type: 'line',
-                    // stack: '总量',
-                    data: [1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, 1.3, 1.5, ]
-                },
-                {
-                    name: '图例2',
-                    type: 'line',
-                    // stack: '总量',
-                    data: [0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1, 0.9, 1]
-                },
-                {
-                    name: '图例3',
-                    type: 'line',
-                    // stack: '总量',
-                    data: [0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1, 0.8, 1.1]
-                }
-            ]
-        };
-        mychart.setOption(option);
-    })();
-    //折线图-5
-    !(function () {
-        var mychart = echarts.init(document.getElementById('line-5'));
-        var dataArr = [0.8, 1.3, 0.9, 1.2, 0.5, 0.9, 1.2, 0.6, 0.7];
-        var xArr = ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'];
-        var title = '昨日市一周边停车指数趋势';
-        var max = Math.max.apply(null, dataArr);
-        var min = Math.min.apply(null, dataArr);
-        var seriesObj = {
-            name: '', //系列名称
-            type: 'line',
-            smooth: true, //是否平滑曲线显示
-            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-            symbol: 'circle', //标记的图形。
-            symbolSize: 6, //标记的大小
-            lineStyle: { //线条样式。
-                normal: {
-                    color: "#21CEE1", // 线条颜色
-                    shadowOffsetY: 0,
-                },
-            },
-            markLine: {
-                label: {
-                    show: true,
-                    // formatter: '',
-                    formatter: 'avg: {c}',
-                    position: 'end',
-                    padding: [-20, 0, 0, -60]
-                },
-                silent: true,
-                symbol: 'none',
-                data: [{
-                    name: '平均线',
-                    // 支持 'average', 'min', 'max'
-                    type: 'average'
-                }]
-            },
-            itemStyle: { //折线拐点标志的样式。
-                normal: {
-                    color: "#21CEE1",
-                }
-            },
-            tooltip: { //提示框
-                show: true
-            },
-            // data: dataArr
-            data: function () {
-                var itemArr = [],
-                    item;
-                var max_index = dataArr.indexOf(max);
-                var min_index = dataArr.indexOf(min);
-                for (var i = 0; i < dataArr.length; i++) {
-                    if (i == max_index) {
-                        item = {
-                            value: dataArr[i],
-                            label: {
-                                show: true,
-                                position: 'insideLeft',
-                                // position: ['25%', '10%'],
-                                color: '#fff',
-                                formatter: '{b}\nmax:{c}',
-                                backgroundColor: 'rgba(1,60,119,0.86)',
-                                // zlevel:10
-                                padding: [5, 5, 5, 5]
-                            },
-                            itemStyle: { //折线拐点标志的样式。
-                                normal: {
-                                    color: "#fff",
-                                    borderColor: '#00f6ff',
-                                    borderWidth: 3,
-                                }
-                            },
-                        };
-                    } else if (i == min_index) {
-                        item = {
-                            value: dataArr[i],
-                            label: {
-                                show: true,
-                                position: 'insideLeft',
-                                color: '#fff',
-                                formatter: '{b}\nmin:{c}',
-                                backgroundColor: 'rgba(1,60,119,0.86)',
-                                padding: [5, 5, 5, 5]
-                            },
-                            itemStyle: { //折线拐点标志的样式。
-                                normal: {
-                                    color: "#fff",
-                                    borderColor: '#ffcc00',
-                                    borderWidth: 3
-                                }
-                            },
-                        };
-                    } else {
-                        item = {
-                            value: dataArr[i],
-                            label: {
-                                show: false,
-                                color: '#fff'
-                            },
-                            symbolSize: 0,
-                            itemStyle: {
-                                normal: {
-
-                                }
-                            }
-                        };
-                    }
-                    itemArr.push(item);
-                }
-                return itemArr;
-            }()
-        };
-        var option = {
-            title: {
-                show: true,
-                text: title,
-                left: 'center',
-                textStyle: {
-                    color: '#fff',
-                    fontSize: getSize(.26),
-                    fontWeight: 'normal'
-                }
-            },
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            grid: { //直角坐标系
-                top: '35%',
-                left: '0%',
-                right: '4%',
-                bottom: '8%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.2),
-                        color: '#fff',
-                    },
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: xArr
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                name: '',
-                nameTextStyle: {
-                    fontSize: getSize(0.2),
-                    color: '#fff',
-                    padding: [getSize(0.2), 0, 0, 0]
-                },
-                margin: getSize(0.1),
-                splitNumber: 2,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3196fa'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置。
-                    margin: 10, //刻度标签与轴线之间的距离。
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: { //坐标轴刻度相关设置。
-                    show: false,
-                },
-            }],
-            series: seriesObj
-        };
-        mychart.setOption(option);
-    })();
-    chart_line6();
-
-    function chart_line6(pdata1, pdata2) {
-        // 初始化实例
-        var myChart = echarts.init(document.getElementById('line-6'));
-        var Xdata = [];
-        var Ydata = pdata1 || [];
-        var Ydata2 = pdata2 || [];
-        var colorArr = ['#00DEFE', '#00FF00'];
-        var ynameArr = ['今日新增隔离', '今日解除隔离'];
-        var legendArr = [];
-        for (var i = 22; i <= 31; i++) {
-            Xdata.push(i + '日');
-            Ydata.push(random(40, 120));
-            Ydata2.push(random(60, 140));
-        }
-        for (var key in ynameArr) {
-            legendArr.push({
-                name: ynameArr[key],
-                textStyle: {
-                    color: '#fff'
-                }
-            })
-        }
-        var option = {
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                formatter: '{a}</br>{b}:{c}万'
-
-            },
-            color: colorArr,
-            grid: {
-                left: '4%',
-                top: "25%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            legend: {
-                data: legendArr,
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                axisLabel: {
-                    interval: 0,
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: Xdata,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                min: 0, //坐标轴刻度最小值。
-                name: '单位：人',
-                nameTextStyle: {
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-                axisLabel: {
-                    interval: 0,
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-                splitNumber: 3,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        color: '#579dff',
-                        opacity: 1,
-                        width: 1,
-                        type: 'dashed',
-                    }
-                },
-
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                name: ynameArr[0], //系列名称
-                type: 'line',
-                smooth: false, //是否平滑曲线显示
-                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-                symbol: 'circle', //标记的图形。
-                // symbolSize: 2,//标记的大小
-                lineStyle: { //线条样式。
-                    normal: {
-                        color: "#1A9BA9", // 线条颜色
-                        shadowOffsetY: 2,
-                        shadowColor: '#0AA2C6',
-                    },
-                },
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: false,
-                    formatter: '{c}',
-                    position: 'top',
-                    textStyle: {
-                        color: '#fff',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。
-                    normal: {
-                        color: "#16D4F1",
-                        borderWidth: 1,
-                        borderColor: '#fff',
-                    }
-                },
-                tooltip: { //提示框
-                    show: true
-                },
-                areaStyle: { //区域填充样式
-                    normal: {
-                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0, //// 0% 处的颜色
-                                color: 'rgba(0, 222, 254, 1)'
-                            }, {
-                                offset: 0.4, //// 0% 处的颜色
-                                color: 'rgba(0, 222, 254, 0.6)'
-                            },
-                            {
-                                offset: 1,
-                                color: 'rgba(0, 222, 254, 0)'
-                            }
-                        ], false),
-                        shadowColor: '#177477', //阴影颜色
-                        shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-                    }
-                },
-                data: Ydata
-            }, {
-                name: ynameArr[1], //系列名称
-                type: 'line',
-                smooth: false, //是否平滑曲线显示
-                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-                symbol: 'circle', //标记的图形。
-                // symbolSize: 2,//标记的大小
-                lineStyle: { //线条样式。
-                    normal: {
-                        color: "#00FF00", // 线条颜色
-                        shadowOffsetY: 1,
-                        shadowColor: '#0AD63E',
-                    },
-                },
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: false,
-                    formatter: '{c}',
-                    position: 'top',
-                    textStyle: {
-                        color: '#fff',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。
-                    normal: {
-                        borderWidth: 1,
-                        borderColor: '#fff',
-                        color: "#1DF01A",
-                    }
-                },
-                tooltip: { //提示框
-                    show: true
-                },
-                areaStyle: { //区域填充样式
-                    normal: {
-                        //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0, //// 0% 处的颜色
-                                color: 'rgba(1, 241, 8, 1)'
-                            }, {
-                                offset: 0.4, //// 0% 处的颜色
-                                color: 'rgba(1, 241, 8, 0.6)'
-                            },
-                            {
-                                offset: 1,
-                                color: 'rgba(1, 241, 8, 0)'
-                            }
-                        ], false),
-                        shadowColor: '#177477', //阴影颜色
-                        shadowBlur: getSize(0.2) //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
-                    }
-                },
-                data: Ydata2
-            }]
-        };
-        myChart.setOption(option);
-    }
-    //柱形图-1
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-1'));
-        var xdata = ['2013', '2014', '2015', '2016', '2017', '2018', '2019'];
-        var ydata = [991.67, 921.74, 751.36, 728.06, 876.44, 926.72, 978.02];
-        var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            grid: {
-                left: '2%',
-                top: "22%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{
-                nameLocation: "start",
-                nameTextStyle: {
-                    color: "#fff",
-                },
-                nameGap: '1',
-                type: 'category',
-                data: xdata,
-                axisLabel: {
-                    interval: 0,
-                    color: "#fff",
-                    fontSize: getSize(0.2),
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                },
-            }],
-            yAxis: [{
-                // show:false,
-                type: 'value',
-                name: '单位：万人次',
-                nameTextStyle: {
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-                axisLabel: {
-                    interval: 0,
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-                splitNumber: 5,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        color: '#10447C',
-                        opacity: 1,
-                        width: 1,
-                        type: 'solid',
-                    }
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                type: 'bar',
-                barGap: 0,
-                barWidth: "40%",
-                label: {
-                    show: false,
-                    position: 'top',
-                    color: '#facc14'
-                },
-
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#01F1FC'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#1B729E'
-                                }
-                            ]
-                        )
-                    },
-                },
-                data: ydata
-            }, ]
-        };
-        myChart.setOption(option);
-    })();
     //柱形图-2
     !(function () {
         var myChart = echarts.init(document.getElementById('bar-2'));
