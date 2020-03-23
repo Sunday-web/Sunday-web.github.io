@@ -897,8 +897,8 @@ var chart_line_6 = function (pxdata, pdata1, pdata2) {
 //柱形图-1
 var chart_bar_1 = function (pxdata, pydata) {
     var myChart = echarts.init(document.getElementById('bar-1'));
-    var xdata = pxdata || S_mock.xdata(2013,2019,'年');
-    var ydata = pydata || S_mock.array(7,100,200);
+    var xdata = pxdata || S_mock.xdata(2013, 2019, '年');
+    var ydata = pydata || S_mock.array(7, 100, 200);
     var option = {
         tooltip: {
             trigger: 'axis',
@@ -1002,6 +1002,732 @@ var chart_bar_1 = function (pxdata, pydata) {
         }, ]
     };
     myChart.setOption(option);
+}
+//柱形图-2
+var chart_bar_2 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('bar-2'));
+    var xdata = pxdata || S_mock.xdata(2016, 2019, '年');
+    var ydata = pydata || S_mock.array(4, 100, 200);
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '4%',
+            top: "22%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{
+            nameLocation: "start",
+            nameTextStyle: {
+                color: "#fff",
+            },
+            nameGap: '1',
+            type: 'category',
+            data: xdata,
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.2),
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+            },
+        }],
+        yAxis: [{
+            // show:false,
+            type: 'value',
+            name: '单位：家',
+            nameTextStyle: {
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+            splitNumber: 5,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    color: '#10447C',
+                    opacity: 1,
+                    width: 1,
+                    type: 'solid',
+                }
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            type: 'bar',
+            barGap: 0,
+            barWidth: "40%",
+            label: {
+                show: true,
+                position: 'top',
+                color: '#facc14'
+            },
+
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#01F1FC'
+                            },
+                            {
+                                offset: 1,
+                                color: '#1B729E'
+                            }
+                        ]
+                    )
+                },
+            },
+            data: ydata
+        }, ]
+    };
+    myChart.setOption(option);
+}
+//柱形图-3
+var chart_bar_3 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('bar-3'));
+    var rankArr = [2, 1, 3, 5, 4];
+    var placeHolderArr = [0, 0, 0, 0, 0];
+    var labelArr = [98.38, 98.43, 98.94, 99.42, 99.44];
+    var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5'];
+    var seriesObj = [{
+        name: '政务服务核心指标', //系列名称
+        type: 'bar',
+        barWidth: '25%',
+        stack: 'one',
+        label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+            show: true,
+            formatter: function (para) {
+                return '第' + rankArr[para.dataIndex] + '名';
+            },
+            position: 'bottom',
+            textStyle: {
+                padding: [-getSize(1), 0, 0, 0],
+                fontSize: getSize(0.36),
+                color: '#fff',
+            }
+        },
+        itemStyle: { //折线拐点标志的样式。
+            normal: {
+                color: 'rgba(49,149,249,1)'
+            }
+        },
+        data: placeHolderArr,
+        z: 100,
+        silent: true,
+        tooltip: { //提示框组件
+            show: false
+        }
+    }, {
+        name: '政务服务核心排名', //系列名称
+        type: 'bar',
+        barWidth: '25%',
+        stack: 'one',
+        label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+            show: true,
+            formatter: '{c}%',
+            position: 'top',
+            textStyle: {
+                fontSize: getSize(0.36),
+                color: '#facc14',
+            }
+        },
+        itemStyle: { //折线拐点标志的样式。                
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0, //// 0% 处的颜色
+                        color: 'rgba(49,149,249,1)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgba(36,114,192,1)'
+                    }
+                ], false),
+            }
+        },
+        data: labelArr
+    }];
+    var option = {
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: { //直角坐标系
+            top: '30%',
+            left: '4%',
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.24),
+                    color: '#fff',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+            data: xArr,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            // name: '单位：万人',
+            // nameTextStyle: {
+            //     fontSize: getSize(0.24),
+            //     color: '#cccccc',
+            //     padding: [0, getSize(0.3), 0, 0]
+            // },
+            // minInterval: 15,
+            // margin: getSize(0.1),
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    type: 'dashed',
+                    color: '#3196fa'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。
+                show: false,
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置。
+                show: false,
+                margin: 10, //刻度标签与轴线之间的距离。
+                textStyle: {
+                    color: '#cccccc',
+                },
+            },
+            axisTick: { //坐标轴刻度相关设置。
+                show: false,
+            },
+        }],
+        series: seriesObj
+    };
+    mychart.setOption(option);
+}
+//柱形图-4
+var chart_bar_4 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('bar-4'));
+    var rankArr = [7, 3, 4, 3, 6, 6, 5, 4, 1, 1];
+    var placeHolderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var labelArr = [96.22, 95, 96.0, 98.9, 97.95, 99.74, 95, 99.69, 100, 100];
+    var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7', '项目8', '项目9', '项目10'];
+    var seriesObj = [{
+            name: '排名', //系列名称
+            type: 'line',
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: true,
+                formatter: function (para) {
+                    return '第' + rankArr[para.dataIndex] + '名';
+                },
+                position: 'bottom',
+                textStyle: {
+                    padding: [-getSize(1.5), 0, 0, 0],
+                    fontSize: getSize(0.18),
+                    color: '#fff',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。
+                normal: {
+                    color: 'rgba(49,149,249,1)'
+                }
+            },
+            data: placeHolderArr,
+            z: 100,
+            silent: true,
+            tooltip: { //提示框组件
+                show: false
+            }
+        }, {
+            name: '当月得分', //系列名称
+            type: 'bar',
+            barWidth: '25%',
+            stack: 'one',
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: true,
+                formatter: '{c}',
+                position: 'top',
+                textStyle: {
+                    fontSize: getSize(0.36),
+                    color: '#facc14',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。                
+                normal: {
+                    color: 'rgba(49,150,250,1)'
+                }
+            },
+            data: labelArr
+        },
+        {
+            name: '考核目标值', //系列名称
+            type: 'line',
+            smooth: false, //是否平滑曲线显示
+            // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+            showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
+            symbol: 'circle', //标记的图形。
+            symbolSize: 0, //标记的大小
+            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                show: false,
+                formatter: '{c}',
+                position: 'top',
+                textStyle: {
+                    fontSize: getSize(0.36),
+                    color: '#facc14',
+                }
+            },
+            itemStyle: { //折线拐点标志的样式。                
+                normal: {
+                    color: 'rgba(0,255,0,0.8)'
+                }
+            },
+            data: labelArr
+        }
+    ];
+    var option = {
+        tooltip: { //提示框组件
+            show: true,
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            show: true,
+            itemWidth: getSize(0.4),
+            itemHeight: getSize(0.2),
+            textStyle: {
+                fontSize: getSize(0.24),
+                color: '#fff',
+            }
+        },
+        grid: { //直角坐标系
+            top: '30%',
+            left: '4%',
+            right: '4%',
+            bottom: '10%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{ //直角坐标系 grid 中的 x 轴
+            type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+            boundaryGap: true,
+            margin: getSize(0.1),
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#3196fa'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.2),
+                    color: '#fff',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+            data: xArr,
+        }],
+        yAxis: [{ //直角坐标系 grid 中的 y 轴
+            type: 'value', ////直角坐标系 grid 中的 x 轴
+            // name: '单位：万人',
+            // nameTextStyle: {
+            //     fontSize: getSize(0.24),
+            //     color: '#cccccc',
+            //     padding: [0, getSize(0.3), 0, 0]
+            // },
+            // minInterval: 15,
+            // margin: getSize(0.1),
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    color: 'rgba(27,92,155,1)'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。
+                show: false,
+                lineStyle: {
+                    color: 'rgba(27,92,155,1)'
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置。
+                show: false,
+                margin: 10, //刻度标签与轴线之间的距离。
+                textStyle: {
+                    color: '#cccccc',
+                },
+            },
+            axisTick: { //坐标轴刻度相关设置。
+                show: false,
+            },
+        }],
+        series: seriesObj
+    };
+    mychart.setOption(option);
+}
+//柱形图-5
+var chart_bar_5 = function (pxdata, pydata1, pydata2) {
+    var myChart = echarts.init(document.getElementById('bar-5'));
+    var xdata = pxdata || S_mock.xdata(1,4,'月');
+    var ydata = pydata1 || S_mock.array(4, 100, 200);
+    var ydata2 = pydata2 || S_mock.array(4, 100, 200);
+    var legend_arr=['计划投资', '实际投资'];
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '4%',
+            top: "22%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        legend: {
+            icon: 'rect',
+            textStyle: {
+                color: "#fff",
+                fontSize: getSize(0.25)
+            },
+            data: legend_arr
+        },
+        xAxis: [{
+            nameLocation: "start",
+            nameTextStyle: {
+                color: "#fff",
+            },
+            nameGap: '1',
+            type: 'category',
+            data: xdata,
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.3),
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+            },
+        }],
+        yAxis: [{
+            // show:false,
+            type: 'value',
+            name: '单位：万元',
+            nameTextStyle: {
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+            axisLabel: {
+                interval: 0,
+                color: "#ccc",
+                fontSize: getSize(0.24),
+            },
+            splitNumber: 5,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: true,
+                lineStyle: {
+                    color: '#10447C',
+                    opacity: 1,
+                    width: 1,
+                    type: 'solid',
+                }
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            name: legend_arr[0],
+            type: 'bar',
+            barGap: 0,
+            barWidth: "40%",
+            label: {
+                show: false,
+                position: 'top',
+                color: '#facc14'
+            },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#3196fa'
+                            },
+                            {
+                                offset: 1,
+                                color: '#3196fa'
+                            }
+                        ]
+                    )
+                },
+            },
+            data: ydata
+        }, {
+            name: legend_arr[1],
+            type: 'bar',
+            barGap: 0.1,
+            barWidth: "40%",
+            label: {
+                show: false,
+                position: 'top',
+                color: '#facc14'
+            },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#00ffb4'
+                            },
+                            {
+                                offset: 1,
+                                color: '#00ffb4'
+                            }
+                        ]
+                    )
+                },
+            },
+            data: ydata2
+        }]
+    };
+    myChart.setOption(option);
+}
+//柱形图-6
+var chart_bar_6 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('bar-6'));
+    var myoption = {
+        color: ['#3398DB'],
+        // tooltip : {
+        //     trigger: 'axis',
+        //     axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+        //         type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        //     }
+        // },
+        grid: {
+            left: '0%',
+            right: '3%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: true,
+            data: ['2016', '2017', '2018'],
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            }
+        }],
+        yAxis: [{
+            name: '综合得分',
+            show: true,
+            type: 'value',
+            max: 100,
+            min: 0,
+            nameTextStyle: {
+                color: '#fff'
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                show: false
+            }
+        }, {
+            type: 'value',
+
+            name: '综合排名',
+            nameTextStyle: {
+                color: '#fff'
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#3196fa'
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    width: 1,
+                    color: '#3196fa'
+                }
+            },
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            max: 10,
+            min: 0,
+        }],
+        series: [{
+            name: '综合得分',
+            type: 'bar',
+            barWidth: '25%',
+            label: {
+                show: true,
+                position: 'top',
+                color: '#fff',
+                borderColor: '#3093f6',
+                borderWidth: 1,
+                backgroundColor: 'rgba(49,150,250,0.15)',
+                padding: 5,
+                formatter: function (value) {
+                    if (value.value == '93.07') {
+                        return value.value + '分' + '\n第8名';
+                    }
+                    if (value.value == '94.85') {
+                        return value.value + '分' + '\n第6名';
+                    }
+                    if (value.value == '94.87') {
+                        return value.value + '分' + '\n第4名';
+                    }
+
+                }
+            },
+            data: [93.07, 94.85, 94.87],
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#188df0'
+                            },
+                            {
+                                offset: 0.5,
+                                color: '#188df0'
+                            },
+                            {
+                                offset: 1,
+                                color: 'transparent'
+                            }
+                        ]
+                    )
+                },
+            },
+        }, {
+            name: '综合排名',
+            type: 'line',
+            data: [80, 60, 40],
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: '#00c8cf'
+                            },
+                            {
+                                offset: 0.5,
+                                color: '#00c8cf'
+                            },
+                            {
+                                offset: 1,
+                                color: '#00c8cf'
+                            }
+                        ]
+                    )
+                },
+            },
+        }]
+    };
+    myChart.setOption(myoption);
 }
 //饼图-1
 var chart_pie_1 = function (pxdata, pydata) {
@@ -1157,731 +1883,7 @@ $(function () {
         });
     })();
 
-    //柱形图-2
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-2'));
-        var xdata = ['2016', '2017', '2018', '2019'];
-        var ydata = [110, 120, 130, 140];
-        var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            grid: {
-                left: '4%',
-                top: "22%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{
-                nameLocation: "start",
-                nameTextStyle: {
-                    color: "#fff",
-                },
-                nameGap: '1',
-                type: 'category',
-                data: xdata,
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.2),
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                },
-            }],
-            yAxis: [{
-                // show:false,
-                type: 'value',
-                name: '单位：家',
-                nameTextStyle: {
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-                splitNumber: 5,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        color: '#10447C',
-                        opacity: 1,
-                        width: 1,
-                        type: 'solid',
-                    }
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                type: 'bar',
-                barGap: 0,
-                barWidth: "40%",
-                label: {
-                    show: true,
-                    position: 'top',
-                    color: '#facc14'
-                },
 
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#01F1FC'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#1B729E'
-                                }
-                            ]
-                        )
-                    },
-                },
-                data: ydata
-            }, ]
-        };
-        myChart.setOption(option);
-    })();
-    //柱形图-3
-    !(function () {
-        var mychart = echarts.init(document.getElementById('bar-3'));
-        var rankArr = [2, 1, 3, 5, 4];
-        var placeHolderArr = [0, 0, 0, 0, 0];
-        var labelArr = [98.38, 98.43, 98.94, 99.42, 99.44];
-        var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5'];
-        var seriesObj = [{
-            name: '政务服务核心指标', //系列名称
-            type: 'bar',
-            barWidth: '25%',
-            stack: 'one',
-            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                show: true,
-                formatter: function (para) {
-                    return '第' + rankArr[para.dataIndex] + '名';
-                },
-                position: 'bottom',
-                textStyle: {
-                    padding: [-getSize(1), 0, 0, 0],
-                    fontSize: getSize(0.36),
-                    color: '#fff',
-                }
-            },
-            itemStyle: { //折线拐点标志的样式。
-                normal: {
-                    color: 'rgba(49,149,249,1)'
-                }
-            },
-            data: placeHolderArr,
-            z: 100,
-            silent: true,
-            tooltip: { //提示框组件
-                show: false
-            }
-        }, {
-            name: '政务服务核心排名', //系列名称
-            type: 'bar',
-            barWidth: '25%',
-            stack: 'one',
-            label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                show: true,
-                formatter: '{c}%',
-                position: 'top',
-                textStyle: {
-                    fontSize: getSize(0.36),
-                    color: '#facc14',
-                }
-            },
-            itemStyle: { //折线拐点标志的样式。                
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0, //// 0% 处的颜色
-                            color: 'rgba(49,149,249,1)'
-                        },
-                        {
-                            offset: 1,
-                            color: 'rgba(36,114,192,1)'
-                        }
-                    ], false),
-                }
-            },
-            data: labelArr
-        }];
-        var option = {
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            grid: { //直角坐标系
-                top: '30%',
-                left: '4%',
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.24),
-                        color: '#fff',
-                    },
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: xArr,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                // name: '单位：万人',
-                // nameTextStyle: {
-                //     fontSize: getSize(0.24),
-                //     color: '#cccccc',
-                //     padding: [0, getSize(0.3), 0, 0]
-                // },
-                // minInterval: 15,
-                // margin: getSize(0.1),
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3196fa'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。
-                    show: false,
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置。
-                    show: false,
-                    margin: 10, //刻度标签与轴线之间的距离。
-                    textStyle: {
-                        color: '#cccccc',
-                    },
-                },
-                axisTick: { //坐标轴刻度相关设置。
-                    show: false,
-                },
-            }],
-            series: seriesObj
-        };
-        mychart.setOption(option);
-    })();
-    //柱形图-4
-    !(function () {
-        var mychart = echarts.init(document.getElementById('bar-4'));
-        var rankArr = [7, 3, 4, 3, 6, 6, 5, 4, 1, 1];
-        var placeHolderArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        var labelArr = [96.22, 95, 96.0, 98.9, 97.95, 99.74, 95, 99.69, 100, 100];
-        var xArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7', '项目8', '项目9', '项目10'];
-        var seriesObj = [{
-                name: '排名', //系列名称
-                type: 'line',
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: true,
-                    formatter: function (para) {
-                        return '第' + rankArr[para.dataIndex] + '名';
-                    },
-                    position: 'bottom',
-                    textStyle: {
-                        padding: [-getSize(1.5), 0, 0, 0],
-                        fontSize: getSize(0.18),
-                        color: '#fff',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。
-                    normal: {
-                        color: 'rgba(49,149,249,1)'
-                    }
-                },
-                data: placeHolderArr,
-                z: 100,
-                silent: true,
-                tooltip: { //提示框组件
-                    show: false
-                }
-            }, {
-                name: '当月得分', //系列名称
-                type: 'bar',
-                barWidth: '25%',
-                stack: 'one',
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: true,
-                    formatter: '{c}',
-                    position: 'top',
-                    textStyle: {
-                        fontSize: getSize(0.36),
-                        color: '#facc14',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。                
-                    normal: {
-                        color: 'rgba(49,150,250,1)'
-                    }
-                },
-                data: labelArr
-            },
-            {
-                name: '考核目标值', //系列名称
-                type: 'line',
-                smooth: false, //是否平滑曲线显示
-                // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
-                showAllSymbol: true, //只在主轴为类目轴（axis.type 为 'category'）时有效
-                symbol: 'circle', //标记的图形。
-                symbolSize: 0, //标记的大小
-                label: { //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
-                    show: false,
-                    formatter: '{c}',
-                    position: 'top',
-                    textStyle: {
-                        fontSize: getSize(0.36),
-                        color: '#facc14',
-                    }
-                },
-                itemStyle: { //折线拐点标志的样式。                
-                    normal: {
-                        color: 'rgba(0,255,0,0.8)'
-                    }
-                },
-                data: labelArr
-            }
-        ];
-        var option = {
-            tooltip: { //提示框组件
-                show: true,
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                show: true,
-                itemWidth: getSize(0.4),
-                itemHeight: getSize(0.2),
-                textStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#fff',
-                }
-            },
-            grid: { //直角坐标系
-                top: '30%',
-                left: '4%',
-                right: '4%',
-                bottom: '10%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{ //直角坐标系 grid 中的 x 轴
-                type: 'category', //类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-                boundaryGap: true,
-                margin: getSize(0.1),
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#3196fa'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.2),
-                        color: '#fff',
-                    },
-                },
-                axisTick: {
-                    show: false,
-                },
-                data: xArr,
-            }],
-            yAxis: [{ //直角坐标系 grid 中的 y 轴
-                type: 'value', ////直角坐标系 grid 中的 x 轴
-                // name: '单位：万人',
-                // nameTextStyle: {
-                //     fontSize: getSize(0.24),
-                //     color: '#cccccc',
-                //     padding: [0, getSize(0.3), 0, 0]
-                // },
-                // minInterval: 15,
-                // margin: getSize(0.1),
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: 'rgba(27,92,155,1)'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。
-                    show: false,
-                    lineStyle: {
-                        color: 'rgba(27,92,155,1)'
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置。
-                    show: false,
-                    margin: 10, //刻度标签与轴线之间的距离。
-                    textStyle: {
-                        color: '#cccccc',
-                    },
-                },
-                axisTick: { //坐标轴刻度相关设置。
-                    show: false,
-                },
-            }],
-            series: seriesObj
-        };
-        mychart.setOption(option);
-    })();
-    //柱形图-5
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-5'));
-        var xdata = ['单位1', '单位2', '单位3', '单位4', '单位5'];
-        var ydata = [82, 62, 70, 70, 55];
-        var ydata2 = [22, 22, 22, 22, 22];
-        var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            grid: {
-                left: '4%',
-                top: "22%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            legend: {
-                icon: 'rect',
-                textStyle: {
-                    color: "#fff",
-                    fontSize: getSize(0.25)
-                },
-                data: ['计划投资', '实际投资']
-            },
-            xAxis: [{
-                nameLocation: "start",
-                nameTextStyle: {
-                    color: "#fff",
-                },
-                nameGap: '1',
-                type: 'category',
-                data: xdata,
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.3),
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                },
-            }],
-            yAxis: [{
-                // show:false,
-                type: 'value',
-                name: '单位：万元',
-                nameTextStyle: {
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-                axisLabel: {
-                    interval: 0,
-                    color: "#ccc",
-                    fontSize: getSize(0.24),
-                },
-                splitNumber: 5,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: true,
-                    lineStyle: {
-                        color: '#10447C',
-                        opacity: 1,
-                        width: 1,
-                        type: 'solid',
-                    }
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                name: '计划投资',
-                type: 'bar',
-                barGap: 0,
-                barWidth: "40%",
-                label: {
-                    show: false,
-                    position: 'top',
-                    color: '#facc14'
-                },
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#3196fa'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#3196fa'
-                                }
-                            ]
-                        )
-                    },
-                },
-                data: ydata
-            }, {
-                name: '实际投资',
-                type: 'bar',
-                barGap: 0.1,
-                barWidth: "40%",
-                label: {
-                    show: false,
-                    position: 'top',
-                    color: '#facc14'
-                },
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#00ffb4'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#00ffb4'
-                                }
-                            ]
-                        )
-                    },
-                },
-                data: ydata2
-            }]
-        };
-        myChart.setOption(option);
-    })();
-    //柱形图-6
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-6'));
-        var myoption = {
-            color: ['#3398DB'],
-            // tooltip : {
-            //     trigger: 'axis',
-            //     axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            //         type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            //     }
-            // },
-            grid: {
-                left: '0%',
-                right: '3%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [{
-                type: 'category',
-                boundaryGap: true,
-                data: ['2016', '2017', '2018'],
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                splitLine: {
-                    show: false
-                },
-                axisTick: {
-                    show: false
-                }
-            }],
-            yAxis: [{
-                name: '综合得分',
-                show: true,
-                type: 'value',
-                max: 100,
-                min: 0,
-                nameTextStyle: {
-                    color: '#fff'
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: {
-                    show: false
-                }
-            }, {
-                type: 'value',
-
-                name: '综合排名',
-                nameTextStyle: {
-                    color: '#fff'
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#3196fa'
-                    }
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        width: 1,
-                        color: '#3196fa'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                max: 10,
-                min: 0,
-            }],
-            series: [{
-                name: '综合得分',
-                type: 'bar',
-                barWidth: '25%',
-                label: {
-                    show: true,
-                    position: 'top',
-                    color: '#fff',
-                    borderColor: '#3093f6',
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(49,150,250,0.15)',
-                    padding: 5,
-                    formatter: function (value) {
-                        if (value.value == '93.07') {
-                            return value.value + '分' + '\n第8名';
-                        }
-                        if (value.value == '94.85') {
-                            return value.value + '分' + '\n第6名';
-                        }
-                        if (value.value == '94.87') {
-                            return value.value + '分' + '\n第4名';
-                        }
-
-                    }
-                },
-                data: [93.07, 94.85, 94.87],
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#188df0'
-                                },
-                                {
-                                    offset: 0.5,
-                                    color: '#188df0'
-                                },
-                                {
-                                    offset: 1,
-                                    color: 'transparent'
-                                }
-                            ]
-                        )
-                    },
-                },
-            }, {
-                name: '综合排名',
-                type: 'line',
-                data: [80, 60, 40],
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: '#00c8cf'
-                                },
-                                {
-                                    offset: 0.5,
-                                    color: '#00c8cf'
-                                },
-                                {
-                                    offset: 1,
-                                    color: '#00c8cf'
-                                }
-                            ]
-                        )
-                    },
-                },
-            }]
-        };
-        myChart.setOption(myoption);
-    })();
     //柱形图-7
     chart_bar_7();
 
@@ -1897,7 +1899,7 @@ $(function () {
             '项目7',
             '其他'
         ].reverse();
-        var dataArr = [1737, 1747, 1737, 1747, 1737, 1747, 1737, 1737];
+        var dataArr = S_mock.array(8,100,200);
         var option = {
 
             tooltip: {
@@ -1908,7 +1910,7 @@ $(function () {
             grid: {
                 top: '5%',
                 left: '3%',
-                right: '30%',
+                right: '15%',
                 bottom: '0%',
                 containLabel: true
             },
@@ -1944,7 +1946,7 @@ $(function () {
                     position: 'right',
                     // formatter: '{c}件',
                     formatter: function (para) {
-                        var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr)).toFixed(2) * 100;
+                        var pct = ((dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr))* 100).toFixed(2) ;
                         return pct + '%  ' + para.data + '件'
                     },
                     color: '#14D7C1',
