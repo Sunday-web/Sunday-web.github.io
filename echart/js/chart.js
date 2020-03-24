@@ -1415,10 +1415,10 @@ var chart_bar_4 = function (pxdata, pydata) {
 //柱形图-5
 var chart_bar_5 = function (pxdata, pydata1, pydata2) {
     var myChart = echarts.init(document.getElementById('bar-5'));
-    var xdata = pxdata || S_mock.xdata(1,4,'月');
+    var xdata = pxdata || S_mock.xdata(1, 4, '月');
     var ydata = pydata1 || S_mock.array(4, 100, 200);
     var ydata2 = pydata2 || S_mock.array(4, 100, 200);
-    var legend_arr=['计划投资', '实际投资'];
+    var legend_arr = ['计划投资', '实际投资'];
     var option = {
         tooltip: {
             trigger: 'axis',
@@ -1729,13 +1729,612 @@ var chart_bar_6 = function (pxdata, pydata) {
     };
     myChart.setOption(myoption);
 }
+//柱形图-7
+var chart_bar_7 = function (pxdata, pydata) {
+    var mychart = echarts.init(document.getElementById('bar-7'));
+    var nameArr = pxdata ? pxdata : S_mock.xdata(1, 8, '月');
+    var dataArr = pydata || S_mock.array(8, 100, 200);
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+
+        },
+        grid: {
+            top: '5%',
+            left: '3%',
+            right: '15%',
+            bottom: '0%',
+            containLabel: true
+        },
+        xAxis: {
+            show: false,
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: nameArr,
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#02575C",
+                }
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                textStyle: {
+                    fontSize: getSize(0.3),
+                    color: '#fff',
+                },
+            },
+            inverse: true,
+        },
+        series: [{
+            name: '',
+            type: 'bar',
+            label: {
+                show: true,
+                position: 'right',
+                // formatter: '{c}件',
+                formatter: function (para) {
+                    var pct = ((dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr)) * 100).toFixed(2);
+                    return pct + '%  ' + para.data + '件'
+                },
+                color: '#14D7C1',
+                fontSize: getSize(0.35)
+            },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 1, 0,
+                        [{
+                                offset: 0,
+                                color: 'rgba(26, 92, 142, 0.16)'
+                            },
+                            {
+                                offset: 1,
+                                color: 'rgba(19, 218, 195, 1)'
+                            }
+                        ]
+                    ),
+                    barBorderRadius: [0, 8, 8, 0]
+                },
+            },
+            barWidth: '35%',
+            data: dataArr
+        }, ]
+    };
+    mychart.clear();
+    mychart.setOption(option);
+}
+//柱形图-8
+var chart_bar_8 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('bar-8'));
+    var xdata = ['11-20', '11-21', '11-22', '11-23', '11-24', '11-25', '11-26', '11-27', '11-28', '11-29', '11-30', '11-31', '12-01', '12-02', '12-03', '12-04'];
+    var ydata = S_mock.array(16, 10, 20);
+    // var title = '近15日市一周边泊位指数趋势';
+    var max = Math.max.apply(null, ydata);
+    var min = Math.min.apply(null, ydata);
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        // title: {
+        //     show: false,
+        //     text: title,
+        //     left: 'center',
+        //     textStyle: {
+        //         color: '#fff',
+        //         fontSize: getSize(.26),
+        //         fontWeight: 'normal'
+        //     }
+        // },
+        grid: {
+            left: '0%',
+            top: "10%",
+            right: '4%',
+            bottom: '5%',
+            containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
+        },
+        xAxis: [{
+            nameLocation: "start",
+            nameTextStyle: {
+                color: "#fff",
+            },
+            nameGap: '1',
+            type: 'category',
+            data: xdata,
+            axisLabel: {
+                interval: 1,
+                color: "#fff",
+                fontSize: getSize(0.2),
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+            },
+        }],
+        yAxis: [{
+            // show:false,
+            type: 'value',
+            name: '',
+            nameTextStyle: {
+                color: "#fff",
+                fontSize: getSize(0.24),
+            },
+            axisLabel: {
+                show: true,
+                interval: 'auto',
+                color: "#fff",
+                fontSize: getSize(0.2),
+            },
+            splitNumber: 2,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#10447C',
+                    opacity: 1,
+                    width: 1,
+                    type: 'solid',
+                }
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "#579dff",
+                }
+            },
+            axisTick: {
+                show: false
+            },
+        }],
+        series: [{
+            type: 'bar',
+            barGap: 0,
+            barWidth: "40%",
+            markLine: {
+                label: {
+                    show: true,
+                    // formatter: '',
+                    formatter: 'avg: {c}',
+                    position: 'end',
+                    padding: [-20, 0, 0, -60]
+                },
+                silent: true,
+                symbol: 'none',
+                lineStyle: {
+                    color: '#00F6FF'
+                },
+                data: [{
+                    name: '平均线',
+                    // 支持 'average', 'min', 'max'
+                    type: 'average'
+                }]
+            },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [{
+                                offset: 0,
+                                color: 'rgba(0,246,255,1)'
+                            },
+                            {
+                                offset: 1,
+                                color: 'rgba(0,246,255,0.1)'
+                            }
+                        ]
+                    ),
+                    barBorderRadius: [4, 4, 0, 0]
+                },
+            },
+            yAxisIndex: 0,
+            // data: ydata
+            data: function () {
+                var itemArr = [],
+                    item;
+                var max_index = ydata.indexOf(max);
+                var min_index = ydata.indexOf(min);
+                for (var i = 0; i < ydata.length; i++) {
+                    if (i == max_index) {
+                        item = {
+                            value: ydata[i],
+                            label: {
+                                show: true,
+                                position: 'insideLeft',
+                                color: '#fff',
+                                formatter: '{b}\nmax:{c}',
+                                backgroundColor: 'rgba(1,60,119,0.86)',
+                                padding: [5, 5, 5, 5]
+                                // zlevel:10
+                                // padding:[20,0,0,0]
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [{
+                                                offset: 0,
+                                                color: 'rgba(239, 72, 100, 1)'
+                                            },
+                                            {
+                                                offset: 1,
+                                                color: 'rgba(0,246,255,0.1)'
+                                            }
+                                        ]
+                                    ),
+                                    barBorderRadius: [4, 4, 0, 0]
+                                },
+                            },
+                        };
+                    } else if (i == min_index) {
+                        item = {
+                            value: ydata[i],
+                            label: {
+                                show: true,
+                                position: 'insideLeft',
+                                color: '#fff',
+                                formatter: '{b}\nmin:{c}',
+                                backgroundColor: 'rgba(1,60,119,0.86)',
+                                padding: [5, 5, 5, 5]
+                            },
+                            zlevel: 100,
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [{
+                                                offset: 0,
+                                                color: 'rgba(0, 205, 96, 1)'
+                                            },
+                                            {
+                                                offset: 1,
+                                                color: 'rgba(0,246,255,0.1)'
+                                            }
+                                        ]
+                                    ),
+                                    barBorderRadius: [4, 4, 0, 0]
+                                },
+                            },
+                        };
+                    } else {
+                        item = {
+                            value: ydata[i],
+                            label: {
+                                show: false,
+                                color: '#fff'
+                            },
+                            itemStyle: {
+                                normal: {
+
+                                }
+                            }
+                        };
+                    }
+                    itemArr.push(item);
+                }
+                return itemArr;
+            }()
+        }, ]
+    };
+    myChart.setOption(option);
+}
+//柱形图-9
+var chart_bar_9 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('bar-9'));
+    var nameArr = ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
+    var dataArr = S_mock.array(7, 100, 200);
+    var total = 0;
+    for (var i = 0; i < dataArr.length; i++) {
+        total += dataArr[i];
+    }
+    var option = {
+        grid: {
+            top: '8%',
+            bottom: '8%',
+            left: '5%',
+            right: '7%',
+            containLabel: true,
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow',
+                lineStyle: {
+                    color: '#39627d'
+                }
+            },
+            formatter: '{b} {c}家'
+        },
+        yAxis: [{
+            type: 'category',
+            zlevel: 1,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#00ffff'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                fontSize: getSize(0.28),
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+            inverse: true,
+            data: nameArr
+        }, {
+            type: 'category',
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: false,
+                lineStyle: {
+                    color: '#00ffff'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                fontSize: getSize(0.28),
+                formatter: function (para) {
+                    var value = dataArr[nameArr.indexOf(para)];
+                    var percent = (value / total * 100).toFixed(0) + '%';
+                    return value + '家  ' + percent;
+                },
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+            inverse: true,
+            data: nameArr
+        }],
+        xAxis: [{
+            type: 'value',
+            boundaryGap: true,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#fff'
+                },
+            },
+            axisLabel: {
+                show: false,
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+        }],
+        series: [{
+            name: '',
+            type: 'bar',
+            barGap: 0,
+            barWidth: '30%',
+            label: {
+                show: true,
+                position: 'insideRight',
+                // formatter: '{c}件',
+                formatter: function (para) {
+                    var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr) * 100).toFixed(2);
+                    return pct + '%  '
+                },
+                color: '#fff',
+                fontSize: getSize(0.2)
+            },
+            itemStyle: {
+                barBorderRadius: getSize(0.05),
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0, //// 0% 处的颜色
+                        color: 'rgba(49,150,250,0.1)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgba(49,150,250,1)'
+                    }
+                ], false),
+            },
+            data: dataArr
+        }]
+    };
+    myChart.setOption(option);
+}
+//柱形图-10
+var chart_bar_10 = function (pxdata, pydata1, pydata2) {
+    var myChart = echarts.init(document.getElementById('bar-10'));
+    var nameArr = pxdata || ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
+    var dataArr = pydata1 || S_mock.array(7, 1000, 1200);
+    var dataArr2 = pydata2 || S_mock.array(7, 1000, 1200);
+    var legend_arr = ['学生', '教职工'];
+    var total = 0;
+    for (var i = 0; i < dataArr.length; i++) {
+        total += dataArr[i];
+    }
+    var option = {
+        grid: {
+            top: '8%',
+            bottom: '8%',
+            left: '5%',
+            right: '7%',
+            containLabel: true,
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow',
+                lineStyle: {
+                    color: '#39627d'
+                }
+            },
+            // formatter: '{b} {c}家'
+            formatter: '{b0}: <br /> {a0}:{c0}人<br />{a1}:{c1}人'
+        },
+        legend: {
+            textStyle: {
+                color: '#fff'
+            },
+            data: legend_arr
+        },
+        yAxis: [{
+            type: 'category',
+            zlevel: 1,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: true,
+                lineStyle: {
+                    color: '#00ffff'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                fontSize: getSize(0.28),
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+            inverse: true,
+            data: nameArr
+        }, {
+            type: 'category',
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                show: false,
+                lineStyle: {
+                    color: '#00ffff'
+                },
+            },
+            axisLabel: { //坐标轴刻度标签的相关设置
+                fontSize: getSize(0.28),
+                formatter: function (para) {
+                    var value = dataArr[nameArr.indexOf(para)];
+                    var value2 = dataArr2[nameArr.indexOf(para)];
+                    return value + '人 / ' + value2 + '人';
+                },
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+            inverse: true,
+            data: nameArr
+        }],
+        xAxis: [{
+            type: 'value',
+            boundaryGap: true,
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                show: false,
+                lineStyle: {
+                    color: '#6b85a3'
+                }
+            },
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#fff'
+                },
+            },
+            axisLabel: {
+                show: false,
+                color: '#fff',
+            },
+            axisTick: {
+                show: false,
+            },
+        }],
+        series: [{
+            name: legend_arr[0],
+            type: 'bar',
+            barGap: 0,
+            stack: 'a',
+            barWidth: '30%',
+            itemStyle: {
+                // barBorderRadius: getSize(0.05),
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0, //// 0% 处的颜色
+                        color: '#00CCFF'
+                    },
+                    {
+                        offset: 1,
+                        color: '#00CCFF'
+                    }
+                ], false),
+            },
+            data: dataArr
+        }, {
+            name: legend_arr[1],
+            type: 'bar',
+            barGap: 0,
+            stack: 'a',
+            barWidth: '30%',
+            itemStyle: {
+                // barBorderRadius: getSize(0.05),
+                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0, //// 0% 处的颜色
+                        color: '#0090FF'
+                    },
+                    {
+                        offset: 1,
+                        color: '#0090FF'
+                    }
+                ], false),
+            },
+            data: dataArr2
+        }]
+    };
+    myChart.setOption(option);
+}
 //饼图-1
 var chart_pie_1 = function (pxdata, pydata) {
     var mychart = echarts.init(document.getElementById('pie-1'));
     var color_arr = ['#3196fa', '#00ffc6', '#00cd60', '#ffa800'];
     var name_arr = pxdata || ['项目1', '项目2', '项目3', '项目4'];
-    var ydata = pydata || getRomArr(4, 100, 200);
+    var ydata = pydata || S_mock.array(4, 100, 200);
     var seri_data = [];
+    var dw = '项';
     for (const key in name_arr) {
         if (key == 0) {
             seri_data.push({
@@ -1777,9 +2376,9 @@ var chart_pie_1 = function (pxdata, pydata) {
             icon: 'roundRect',
             formatter: function (para) {
                 var str = '{a|' + para + '} {b|';
-                str += ydata[name_arr.indexOf(para)] + '}  {c|项}';
+                str += ydata[name_arr.indexOf(para)] + '}  {c|' + dw + '}';
                 if (para = '其他') {
-                    str = str.replace(/其他/, '其他       ');
+                    str = str.replace(/其他/, '其他');
                 }
                 return str;
             },
@@ -1835,7 +2434,1477 @@ var chart_pie_1 = function (pxdata, pydata) {
     }
     mychart.setOption(option);
 };
+//饼图-2
+var chart_pie_2 = function (pxdata, pydata) {
+    var colorArr = ['#FACC14', '#F44660', '#00FF00', '#9696FF', '#3196FA'];
+    var valueArr = [92, 20, 10, 2, 1];
+    var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5'];
+    var dataArr = [];
+    var legendArr = [];
+    for (var i = 0; i < nameArr.length; i++) {
+        dataArr.push({
+            name: nameArr[i],
+            value: valueArr[i]
+        });
+        legendArr.push({
+            icon: 'roundRect',
+            name: nameArr[i],
+        });
+    }
+    var mychart = echarts.init(document.getElementById('pie-2'));
+    var option = {
+        color: colorArr,
+        title: {
+            left: '40%',
+            top: '25%',
+            text: ' 125\n  项',
+            textStyle: {
+                fontSize: getSize(0.6),
+                fontWeight: 'normal',
+                color: '#facc14',
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            bottom: '0%',
+            width: '60%',
+            height: '30%',
+            itemWidth: getSize(0.2),
+            itemHeight: getSize(0.16),
+            itemGap: getSize(0.16),
+            formatter: function (para) {
+                var str = '{a|' + para + '} {b|';
+                str += valueArr[nameArr.indexOf(para)] + '}  {c|项}';
+                if (para = '其他') {
+                    str = str.replace(/其他/, '其他       ');
+                }
+                return str;
+            },
+            textStyle: {
+                padding: [getSize(0.1), getSize(0.2), 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.3),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.3),
+                        color: '#facc14'
+                    },
+                    c: {
+                        fontSize: getSize(0.3),
+                        color: '#facc14'
+                    }
+                }
+            },
+            orient: 'vertical',
+            data: legendArr
+        },
+        series: [{
+            name: '非遗代表性项目数',
+            type: 'pie',
+            clockWise: true,
+            center: ['50%', '35%'],
+            radius: ['45%', '55%'],
+            startAngle: 90,
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: false,
+                        fontSize: 16,
+                        fontFamily: 'DIN',
+                        formatter: '{c}',
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                }
+            },
+            data: dataArr
+        }]
+    }
+    mychart.setOption(option);
+}
+//饼图-3
+var chart_pie_3 = function (pxdata, pydata) {
+    var colorArr = ['#E4FF00', '#F44660', '#FF9600', '#9696FF', '#3196FA', '#00D564', '#00FFFC'];
+    var valueArr = [750, 780, 500, 10500, 800, 450, 300];
+    var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7'];
+    var dataArr = [];
+    var legendArr = [];
+    for (var i = 0; i < nameArr.length; i++) {
+        dataArr.push({
+            name: nameArr[i],
+            value: valueArr[i]
+        });
+        legendArr.push({
+            icon: 'rect',
+            name: nameArr[i],
+        });
+    }
+    var mychart = echarts.init(document.getElementById('pie-3'));
+    var option = {
+        color: colorArr,
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} 米"
+        },
+        legend: {
+            y: 'center',
+            right: '0%',
+            itemWidth: getSize(0.24),
+            itemHeight: getSize(0.24),
+            itemGap: getSize(0.1),
+            textStyle: {
+                padding: [getSize(0.1), 0, 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.28),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.24),
+                        color: '#facc14'
+                    },
+                    c: {
+                        fontSize: getSize(0.24),
+                        color: '#facc14'
+                    }
+                }
+            },
+            formatter: function (para) {
+                var str = '{a|' + para + '} {b|';
+                str += valueArr[nameArr.indexOf(para)] + '}  {c|米}';
+                if (para = '其他') {
+                    str = str.replace(/其他/, '其他       ');
+                }
+                return str;
+            },
+            orient: 'vertical',
+            data: legendArr
+        },
+        series: [{
+            name: '特色街区长度',
+            type: 'pie',
+            clockWise: false,
+            center: ['25%', '50%'],
+            radius: ['0%', '60%'],
+            startAngle: 90,
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: false,
+                        fontSize: 16,
+                        fontFamily: 'DIN',
+                        formatter: '{c}',
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                }
+            },
+            data: dataArr
+        }]
+    }
+    mychart.setOption(option);
+}
+//饼图-4
+var chart_pie_4 = function (pxdata, pydata) {
+    var colorArr = ['#ffa800', '#00ffb4', '#fffc00', '#00f0ff', '#f12961', '#00bc2c', '#8882ff', '#ff7200', '#3196fa'];
+    var valueArr = [900, 900, 900, 900, 900, 900, 900, 900, 900];
+    var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7', '项目8', '项目9'];
+    var dataArr = [];
+    var legendArr = [];
+    for (var i = 0; i < nameArr.length; i++) {
+        dataArr.push({
+            name: nameArr[i],
+            value: valueArr[i]
+        });
+        legendArr.push({
+            icon: 'rect',
+            name: nameArr[i],
+        });
+    }
+    var mychart = echarts.init(document.getElementById('pie-4'));
+    var option = {
+        color: colorArr,
+        title: {
+            left: '35%',
+            top: '25%',
+            text: ' 已处理:8613个\n\n 未处理:8613个',
+            textStyle: {
+                fontSize: getSize(0.25),
+                fontWeight: 'normal',
+                color: '#facc14'
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            y: 'bottom',
+            right: '10%',
+            itemWidth: getSize(0.3),
+            // itemHeight: getSize(0.2),
+            itemGap: getSize(0.4),
+            formatter: function (para) {
+                var str = '{a|' + para + '}';
+                // str += valueArr[nameArr.indexOf(para)] + '}';
+                if (para = '其他') {
+                    str = str.replace(/其他/, '其他       ');
+                }
+                return str;
+            },
+            textStyle: {
+                padding: [0, 0, 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.3),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.3),
+                        color: '#facc14'
+                    },
+                    c: {
+                        fontSize: getSize(0.3),
+                        color: '#facc14'
+                    }
+                }
+            },
+            orient: 'horizontal',
+            data: legendArr
+        },
+        series: [{
+            name: '学校总数',
+            type: 'pie',
+            clockWise: true,
+            center: ['50%', '30%'],
+            radius: ['45%', '55%'],
+            startAngle: 90,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    formatter: '{d}%',
+                    textStyle: {
+                        fontSize: getSize(.3),
+                        fontWeight: 'bold',
+                        padding: [0, 0, getSize(1), 0]
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: false,
+                        fontSize: 16,
+                        fontFamily: 'DIN',
+                        formatter: '{c}',
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                }
+            },
+            data: dataArr
+        }]
+    }
+    mychart.setOption(option);
+}
+//饼图-5
+var chart_pie_5 = function (pxdata, pydata) {
+    var colorArr = ['#FFA800', '#3196FA'];
+    var nameArr = pxdata || ['项目1', '项目2'];
+    var valueArr = pydata || S_mock.array(2, 100, 200);
+    var dataArr = [];
+    var legendArr = [];
+    for (var i = 0; i < nameArr.length; i++) {
+        dataArr.push({
+            name: nameArr[i],
+            value: valueArr[i]
+        });
+        legendArr.push({
+            icon: 'rect',
+            name: nameArr[i],
+        });
+    }
+    var mychart = echarts.init(document.getElementById('pie-5'));
+    var option = {
+        color: colorArr,
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}元)"
+        },
+        legend: {
+            y: 'center',
+            right: '15%',
+            itemWidth: getSize(0.4),
+            itemHeight: getSize(0.24),
+            itemGap: getSize(0.1),
+            textStyle: {
+                padding: [getSize(0.1), 0, 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.28),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.24),
+                        color: '#facc14'
+                    },
+                    c: {
+                        fontSize: getSize(0.24),
+                        color: '#facc14'
+                    }
+                }
+            },
+            formatter: function (para) {
+                var str = '{a|' + para + '} {b|';
+                str += valueArr[nameArr.indexOf(para)] + '}  {c|元}';
+                if (para = '其他') {
+                    str = str.replace(/其他/, '其他       ');
+                }
+                return str;
+            },
+            orient: 'vertical',
+            data: legendArr
+        },
+        series: [{
+            name: '累计未支付金额和履约金额占比',
+            type: 'pie',
+            clockWise: false,
+            center: ['30%', '55%'],
+            radius: ['0%', '60%'],
+            startAngle: 90,
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        fontSize: 16,
+                        fontFamily: 'DIN',
+                        // formatter: '{c}',
+                        formatter: '{d}%',
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                }
+            },
+            data: dataArr
+        }]
+    }
+    mychart.setOption(option);
+}
+//饼图-6
+var chart_pie_6 = function (pxdata, pydata) {
+    var colorArr = ['#3196FA', '#BB9AFF', '#00D564', '#FFCC00', '#FF506D'];
+    var valueArr = [1200, 1200, 1200, 1200, 1200];
+    var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5']
+    var dataArr = [];
+    var legendArr = [];
+    for (var i = 0; i < nameArr.length; i++) {
+        if (i === 0) {
+            dataArr.push({
+                name: nameArr[i],
+                value: valueArr[i],
+                label: {
+                    show: true
+                }
+            });
+            legendArr.push({
+                icon: 'roundRect',
+                name: nameArr[i],
+            });
+        } else {
+            dataArr.push({
+                name: nameArr[i],
+                value: valueArr[i]
+            });
+            legendArr.push({
+                icon: 'roundRect',
+                name: nameArr[i],
+            });
+        }
 
+    }
+    var mychart = echarts.init(document.getElementById('pie-6'));
+    var option = {
+        color: colorArr,
+        // title: {
+        //     left: '20%',
+        //     top: '45%',
+        //     text: ' 42191\n    人',
+        //     textStyle: {
+        //         fontSize: getSize(0.35),
+        //         fontWeight: 'normal',
+        //         color: '#facc14',
+        //     },
+        // },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c}件 ({d}%)"
+        },
+        legend: {
+            y: 'center',
+            right: '0%',
+            itemWidth: getSize(0.24),
+            itemHeight: getSize(0.14),
+            itemGap: getSize(0.16),
+            formatter: function (para) {
+                var pct = (valueArr[nameArr.indexOf(para)] / getArrSum(valueArr) * 100).toFixed(2);
+                var str = '{a|' + para + '}';
+                if (nameArr.indexOf(para) === 0) {
+                    str += '{b|' + pct + '%}' + '{b1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
+                } else if (nameArr.indexOf(para) === 1) {
+                    str += '{c|' + pct + '%}' + '{c1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
+                } else if (nameArr.indexOf(para) === 2) {
+                    str += '{d|' + pct + '%}' + '{d1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
+                } else if (nameArr.indexOf(para) === 3) {
+                    str += '{e|' + pct + '%}' + '{e|' + valueArr[nameArr.indexOf(para)] + ' 件}';
+                } else if (nameArr.indexOf(para) === 4) {
+                    str += '{f|' + pct + '%}' + '{f|' + valueArr[nameArr.indexOf(para)] + ' 件}';
+                }
+                return str;
+            },
+            textStyle: {
+                rich: {
+                    a: {
+                        width: getSize(1.4),
+                        // padding: [0, 5, 0, 0],
+                        fontSize: getSize(0.24),
+                        color: '#fff'
+                    },
+                    b: {
+                        width: getSize(1.2),
+                        fontSize: getSize(0.24),
+                        color: colorArr[0]
+                    },
+                    b1: {
+                        width: getSize(1),
+                        fontSize: getSize(0.24),
+                        color: colorArr[0]
+                    },
+                    c: {
+                        width: getSize(1.2),
+                        fontSize: getSize(0.24),
+                        color: colorArr[1]
+                    },
+                    c1: {
+                        width: getSize(1),
+                        fontSize: getSize(0.24),
+                        color: colorArr[1]
+                    },
+                    d: {
+                        width: getSize(1.2),
+                        fontSize: getSize(0.24),
+                        color: colorArr[2]
+                    },
+                    d1: {
+                        width: getSize(1),
+                        fontSize: getSize(0.24),
+                        color: colorArr[2]
+                    },
+                    e: {
+                        width: getSize(1.2),
+                        fontSize: getSize(0.24),
+                        color: colorArr[3]
+                    },
+                    e1: {
+                        width: getSize(1),
+                        fontSize: getSize(0.24),
+                        color: colorArr[3]
+                    },
+                    f: {
+                        width: getSize(1.2),
+                        fontSize: getSize(0.24),
+                        color: colorArr[4]
+                    },
+                    f1: {
+                        width: getSize(1),
+                        fontSize: getSize(0.24),
+                        color: colorArr[4]
+                    }
+                }
+            },
+            orient: 'vertical',
+            data: legendArr
+        },
+        series: [{
+            name: '',
+            type: 'pie',
+            clockWise: true,
+            center: ['30%', '55%'],
+            radius: ['70%', '90%'],
+            startAngle: 90,
+            label: {
+                show: false,
+                position: 'center',
+                formatter: '{a|总量}\n{b|9316}',
+                rich: {
+                    a: {
+                        fontSize: getSize(0.26),
+                        padding: [10, 0, 0, 0],
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.43),
+                        color: '#3196fa'
+                    }
+                }
+            },
+            data: dataArr
+        }]
+    }
+    mychart.clear();
+    mychart.setOption(option);
+}
+//饼图-7
+var chart_pie_7 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('pie-7'));
+    var colorArr = ['#00ff4e', '#ffa800', '#3196fa'];
+    var dataArr = [];
+    var legendArr = [];
+    var nameArr = ['在建项目', '开工项目', '竣工项目'];
+    var valueArr = [46, 23, 31];
+    for (var i = 0; i < nameArr.length; i++) {
+        if (i === 0) {
+            dataArr.push({
+                name: nameArr[i],
+                value: valueArr[i],
+                label: {
+                    show: true
+                }
+            });
+        } else {
+            dataArr.push({
+                name: nameArr[i],
+                value: valueArr[i],
+            });
+        }
+
+        legendArr.push({
+            icon: 'roundRect',
+            name: nameArr[i]
+        });
+    }
+    var option = {
+        color: colorArr,
+        title: {
+            text: '项目总数量',
+            x: 'center',
+            top: '0%',
+            textStyle: {
+                fontWeight: 'normal',
+                fontSize: getSize(0.32),
+                color: '#fff'
+            }
+        },
+        legend: {
+            top: '30%',
+            right: '2%',
+            itemWidth: getSize(0.34),
+            itemHeight: getSize(0.27),
+            itemGap: getSize(0.2),
+            textStyle: {
+                fontSize: getSize(0.24),
+                color: '#fff'
+            },
+            orient: 'vertical',
+            data: legendArr
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)",
+        },
+        series: [{
+            name: '建设工程',
+            type: 'pie',
+            clockWise: true,
+            radius: ['40%', '55%'],
+            center: ['35%', '52%'],
+            startAngle: 90,
+            label: {
+                show: false,
+                position: 'center',
+                formatter: '{a|40%}\n{b|在建}',
+                rich: {
+                    a: {
+                        fontSize: getSize(0.44),
+                        color: '#00ff4e'
+                    },
+                    b: {
+                        fontSize: getSize(0.24),
+                        color: '#fff'
+                    }
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: dataArr,
+        }]
+    }
+    myChart.setOption(option);
+}
+//饼图-8
+var chart_pie_8=function (pdata) {
+    var mychart = echarts.init(document.getElementById('pie-8'));
+    var color_arr = ['#00BD65', '#004181'];
+    var name_arr = ['百分比', '总计'];
+    var ydata = pdata || S_mock.number(40, 60);
+    var seri_data = [];
+    for (const key in name_arr) {
+        if (key == 0) {
+            seri_data.push({
+                value: ydata,
+                label: {
+                    show: true
+                }
+            })
+        } else {
+            seri_data.push({
+                value: 100 - ydata
+            })
+        }
+    }
+    var option = {
+        color: color_arr,
+        title: {
+            text: '楼宇入住率',
+            left: 'center',
+            top: 'top',
+            textStyle: {
+                color: '#fff',
+                fontWeight: 'normal',
+                fontSize: getSize(0.32)
+            }
+        },
+        tooltip: {
+            show:false,
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        legend: {
+            show: false,
+            y: 'bottom',
+            x: 'center',
+            itemWidth: getSize(0.39),
+            itemHeight: getSize(0.17),
+            itemGap: getSize(0),
+            icon: 'roundRect',
+            formatter: function (para) {
+                if (name_arr.indexOf(para) == 0) {
+                    var str = '{a|' + para + '} {b|';
+                    str += ydata[name_arr.indexOf(para)] + '场}';
+                } else if (name_arr.indexOf(para) == 1) {
+                    var str = '{a|' + para + '} {b1|';
+                    str += ydata[name_arr.indexOf(para)] + '场}';
+                } else if (name_arr.indexOf(para) == 2) {
+                    var str = '{a|' + para + '} {b2|';
+                    str += ydata[name_arr.indexOf(para)] + '场}';
+                } else if (name_arr.indexOf(para) == 3) {
+                    var str = '{a|' + para + '} {b3|';
+                    str += ydata[name_arr.indexOf(para)] + '场}';
+                }
+                return str;
+            },
+            textStyle: {
+                padding: [getSize(0.1), getSize(0.2), 0, 0],
+                rich: {
+                    a: {
+                        fontSize: getSize(0.24),
+                        color: '#fff'
+                    },
+                    b: {
+                        fontSize: getSize(0.28),
+                        color: color_arr[0]
+                    },
+                    b1: {
+                        fontSize: getSize(0.28),
+                        color: color_arr[1]
+                    },
+                    b2: {
+                        fontSize: getSize(0.28),
+                        color: color_arr[2]
+                    },
+                    b3: {
+                        fontSize: getSize(0.28),
+                        color: color_arr[3]
+                    },
+                }
+            },
+            orient: 'vertical', //horizontal 水平 vertical 垂直
+            data: name_arr
+        },
+        series: [{
+            name: '',
+            type: 'pie',
+            clockWise: true,
+            center: ['50%', '55%'],
+            radius: ['60%', '70%'],
+            startAngle: 90,
+            label: {
+                show: false,
+                fontSize: 16,
+                fontFamily: 'DIN',
+                position: 'center',
+                formatter: '{a|' + ydata + '}{b|%}',
+                rich: {
+                    a: {
+                        fontSize: getSize(0.48),
+                        color: '#FACC14'
+                    },
+                    b: {
+                        fontSize: getSize(0.48),
+                        color: '#FACC14'
+                    }
+                }
+            },
+            labelLine: {
+                show: true
+            },
+            data: seri_data
+        }]
+    }
+    mychart.setOption(option);
+}
+//仪表盘-1
+var chart_gauge_1 = function (pdata) {
+    var mychart = echarts.init(document.getElementById('gauge-1'));
+    var value_data = pdata || S_mock.number(10, 80);
+    var gradientColor1 = [
+        [
+            1, new echarts.graphic.LinearGradient(
+                0, 0, 1, 0, [{
+                        offset: 0,
+                        color: '#32c25a'
+                    },
+                    {
+                        offset: 0.25,
+                        color: '#8fcc35'
+                    },
+                    {
+                        offset: 0.5,
+                        color: '#facc14'
+                    },
+                    {
+                        offset: 0.75,
+                        color: '#fa8b38'
+                    },
+                    {
+                        offset: 1,
+                        color: '#df4b64'
+                    }
+                ]
+            )
+        ]
+    ]
+    var option = {
+        series: [{
+            name: '内圈小',
+            type: 'gauge',
+            pointer: {
+                show: true,
+                width: getSize(0.1),
+                length: '60%'
+            },
+            itemStyle: {
+                color: '#979797'
+            },
+            radius: '100%',
+            min: 0,
+            max: 100,
+            startAngle: 180,
+            endAngle: 0,
+            splitNumber: 10,
+            axisLine: { // 坐标轴线
+                lineStyle: { // 属性lineStyle控制线条样式
+                    color: gradientColor1,
+                    width: getSize(0.15)
+                }
+
+            },
+            splitLine: { //分隔线样式
+                show: false,
+                length: getSize(0.1)
+            },
+            axisLabel: { //刻度标签
+                show: true,
+                formatter: function (para) {
+                    // console.log(para)
+                    if (para == 0 || para == 50 || para == 100) {
+                        return para;
+                    } else {
+                        return '';
+                    }
+                },
+                distance: getSize(0.2),
+                fontSize: getSize(0.2),
+                color: '#fff'
+            },
+            axisTick: { //刻度样式
+                show: false,
+            },
+            detail: {
+                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                padding: [getSize(0.2), 0, 0, 0],
+                fontWeight: 'bold',
+                formatter: '{a|' + value_data + '}{b| km/h}',
+                textStyle: {
+                    rich: {
+                        a: {
+                            fontSize: getSize(0.44),
+                            color: '#facc14'
+                        },
+                        b: {
+                            fontSize: getSize(0.28),
+                            color: '#facc14'
+                        }
+                    }
+                }
+            },
+            data: [{
+                value: value_data,
+                name: ''
+            }]
+        }]
+    };
+    mychart.setOption(option);
+}
+//仪表盘-2
+var chart_gauge_2 = function (pdata) {
+    var myChart = echarts.init(document.getElementById('gauge-2'));
+    var option = {
+        series: [{
+            name: '空气优良率',
+            type: 'gauge',
+            min: 0,
+            max: 100,
+            center: ['50%', '50%'], // 默认全局居中
+            splitNumber: 2,
+            radius: '95%',
+            startAngle: 200,
+            endAngle: -20,
+            axisLine: { // 坐标轴线
+                lineStyle: { // 属性lineStyle控制线条样式
+                    color: [
+                        [0.25, '#F1505E'],
+                        [0.5, '#EACC16'],
+                        [0.75, '#EACC16'],
+                        [1, '#37C358']
+                    ],
+                    width: getSize(0.2),
+                }
+            },
+            axisLabel: { // 坐标轴小标记
+                show: true,
+                distance: getSize(-0.3),
+                textStyle: { // 属性lineStyle控制线条样式
+                    color: '#fff',
+                    fontSize: getSize(0.25),
+                }
+            },
+            axisTick: { // 坐标轴小标记
+                length: 0, // 属性length控制线长
+                splitNumber: 11,
+                lineStyle: { // 属性lineStyle控制线条样式
+                    color: 'auto',
+                    width: getSize(0.05),
+                }
+            },
+            splitLine: { //橙色分割线-->
+                show: false,
+                length: 25,
+                lineStyle: {
+                    width: 3,
+                    color: '#FCD209',
+                }
+            },
+            itemStyle: { //指针颜色
+                color: '#979797',
+            },
+            pointer: { //指针长短
+                length: '70%',
+                width: getSize(0.1),
+
+            },
+            detail: {
+                formatter: '{value}%',
+                offsetCenter: ['0', '70%'],
+                color: '#20D4E7',
+                fontWeight: 'bold',
+                fontSize: getSize(0.35)
+            },
+            data: [{
+                value: 80
+            }]
+        }, ]
+    };
+    //图表显示
+    myChart.setOption(option)
+}
+//仪表盘-3
+var chart_gauge_3 = function (pdata, pname) {
+    // 初始化实例
+    var gauge_val = {
+        name: pname || "市一医院周边\n泊位指数",
+        value: pdata || S_mock.number(10, 50)
+    };
+    if (gauge_val.value > 1) {
+        var color_pct = parseFloat((gauge_val.value / 100).toFixed(2))
+    } else {
+        var color_pct = parseFloat(gauge_val.value)
+    }
+    var myChart = echarts.init(document.getElementById('gauge-3'));
+    var option = {
+        // backgroundColor: '#043654',
+        series: [{
+                name: '刻度',
+                type: 'gauge',
+                radius: '95%',
+                min: 0,
+                max: 100,
+                splitNumber: 5, //刻度数量
+                startAngle: 0,
+                endAngle: 180,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 1,
+                        color: [
+                            [1, 'rgba(0,0,0,0)']
+                        ]
+                    }
+                }, //仪表盘轴线
+                axisLabel: {
+                    show: false,
+                    color: '#fff',
+                    distance: 10
+                }, //刻度标签。
+                axisTick: {
+                    show: true,
+                    splitNumber: 10,
+                    lineStyle: {
+                        color: '#09C2FF',
+                        width: 1
+                    },
+                    length: -1
+                }, //刻度样式
+                splitLine: {
+                    show: true,
+                    length: -1,
+                    lineStyle: {
+                        color: '#09C2FF',
+                        width: 1
+                    }
+                }, //分隔线样式
+                detail: {
+                    show: false
+                },
+                pointer: {
+                    show: false
+                }
+            },
+            {
+                type: 'gauge',
+                radius: '85%',
+                center: ['50%', '50%'],
+                splitNumber: 0, //刻度数量
+                startAngle: 180,
+                endAngle: 0,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 10,
+                        color: [
+                            [
+                                color_pct, new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0, [{
+                                            offset: 0,
+                                            color: 'rgba(59,150,241,1)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(59,150,241,0.2)'
+                                        }
+                                    ]
+                                )
+                            ],
+                            [
+                                1, 'rgba(65,62,84,0)'
+                            ]
+                        ]
+                    }
+                },
+                //分隔线样式。
+                splitLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                pointer: {
+                    show: false
+                },
+                title: {
+                    show: false,
+                    offsetCenter: [0, '-26%'], // x, y，单位px
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 14
+                    }
+                },
+                //仪表盘详情，用于显示数据。
+                detail: {
+                    show: false,
+                    offsetCenter: [0, '16%'],
+                    color: '#ffffff',
+                    formatter: function (params) {
+                        return params
+                    },
+                    textStyle: {
+                        fontSize: 44
+                    }
+                },
+                data: [{
+                    value: 100
+                }]
+            },
+            {
+                type: 'gauge',
+                radius: '60%',
+                center: ['50%', '50%'],
+                splitNumber: 0, //刻度数量
+                startAngle: 180,
+                endAngle: 0,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        width: 150,
+                        color: [
+                            [
+                                1, new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0, [{
+                                            offset: 0,
+                                            color: '#012242'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: '#01376D'
+                                        }
+                                    ]
+                                )
+                            ]
+                        ]
+                    }
+                },
+                //分隔线样式。
+                splitLine: {
+                    show: false,
+                },
+                axisLabel: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                pointer: {
+                    show: false
+                },
+                title: {
+                    show: true,
+                    offsetCenter: [0, getSize(0.5)], // x, y，单位px
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: getSize(0.24),
+                        lineHeight: getSize(0.35)
+                    }
+                },
+                //仪表盘详情，用于显示数据。
+                detail: {
+                    show: true,
+                    offsetCenter: [0, getSize(-0.2)],
+                    color: '#00FCFF',
+                    formatter: function (params) {
+                        return params
+                    },
+                    textStyle: {
+                        fontSize: getSize(0.3)
+                    }
+                },
+                data: [gauge_val]
+            }
+        ]
+    };
+    //图表显示
+    myChart.setOption(option)
+}
+//水滴图-1
+var chart_water_1 = function (pdata) {
+    var mychart = echarts.init(document.getElementById('water-1'));
+    var value = pdata || 0.7152;
+    var data = [];
+    data.push(value);
+    var option = {
+        series: [{
+            type: 'liquidFill',
+            data: data,
+            radius: '80%',
+            amplitude: '10%',
+            waveLength: '100%',
+            color: '#0090FF',
+            outline: {
+                show: true,
+                borderDistance: 4,
+                itemStyle: {
+                    color: 'transparent',
+                    borderColor: '#0090FF',
+                    borderWidth: 1,
+                    shadowBlur: 0,
+                    shadowColor: ' rgba(255,0,0,1)'
+                }
+            },
+            backgroundStyle: {
+                color: 'transparent'
+            },
+            label: {
+                show: true,
+                formatter: (value * 100) + '%',
+                fontSize: getSize(0.5),
+                color: '#facc14',
+                insideColor: '#facc14',
+                fontWeight: 'normal',
+            },
+            itemStyle: {
+                shadowBlur: 0,
+                color: '#0090FF',
+            }
+        }],
+
+    }
+    mychart.setOption(option);
+}
+//雷达图-1
+var chart_radar_1 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('radar-1'));
+    var xdata = pxdata || ['监测', '年代', '体系', '巡检'];
+    var ydata = pydata || S_mock.array(4, 50, 90);
+    var indicator_arr = [];
+    var avg = (getArrSum(ydata) / ydata.length).toFixed(2);
+    for (const key in xdata) {
+        indicator_arr.push({
+            text: xdata[key],
+            max: 100
+        })
+    }
+    var option = {
+        legend: {
+            show: false,
+        },
+        title: {
+            // text: '总分',
+            subtext: avg,
+            x: 'center',
+            top: '40%',
+            subtextStyle: {
+                color: '#00fff6',
+                fontWeight: 'normal',
+                fontSize: getSize(0.48),
+            }
+        },
+        // tooltip: {},
+        radar: [{
+            center: ['50%', '50%'],
+            radius: '55%',
+            indicator: indicator_arr,
+            startAngle: 90, //起始角度
+            splitNumber: 4, //指示器轴的分割段数。
+            // shape: 'circle',//雷达图绘制类型
+            name: { //雷达图每个指示器名称的配置项。
+                formatter: '{value}',
+                textStyle: {
+                    color: '#fff'
+                },
+                fontSize: getSize(0.3)
+            },
+            nameGap: getSize(0.2),
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#217ed2'
+                }
+            },
+            splitLine: { //坐标轴在 grid 区域中的分隔线
+                lineStyle: {
+                    color: '#217ed2',
+                    width: 1,
+                }
+            },
+            splitArea: { //坐标轴在 grid 区域中的分隔区域，默认不显示
+                show: false,
+                areaStyle: {
+                    color: ['#2c2c2d', '#333334', '#3a3a3b', '#333334']
+                }
+            },
+        }],
+        series: [{
+            name: '雷达图',
+            type: 'radar',
+            data: [{
+                value: ydata,
+                // name: '各项得分',
+                symbol: 'none',
+                type: 'radar',
+                itemStyle: {
+                    normal: {
+                        color: 'rgba(21, 105, 176, 1)'
+                    }
+                },
+                lineStyle: {
+                    normal: {
+                        width: 1,
+                        opacity: 0
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: '#1568b0',
+                        opacity: 0.6
+                    }
+                }
+            }]
+        }]
+    }
+    //图表显示
+    myChart.setOption(option);
+}
+//其他图表-1
+var chart_other_1 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('other-1'));
+    var name_arr = pxdata || ['男', '女'];
+    var perArr = pydata || S_mock.array(2, 1000, 2000);
+    var spirit_1 = 'image://./assets/img/man.png';
+    var spirit_2 = 'image://./assets/img/men.png';
+    var maxData = Math.max.apply(null, perArr);
+    var option = {
+        // title: {
+        //     text: '男女比例',
+        //     x: 'center',
+        //     top: '8%',
+        //     textStyle: {
+        //         fontWeight: 'normal',
+        //         fontSize: getSize(0.18),
+        //         color: '#fff'
+        //     }
+        // },
+        xAxis: {
+            max: maxData,
+            splitLine: {
+                show: false
+            },
+            offset: 10,
+            axisLine: {
+                show: false,
+            },
+            axisLabel: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+        },
+        yAxis: {
+            data: name_arr,
+            inverse: true,
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisLabel: {
+                margin: 10,
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 18
+                }
+            }
+        },
+        grid: {
+            top: '0%',
+            left: '5%',
+            right: '30%',
+            bottom: '5%',
+            containLabel: true
+        },
+        series: [{
+                type: 'pictorialBar',
+                symbolRepeat: 'fixed',
+                symbolMargin: '5%',
+                symbolClip: true,
+                symbolSize: 20,
+                symbolBoundingData: maxData, //这个属性是『指定图形界限的值』。
+                data: [{
+                        value: perArr[0],
+                        symbol: spirit_1,
+                    },
+                    {
+                        value: perArr[1],
+                        symbol: spirit_2,
+                    }
+                ],
+                z: 10
+            },
+            {
+                // full data
+                type: 'pictorialBar',
+                itemStyle: {
+                    normal: {
+                        opacity: 0.1
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: '{c}人',
+                        position: 'right',
+                        offset: [3, 5],
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 18
+                        }
+                    }
+                },
+                animationDuration: 0,
+                symbolRepeat: 'fixed',
+                symbolMargin: '5%',
+                symbolSize: 20,
+                symbolBoundingData: maxData,
+                data: [{
+                        value: perArr[0],
+                        symbol: spirit_1,
+                    },
+                    {
+                        value: perArr[1],
+                        symbol: spirit_2,
+                    }
+                ],
+                z: 5
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+}
+//其他图表-2
+var chart_other_2 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('other-2'));
+    var nameArr = pxdata||['办理', '办结', '退回']
+    var item_data = pydata||S_mock.array(3,100,200)
+    var dataArr = [];
+    for (const key in item_data) {
+        dataArr.push({
+            name: nameArr[key],
+            value: item_data[key]
+        })
+    }
+    var seriesObjs = [];
+    var r = getSize(0.8);
+    var colorArr = ['#5cfea8', '#00ccff', '#fb7075'];
+    var placeHolderStyle = {
+        normal: {
+            label: {
+                show: false,
+                position: 'center'
+            },
+            labelLine: {
+                show: false
+            },
+            color: 'rgba(0, 0, 0, 0)',
+            borderColor: 'rgba(0, 0, 0, 0.1)',
+            borderWidth: getSize(0.1)
+        }
+    }
+    for (var i = 0; i < dataArr.length; i++) {
+        var seriesObj = {
+            name: dataArr[i].name,
+            type: 'pie',
+            clockWise: true,
+            center: ['30%', '55%'],
+            radius: [r - 1 - i * getSize(0.2), r - i * getSize(0.2)],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: false
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    borderWidth: getSize(0.1),
+                    borderColor: colorArr[i],
+                }
+            },
+            hoverAnimation: false,
+            data: [{
+                value: dataArr[i].value / getArrSum(item_data)
+            }, {
+                name: 'invisible',
+                value: 1 - dataArr[i].value / getArrSum(item_data),
+                // value: dataArr[0].value * 4 / 3 - dataArr[i].value,
+                itemStyle: placeHolderStyle
+            }]
+            // data: [{
+            //     value: dataArr[i].value
+            // }, {
+            //     name: 'invisible',
+            //     value: dataArr[0].value * 4 / 3 - dataArr[i].value,
+            //     itemStyle: placeHolderStyle
+            // }]
+        }
+        seriesObjs.push(seriesObj)
+    }
+    var option = {
+        color: colorArr,
+        tooltip: {
+            position: 'top',
+            formatter: '{a}：{d}%'
+        },
+        legend: {
+            y: 'center',
+            right: '15%',
+            itemWidth: getSize(0.25),
+            itemHeight: getSize(0.15),
+            itemGap: getSize(0.15),
+            formatter: function (para) {
+                var str = para + ': ' + dataArr[nameArr.indexOf(para)].value + ' 件';
+                return str;
+            },
+            textStyle: {
+                fontSize: getSize(0.16),
+                color: '#fff'
+            },
+            orient: 'vertical',
+            icon: 'roundRect',
+            data: [dataArr[0].name, dataArr[1].name, dataArr[2].name]
+        },
+        toolbox: {
+            show: false
+        },
+        series: seriesObjs
+    }
+    myChart.setOption(option, true);
+}
 $(function () {
     // 进度条
     $('.progress-item').each(function () {
@@ -1881,1770 +3950,6 @@ $(function () {
                 return trueValue.toFixed(2);
             }
         });
-    })();
-
-
-    //柱形图-7
-    chart_bar_7();
-
-    function chart_bar_7() {
-        var mychart = echarts.init(document.getElementById('bar-7'));
-        var nameArr = [
-            '项目1',
-            '项目2',
-            '项目3',
-            '项目4',
-            '项目5',
-            '项目6',
-            '项目7',
-            '其他'
-        ].reverse();
-        var dataArr = S_mock.array(8,100,200);
-        var option = {
-
-            tooltip: {
-                trigger: 'axis',
-
-            },
-
-            grid: {
-                top: '5%',
-                left: '3%',
-                right: '15%',
-                bottom: '0%',
-                containLabel: true
-            },
-            xAxis: {
-                show: false,
-                type: 'value',
-                boundaryGap: [0, 0.01]
-            },
-            yAxis: {
-                type: 'category',
-                data: nameArr,
-                axisTick: {
-                    show: false
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#02575C",
-                    }
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    textStyle: {
-                        fontSize: getSize(0.3),
-                        color: '#fff',
-                    },
-                },
-            },
-            series: [{
-                name: '',
-                type: 'bar',
-                label: {
-                    show: true,
-                    position: 'right',
-                    // formatter: '{c}件',
-                    formatter: function (para) {
-                        var pct = ((dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr))* 100).toFixed(2) ;
-                        return pct + '%  ' + para.data + '件'
-                    },
-                    color: '#14D7C1',
-                    fontSize: getSize(0.35)
-                },
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 1, 0,
-                            [{
-                                    offset: 0,
-                                    color: 'rgba(26, 92, 142, 0.16)'
-                                },
-                                {
-                                    offset: 1,
-                                    color: 'rgba(19, 218, 195, 1)'
-                                }
-                            ]
-                        ),
-                        barBorderRadius: [0, 8, 8, 0]
-                    },
-                },
-                barWidth: '35%',
-                data: dataArr
-            }, ]
-        };
-        mychart.clear();
-        mychart.setOption(option);
-    }
-    //柱形图-8
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-8'));
-        var xdata = ['11-20', '11-21', '11-22', '11-23', '11-24', '11-25', '11-26', '11-27', '11-28', '11-29', '11-30', '11-31', '12-01', '12-02', '12-03', '12-04'];
-        var ydata = [3.1, 2.8, 3.3, 3.3, 2.8, 3.0, 3.2, 2.6, 3.0, 3.1, 2.8, 3.0, 3.1, 2.8, 3.0, 2.9];
-        // var title = '近15日市一周边泊位指数趋势';
-        var max = Math.max.apply(null, ydata);
-        var min = Math.min.apply(null, ydata);
-        var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            // title: {
-            //     show: false,
-            //     text: title,
-            //     left: 'center',
-            //     textStyle: {
-            //         color: '#fff',
-            //         fontSize: getSize(.26),
-            //         fontWeight: 'normal'
-            //     }
-            // },
-            grid: {
-                left: '0%',
-                top: "10%",
-                right: '4%',
-                bottom: '5%',
-                containLabel: true, //grid 区域是否包含坐标轴的刻度标签。
-            },
-            xAxis: [{
-                nameLocation: "start",
-                nameTextStyle: {
-                    color: "#fff",
-                },
-                nameGap: '1',
-                type: 'category',
-                data: xdata,
-                axisLabel: {
-                    interval: 1,
-                    color: "#fff",
-                    fontSize: getSize(0.2),
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                },
-            }],
-            yAxis: [{
-                // show:false,
-                type: 'value',
-                name: '',
-                nameTextStyle: {
-                    color: "#fff",
-                    fontSize: getSize(0.24),
-                },
-                axisLabel: {
-                    show: true,
-                    interval: 'auto',
-                    color: "#fff",
-                    fontSize: getSize(0.2),
-                },
-                splitNumber: 2,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#10447C',
-                        opacity: 1,
-                        width: 1,
-                        type: 'solid',
-                    }
-                },
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: "#579dff",
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-            }],
-            series: [{
-                type: 'bar',
-                barGap: 0,
-                barWidth: "40%",
-                markLine: {
-                    label: {
-                        show: true,
-                        // formatter: '',
-                        formatter: 'avg: {c}',
-                        position: 'end',
-                        padding: [-20, 0, 0, -60]
-                    },
-                    silent: true,
-                    symbol: 'none',
-                    lineStyle: {
-                        color: '#00F6FF'
-                    },
-                    data: [{
-                        name: '平均线',
-                        // 支持 'average', 'min', 'max'
-                        type: 'average'
-                    }]
-                },
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [{
-                                    offset: 0,
-                                    color: 'rgba(0,246,255,1)'
-                                },
-                                {
-                                    offset: 1,
-                                    color: 'rgba(0,246,255,0.1)'
-                                }
-                            ]
-                        ),
-                        barBorderRadius: [4, 4, 0, 0]
-                    },
-                },
-                yAxisIndex: 0,
-                // data: ydata
-                data: function () {
-                    var itemArr = [],
-                        item;
-                    var max_index = ydata.indexOf(max);
-                    var min_index = ydata.indexOf(min);
-                    for (var i = 0; i < ydata.length; i++) {
-                        if (i == max_index) {
-                            item = {
-                                value: ydata[i],
-                                label: {
-                                    show: true,
-                                    position: 'insideLeft',
-                                    color: '#fff',
-                                    formatter: '{b}\nmax:{c}',
-                                    backgroundColor: 'rgba(1,60,119,0.86)',
-                                    padding: [5, 5, 5, 5]
-                                    // zlevel:10
-                                    // padding:[20,0,0,0]
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        color: new echarts.graphic.LinearGradient(
-                                            0, 0, 0, 1,
-                                            [{
-                                                    offset: 0,
-                                                    color: 'rgba(239, 72, 100, 1)'
-                                                },
-                                                {
-                                                    offset: 1,
-                                                    color: 'rgba(0,246,255,0.1)'
-                                                }
-                                            ]
-                                        ),
-                                        barBorderRadius: [4, 4, 0, 0]
-                                    },
-                                },
-                            };
-                        } else if (i == min_index) {
-                            item = {
-                                value: ydata[i],
-                                label: {
-                                    show: true,
-                                    position: 'insideLeft',
-                                    color: '#fff',
-                                    formatter: '{b}\nmin:{c}',
-                                    backgroundColor: 'rgba(1,60,119,0.86)',
-                                    padding: [5, 5, 5, 5]
-                                },
-                                zlevel: 100,
-                                emphasis: {
-                                    label: {
-                                        show: true
-                                    }
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        color: new echarts.graphic.LinearGradient(
-                                            0, 0, 0, 1,
-                                            [{
-                                                    offset: 0,
-                                                    color: 'rgba(0, 205, 96, 1)'
-                                                },
-                                                {
-                                                    offset: 1,
-                                                    color: 'rgba(0,246,255,0.1)'
-                                                }
-                                            ]
-                                        ),
-                                        barBorderRadius: [4, 4, 0, 0]
-                                    },
-                                },
-                            };
-                        } else {
-                            item = {
-                                value: ydata[i],
-                                label: {
-                                    show: false,
-                                    color: '#fff'
-                                },
-                                itemStyle: {
-                                    normal: {
-
-                                    }
-                                }
-                            };
-                        }
-                        itemArr.push(item);
-                    }
-                    return itemArr;
-                }()
-            }, ]
-        };
-        myChart.setOption(option);
-
-    })();
-    //柱形图-9
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-9'));
-        var nameArr = ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
-        var dataArr = [2000, 1500, 1400, 1300, 1200, 1100, 1000];
-        var total = 0;
-        for (var i = 0; i < dataArr.length; i++) {
-            total += dataArr[i];
-        }
-        var option = {
-            grid: {
-                top: '8%',
-                bottom: '8%',
-                left: '5%',
-                right: '7%',
-                containLabel: true,
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow',
-                    lineStyle: {
-                        color: '#39627d'
-                    }
-                },
-                formatter: '{b} {c}家'
-            },
-            yAxis: [{
-                type: 'category',
-                zlevel: 1,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#00ffff'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    fontSize: getSize(0.28),
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-                inverse: true,
-                data: nameArr
-            }, {
-                type: 'category',
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: false,
-                    lineStyle: {
-                        color: '#00ffff'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    fontSize: getSize(0.28),
-                    formatter: function (para) {
-                        var value = dataArr[nameArr.indexOf(para)];
-                        var percent = (value / total * 100).toFixed(0) + '%';
-                        return value + '家  ' + percent;
-                    },
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-                inverse: true,
-                data: nameArr
-            }],
-            xAxis: [{
-                type: 'value',
-                boundaryGap: true,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: {
-                    show: false,
-                    lineStyle: {
-                        color: '#fff'
-                    },
-                },
-                axisLabel: {
-                    show: false,
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-            }],
-            series: [{
-                name: '',
-                type: 'bar',
-                barGap: 0,
-                barWidth: '30%',
-                label: {
-                    show: true,
-                    position: 'insideRight',
-                    // formatter: '{c}件',
-                    formatter: function (para) {
-                        var pct = (dataArr[nameArr.indexOf(para.name)] / getArrSum(dataArr) * 100).toFixed(2);
-                        return pct + '%  '
-                    },
-                    color: '#fff',
-                    fontSize: getSize(0.2)
-                },
-                itemStyle: {
-                    barBorderRadius: getSize(0.05),
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                            offset: 0, //// 0% 处的颜色
-                            color: 'rgba(49,150,250,0.1)'
-                        },
-                        {
-                            offset: 1,
-                            color: 'rgba(49,150,250,1)'
-                        }
-                    ], false),
-                },
-                data: dataArr
-            }]
-        };
-        myChart.setOption(option);
-
-    })();
-    //柱形图-10
-    !(function () {
-        var myChart = echarts.init(document.getElementById('bar-10'));
-        var nameArr = ["种子轮企业", "天使轮企业", "A轮企业", "B轮企业", "C轮企业", "D轮企业", "E及以上轮企业"];
-        var dataArr = [2000, 1500, 1400, 1300, 1200, 1100, 1000];
-        var dataArr2 = [500, 1500, 1400, 1300, 1200, 1100, 1000];
-        var total = 0;
-        for (var i = 0; i < dataArr.length; i++) {
-            total += dataArr[i];
-        }
-        var option = {
-            grid: {
-                top: '8%',
-                bottom: '8%',
-                left: '5%',
-                right: '7%',
-                containLabel: true,
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow',
-                    lineStyle: {
-                        color: '#39627d'
-                    }
-                },
-                // formatter: '{b} {c}家'
-                formatter: '{b0}: <br /> {a0}:{c0}人<br />{a1}:{c1}人'
-            },
-            legend: {
-                textStyle: {
-                    color: '#fff'
-                },
-                data: [
-                    '学生', '教职工'
-                ]
-            },
-            yAxis: [{
-                type: 'category',
-                zlevel: 1,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: true,
-                    lineStyle: {
-                        color: '#00ffff'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    fontSize: getSize(0.28),
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-                inverse: true,
-                data: nameArr
-            }, {
-                type: 'category',
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: { //坐标轴轴线相关设置。数学上的x轴
-                    show: false,
-                    lineStyle: {
-                        color: '#00ffff'
-                    },
-                },
-                axisLabel: { //坐标轴刻度标签的相关设置
-                    fontSize: getSize(0.28),
-                    formatter: function (para) {
-                        var value = dataArr[nameArr.indexOf(para)];
-                        var value2 = dataArr2[nameArr.indexOf(para)];
-                        return value + '人 / ' + value2 + '人';
-                    },
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-                inverse: true,
-                data: nameArr
-            }],
-            xAxis: [{
-                type: 'value',
-                boundaryGap: true,
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    show: false,
-                    lineStyle: {
-                        color: '#6b85a3'
-                    }
-                },
-                axisLine: {
-                    show: false,
-                    lineStyle: {
-                        color: '#fff'
-                    },
-                },
-                axisLabel: {
-                    show: false,
-                    color: '#fff',
-                },
-                axisTick: {
-                    show: false,
-                },
-            }],
-            series: [{
-                name: '学生',
-                type: 'bar',
-                barGap: 0,
-                stack: 'a',
-                barWidth: '30%',
-                itemStyle: {
-                    // barBorderRadius: getSize(0.05),
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                            offset: 0, //// 0% 处的颜色
-                            color: '#00CCFF'
-                        },
-                        {
-                            offset: 1,
-                            color: '#00CCFF'
-                        }
-                    ], false),
-                },
-                data: dataArr
-            }, {
-                name: '教职工',
-                type: 'bar',
-                barGap: 0,
-                stack: 'a',
-                barWidth: '30%',
-                itemStyle: {
-                    // barBorderRadius: getSize(0.05),
-                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                            offset: 0, //// 0% 处的颜色
-                            color: '#0090FF'
-                        },
-                        {
-                            offset: 1,
-                            color: '#0090FF'
-                        }
-                    ], false),
-                },
-                data: dataArr2
-            }]
-        };
-        myChart.setOption(option);
-
-    })();
-
-    //饼图-2
-    !(function () {
-        var colorArr = ['#FACC14', '#F44660', '#00FF00', '#9696FF', '#3196FA'];
-        var valueArr = [92, 20, 10, 2, 1];
-        var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5'];
-        var dataArr = [];
-        var legendArr = [];
-        for (var i = 0; i < nameArr.length; i++) {
-            dataArr.push({
-                name: nameArr[i],
-                value: valueArr[i]
-            });
-            legendArr.push({
-                icon: 'roundRect',
-                name: nameArr[i],
-            });
-        }
-        var mychart = echarts.init(document.getElementById('pie-2'));
-        var option = {
-            color: colorArr,
-            title: {
-                left: '40%',
-                top: '25%',
-                text: ' 125\n  项',
-                textStyle: {
-                    fontSize: getSize(0.6),
-                    fontWeight: 'normal',
-                    color: '#facc14',
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)"
-            },
-            legend: {
-                bottom: '0%',
-                width: '60%',
-                height: '30%',
-                itemWidth: getSize(0.2),
-                itemHeight: getSize(0.16),
-                itemGap: getSize(0.16),
-                formatter: function (para) {
-                    var str = '{a|' + para + '} {b|';
-                    str += valueArr[nameArr.indexOf(para)] + '}  {c|项}';
-                    if (para = '其他') {
-                        str = str.replace(/其他/, '其他       ');
-                    }
-                    return str;
-                },
-                textStyle: {
-                    padding: [getSize(0.1), getSize(0.2), 0, 0],
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.3),
-                            color: '#fff'
-                        },
-                        b: {
-                            fontSize: getSize(0.3),
-                            color: '#facc14'
-                        },
-                        c: {
-                            fontSize: getSize(0.3),
-                            color: '#facc14'
-                        }
-                    }
-                },
-                orient: 'vertical',
-                data: legendArr
-            },
-            series: [{
-                name: '非遗代表性项目数',
-                type: 'pie',
-                clockWise: true,
-                center: ['50%', '35%'],
-                radius: ['45%', '55%'],
-                startAngle: 90,
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false,
-                            fontSize: 16,
-                            fontFamily: 'DIN',
-                            formatter: '{c}',
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    }
-                },
-                data: dataArr
-            }]
-        }
-        mychart.setOption(option);
-    })();
-    //饼图-3
-    !(function () {
-        var colorArr = ['#E4FF00', '#F44660', '#FF9600', '#9696FF', '#3196FA', '#00D564', '#00FFFC'];
-        var valueArr = [750, 780, 500, 10500, 800, 450, 300];
-        var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7'];
-        var dataArr = [];
-        var legendArr = [];
-        for (var i = 0; i < nameArr.length; i++) {
-            dataArr.push({
-                name: nameArr[i],
-                value: valueArr[i]
-            });
-            legendArr.push({
-                icon: 'rect',
-                name: nameArr[i],
-            });
-        }
-        var mychart = echarts.init(document.getElementById('pie-3'));
-        var option = {
-            color: colorArr,
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} 米"
-            },
-            legend: {
-                y: 'center',
-                right: '0%',
-                itemWidth: getSize(0.24),
-                itemHeight: getSize(0.24),
-                itemGap: getSize(0.1),
-                textStyle: {
-                    padding: [getSize(0.1), 0, 0, 0],
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.28),
-                            color: '#fff'
-                        },
-                        b: {
-                            fontSize: getSize(0.24),
-                            color: '#facc14'
-                        },
-                        c: {
-                            fontSize: getSize(0.24),
-                            color: '#facc14'
-                        }
-                    }
-                },
-                formatter: function (para) {
-                    var str = '{a|' + para + '} {b|';
-                    str += valueArr[nameArr.indexOf(para)] + '}  {c|米}';
-                    if (para = '其他') {
-                        str = str.replace(/其他/, '其他       ');
-                    }
-                    return str;
-                },
-                orient: 'vertical',
-                data: legendArr
-            },
-            series: [{
-                name: '特色街区长度',
-                type: 'pie',
-                clockWise: false,
-                center: ['25%', '50%'],
-                radius: ['0%', '60%'],
-                startAngle: 90,
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false,
-                            fontSize: 16,
-                            fontFamily: 'DIN',
-                            formatter: '{c}',
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    }
-                },
-                data: dataArr
-            }]
-        }
-        mychart.setOption(option);
-    })();
-    //饼图-4
-    !(function () {
-        var colorArr = ['#ffa800', '#00ffb4', '#fffc00', '#00f0ff', '#f12961', '#00bc2c', '#8882ff', '#ff7200', '#3196fa'];
-        var valueArr = [900, 900, 900, 900, 900, 900, 900, 900, 900];
-        var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5', '项目6', '项目7', '项目8', '项目9'];
-        var dataArr = [];
-        var legendArr = [];
-        for (var i = 0; i < nameArr.length; i++) {
-            dataArr.push({
-                name: nameArr[i],
-                value: valueArr[i]
-            });
-            legendArr.push({
-                icon: 'rect',
-                name: nameArr[i],
-            });
-        }
-        var mychart = echarts.init(document.getElementById('pie-4'));
-        var option = {
-            color: colorArr,
-            title: {
-                left: '35%',
-                top: '25%',
-                text: ' 已处理:8613个\n\n 未处理:8613个',
-                textStyle: {
-                    fontSize: getSize(0.25),
-                    fontWeight: 'normal',
-                    color: '#facc14'
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)"
-            },
-            legend: {
-                y: 'bottom',
-                right: '10%',
-                itemWidth: getSize(0.3),
-                // itemHeight: getSize(0.2),
-                itemGap: getSize(0.4),
-                formatter: function (para) {
-                    var str = '{a|' + para + '}';
-                    // str += valueArr[nameArr.indexOf(para)] + '}';
-                    if (para = '其他') {
-                        str = str.replace(/其他/, '其他       ');
-                    }
-                    return str;
-                },
-                textStyle: {
-                    padding: [0, 0, 0, 0],
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.3),
-                            color: '#fff'
-                        },
-                        b: {
-                            fontSize: getSize(0.3),
-                            color: '#facc14'
-                        },
-                        c: {
-                            fontSize: getSize(0.3),
-                            color: '#facc14'
-                        }
-                    }
-                },
-                orient: 'horizontal',
-                data: legendArr
-            },
-            series: [{
-                name: '学校总数',
-                type: 'pie',
-                clockWise: true,
-                center: ['50%', '30%'],
-                radius: ['45%', '55%'],
-                startAngle: 90,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: true,
-                        formatter: '{d}%',
-                        textStyle: {
-                            fontSize: getSize(.3),
-                            fontWeight: 'bold',
-                            padding: [0, 0, getSize(1), 0]
-                        }
-                    }
-                },
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false,
-                            fontSize: 16,
-                            fontFamily: 'DIN',
-                            formatter: '{c}',
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    }
-                },
-                data: dataArr
-            }]
-        }
-        mychart.setOption(option);
-    })();
-    //饼图-5
-    !(function () {
-        var colorArr = ['#FFA800', '#3196FA'];
-        var valueArr = [3349, 140721];
-        var nameArr = ['项目1', '项目2']
-        var dataArr = [];
-        var legendArr = [];
-        for (var i = 0; i < nameArr.length; i++) {
-            dataArr.push({
-                name: nameArr[i],
-                value: valueArr[i]
-            });
-            legendArr.push({
-                icon: 'rect',
-                name: nameArr[i],
-            });
-        }
-        var mychart = echarts.init(document.getElementById('pie-5'));
-        var option = {
-            color: colorArr,
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}元)"
-            },
-            legend: {
-                y: 'center',
-                right: '15%',
-                itemWidth: getSize(0.4),
-                itemHeight: getSize(0.24),
-                itemGap: getSize(0.1),
-                textStyle: {
-                    padding: [getSize(0.1), 0, 0, 0],
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.28),
-                            color: '#fff'
-                        },
-                        b: {
-                            fontSize: getSize(0.24),
-                            color: '#facc14'
-                        },
-                        c: {
-                            fontSize: getSize(0.24),
-                            color: '#facc14'
-                        }
-                    }
-                },
-                formatter: function (para) {
-                    var str = '{a|' + para + '} {b|';
-                    str += valueArr[nameArr.indexOf(para)] + '}  {c|元}';
-                    if (para = '其他') {
-                        str = str.replace(/其他/, '其他       ');
-                    }
-                    return str;
-                },
-                orient: 'vertical',
-                data: legendArr
-            },
-            series: [{
-                name: '累计未支付金额和履约金额占比',
-                type: 'pie',
-                clockWise: false,
-                center: ['30%', '55%'],
-                radius: ['0%', '60%'],
-                startAngle: 90,
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: true,
-                            fontSize: 16,
-                            fontFamily: 'DIN',
-                            // formatter: '{c}',
-                            formatter: '{d}%',
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    }
-                },
-                data: dataArr
-            }]
-        }
-        mychart.setOption(option);
-    })();
-
-    //饼图-6
-    chart_pie_6();
-
-    function chart_pie_6() {
-        var colorArr = ['#3196FA', '#BB9AFF', '#00D564', '#FFCC00', '#FF506D'];
-        var valueArr = [1200, 1200, 1200, 1200, 1200];
-        var nameArr = ['项目1', '项目2', '项目3', '项目4', '项目5']
-        var dataArr = [];
-        var legendArr = [];
-        for (var i = 0; i < nameArr.length; i++) {
-            if (i === 0) {
-                dataArr.push({
-                    name: nameArr[i],
-                    value: valueArr[i],
-                    label: {
-                        show: true
-                    }
-                });
-                legendArr.push({
-                    icon: 'roundRect',
-                    name: nameArr[i],
-                });
-            } else {
-                dataArr.push({
-                    name: nameArr[i],
-                    value: valueArr[i]
-                });
-                legendArr.push({
-                    icon: 'roundRect',
-                    name: nameArr[i],
-                });
-            }
-
-        }
-        var mychart = echarts.init(document.getElementById('pie-6'));
-        var option = {
-            color: colorArr,
-            // title: {
-            //     left: '20%',
-            //     top: '45%',
-            //     text: ' 42191\n    人',
-            //     textStyle: {
-            //         fontSize: getSize(0.35),
-            //         fontWeight: 'normal',
-            //         color: '#facc14',
-            //     },
-            // },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{b}: {c}件 ({d}%)"
-            },
-            legend: {
-                y: 'center',
-                right: '0%',
-                itemWidth: getSize(0.24),
-                itemHeight: getSize(0.14),
-                itemGap: getSize(0.16),
-                formatter: function (para) {
-                    var pct = (valueArr[nameArr.indexOf(para)] / getArrSum(valueArr) * 100).toFixed(2);
-                    var str = '{a|' + para + '}';
-                    if (nameArr.indexOf(para) === 0) {
-                        str += '{b|' + pct + '%}' + '{b1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
-                    } else if (nameArr.indexOf(para) === 1) {
-                        str += '{c|' + pct + '%}' + '{c1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
-                    } else if (nameArr.indexOf(para) === 2) {
-                        str += '{d|' + pct + '%}' + '{d1|' + valueArr[nameArr.indexOf(para)] + ' 件}';
-                    } else if (nameArr.indexOf(para) === 3) {
-                        str += '{e|' + pct + '%}' + '{e|' + valueArr[nameArr.indexOf(para)] + ' 件}';
-                    } else if (nameArr.indexOf(para) === 4) {
-                        str += '{f|' + pct + '%}' + '{f|' + valueArr[nameArr.indexOf(para)] + ' 件}';
-                    }
-                    return str;
-                },
-                textStyle: {
-                    rich: {
-                        a: {
-                            width: getSize(1.4),
-                            // padding: [0, 5, 0, 0],
-                            fontSize: getSize(0.24),
-                            color: '#fff'
-                        },
-                        b: {
-                            width: getSize(1.2),
-                            fontSize: getSize(0.24),
-                            color: colorArr[0]
-                        },
-                        b1: {
-                            width: getSize(1),
-                            fontSize: getSize(0.24),
-                            color: colorArr[0]
-                        },
-                        c: {
-                            width: getSize(1.2),
-                            fontSize: getSize(0.24),
-                            color: colorArr[1]
-                        },
-                        c1: {
-                            width: getSize(1),
-                            fontSize: getSize(0.24),
-                            color: colorArr[1]
-                        },
-                        d: {
-                            width: getSize(1.2),
-                            fontSize: getSize(0.24),
-                            color: colorArr[2]
-                        },
-                        d1: {
-                            width: getSize(1),
-                            fontSize: getSize(0.24),
-                            color: colorArr[2]
-                        },
-                        e: {
-                            width: getSize(1.2),
-                            fontSize: getSize(0.24),
-                            color: colorArr[3]
-                        },
-                        e1: {
-                            width: getSize(1),
-                            fontSize: getSize(0.24),
-                            color: colorArr[3]
-                        },
-                        f: {
-                            width: getSize(1.2),
-                            fontSize: getSize(0.24),
-                            color: colorArr[4]
-                        },
-                        f1: {
-                            width: getSize(1),
-                            fontSize: getSize(0.24),
-                            color: colorArr[4]
-                        }
-                    }
-                },
-                orient: 'vertical',
-                data: legendArr
-            },
-            series: [{
-                name: '',
-                type: 'pie',
-                clockWise: true,
-                center: ['30%', '55%'],
-                radius: ['70%', '90%'],
-                startAngle: 90,
-                label: {
-                    show: false,
-                    position: 'center',
-                    formatter: '{a|总量}\n{b|9316}',
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.26),
-                            padding: [10, 0, 0, 0],
-                            color: '#fff'
-                        },
-                        b: {
-                            fontSize: getSize(0.43),
-                            color: '#3196fa'
-                        }
-                    }
-                },
-                data: dataArr
-            }]
-        }
-        mychart.clear();
-        mychart.setOption(option);
-    }
-
-    //饼图-7
-    void(function () {
-        var myChart = echarts.init(document.getElementById('pie-7'));
-        var colorArr = ['#00ff4e', '#ffa800', '#3196fa'];
-        var dataArr = [];
-        var legendArr = [];
-        var nameArr = ['在建项目', '开工项目', '竣工项目'];
-        var valueArr = [46, 23, 31];
-        for (var i = 0; i < nameArr.length; i++) {
-            if (i === 0) {
-                dataArr.push({
-                    name: nameArr[i],
-                    value: valueArr[i],
-                    label: {
-                        show: true
-                    }
-                });
-            } else {
-                dataArr.push({
-                    name: nameArr[i],
-                    value: valueArr[i],
-                });
-            }
-
-            legendArr.push({
-                icon: 'roundRect',
-                name: nameArr[i]
-            });
-        }
-        var option = {
-            color: colorArr,
-            title: {
-                text: '项目总数量',
-                x: 'center',
-                top: '0%',
-                textStyle: {
-                    fontWeight: 'normal',
-                    fontSize: getSize(0.32),
-                    color: '#fff'
-                }
-            },
-            legend: {
-                top: '30%',
-                right: '2%',
-                itemWidth: getSize(0.34),
-                itemHeight: getSize(0.27),
-                itemGap: getSize(0.2),
-                textStyle: {
-                    fontSize: getSize(0.24),
-                    color: '#fff'
-                },
-                orient: 'vertical',
-                data: legendArr
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b}: {c} ({d}%)",
-            },
-            series: [{
-                name: '建设工程',
-                type: 'pie',
-                clockWise: true,
-                radius: ['40%', '55%'],
-                center: ['35%', '52%'],
-                startAngle: 90,
-                label: {
-                    show: false,
-                    position: 'center',
-                    formatter: '{a|40%}\n{b|在建}',
-                    rich: {
-                        a: {
-                            fontSize: getSize(0.44),
-                            color: '#00ff4e'
-                        },
-                        b: {
-                            fontSize: getSize(0.24),
-                            color: '#fff'
-                        }
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: dataArr,
-            }]
-        }
-        myChart.setOption(option);
-    })();
-
-    //仪表盘-1
-    !(function () {
-        var mychart = echarts.init(document.getElementById('gauge-1'));
-        var gradientColor1 = [
-            [
-                1, new echarts.graphic.LinearGradient(
-                    0, 0, 1, 0, [{
-                            offset: 0,
-                            color: '#32c25a'
-                        },
-                        {
-                            offset: 0.25,
-                            color: '#8fcc35'
-                        },
-                        {
-                            offset: 0.5,
-                            color: '#facc14'
-                        },
-                        {
-                            offset: 0.75,
-                            color: '#fa8b38'
-                        },
-                        {
-                            offset: 1,
-                            color: '#df4b64'
-                        }
-                    ]
-                )
-            ]
-        ]
-        var option = {
-            series: [{
-                name: '内圈小',
-                type: 'gauge',
-                pointer: {
-                    show: true,
-                    width: getSize(0.1),
-                    length: '60%'
-                },
-                itemStyle: {
-                    color: '#979797'
-                },
-                radius: '100%',
-                min: 0,
-                max: 100,
-                startAngle: 180,
-                endAngle: 0,
-                splitNumber: 10,
-                axisLine: { // 坐标轴线
-                    lineStyle: { // 属性lineStyle控制线条样式
-                        color: gradientColor1,
-                        width: getSize(0.15)
-                    }
-
-                },
-                splitLine: { //分隔线样式
-                    show: false,
-                    length: getSize(0.1)
-                },
-                axisLabel: { //刻度标签
-                    show: true,
-                    formatter: function (para) {
-                        // console.log(para)
-                        if (para == 0 || para == 50 || para == 100) {
-                            return para;
-                        } else {
-                            return '';
-                        }
-                    },
-                    distance: getSize(0.2),
-                    fontSize: getSize(0.2),
-                    color: '#fff'
-                },
-                axisTick: { //刻度样式
-                    show: false,
-                },
-                detail: {
-                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    padding: [getSize(0.2), 0, 0, 0],
-                    fontWeight: 'bold',
-                    formatter: '{a|22.45}{b| km/h}',
-                    textStyle: {
-                        rich: {
-                            a: {
-                                fontSize: getSize(0.44),
-                                color: '#facc14'
-                            },
-                            b: {
-                                fontSize: getSize(0.28),
-                                color: '#facc14'
-                            }
-                        }
-                    }
-                },
-                data: [{
-                    value: '60',
-                    name: ''
-                }]
-            }]
-        };
-        mychart.setOption(option);
-    })();
-    //仪表盘-2
-    !(function () {
-        // 初始化实例
-        var myChart = echarts.init(document.getElementById('gauge-2'));
-        var option = {
-            series: [{
-                name: '空气优良率',
-                type: 'gauge',
-                min: 0,
-                max: 100,
-                center: ['50%', '50%'], // 默认全局居中
-                splitNumber: 2,
-                radius: '95%',
-                startAngle: 200,
-                endAngle: -20,
-                axisLine: { // 坐标轴线
-                    lineStyle: { // 属性lineStyle控制线条样式
-                        color: [
-                            [0.25, '#F1505E'],
-                            [0.5, '#EACC16'],
-                            [0.75, '#EACC16'],
-                            [1, '#37C358']
-                        ],
-                        width: getSize(0.2),
-                    }
-                },
-                axisLabel: { // 坐标轴小标记
-                    show: true,
-                    distance: getSize(-0.3),
-                    textStyle: { // 属性lineStyle控制线条样式
-                        color: '#fff',
-                        fontSize: getSize(0.25),
-                    }
-                },
-                axisTick: { // 坐标轴小标记
-                    length: 0, // 属性length控制线长
-                    splitNumber: 11,
-                    lineStyle: { // 属性lineStyle控制线条样式
-                        color: 'auto',
-                        width: getSize(0.05),
-                    }
-                },
-                splitLine: { //橙色分割线-->
-                    show: false,
-                    length: 25,
-                    lineStyle: {
-                        width: 3,
-                        color: '#FCD209',
-                    }
-                },
-                itemStyle: { //指针颜色
-                    color: '#979797',
-                },
-                pointer: { //指针长短
-                    length: '70%',
-                    width: getSize(0.1),
-
-                },
-                detail: {
-                    formatter: '{value}%',
-                    offsetCenter: ['0', '70%'],
-                    color: '#20D4E7',
-                    fontWeight: 'bold',
-                    fontSize: getSize(0.35)
-                },
-                data: [{
-                    value: 80
-                }]
-            }, ]
-        };
-        //图表显示
-        myChart.setOption(option)
-    })();
-    //仪表盘-3
-    !(function () {
-        // 初始化实例
-        var gauge_val = {
-            name: "市一医院周边\n泊位指数",
-            value: 50.26
-        };
-        if (gauge_val.value > 1) {
-            var color_pct = parseFloat((gauge_val.value / 100).toFixed(2))
-        } else {
-            var color_pct = parseFloat(gauge_val.value)
-        }
-        var myChart = echarts.init(document.getElementById('gauge-3'));
-        var option = {
-            // backgroundColor: '#043654',
-            series: [{
-                    name: '刻度',
-                    type: 'gauge',
-                    radius: '95%',
-                    min: 0,
-                    max: 100,
-                    splitNumber: 5, //刻度数量
-                    startAngle: 0,
-                    endAngle: 180,
-                    axisLine: {
-                        show: true,
-                        lineStyle: {
-                            width: 1,
-                            color: [
-                                [1, 'rgba(0,0,0,0)']
-                            ]
-                        }
-                    }, //仪表盘轴线
-                    axisLabel: {
-                        show: false,
-                        color: '#fff',
-                        distance: 10
-                    }, //刻度标签。
-                    axisTick: {
-                        show: true,
-                        splitNumber: 10,
-                        lineStyle: {
-                            color: '#09C2FF',
-                            width: 1
-                        },
-                        length: -1
-                    }, //刻度样式
-                    splitLine: {
-                        show: true,
-                        length: -1,
-                        lineStyle: {
-                            color: '#09C2FF',
-                            width: 1
-                        }
-                    }, //分隔线样式
-                    detail: {
-                        show: false
-                    },
-                    pointer: {
-                        show: false
-                    }
-                },
-                {
-                    type: 'gauge',
-                    radius: '85%',
-                    center: ['50%', '50%'],
-                    splitNumber: 0, //刻度数量
-                    startAngle: 180,
-                    endAngle: 0,
-                    axisLine: {
-                        show: true,
-                        lineStyle: {
-                            width: 10,
-                            color: [
-                                [
-                                    color_pct, new echarts.graphic.LinearGradient(
-                                        0, 0, 1, 0, [{
-                                                offset: 0,
-                                                color: 'rgba(59,150,241,1)'
-                                            },
-                                            {
-                                                offset: 1,
-                                                color: 'rgba(59,150,241,0.2)'
-                                            }
-                                        ]
-                                    )
-                                ],
-                                [
-                                    1, 'rgba(65,62,84,0)'
-                                ]
-                            ]
-                        }
-                    },
-                    //分隔线样式。
-                    splitLine: {
-                        show: false,
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    pointer: {
-                        show: false
-                    },
-                    title: {
-                        show: false,
-                        offsetCenter: [0, '-26%'], // x, y，单位px
-                        textStyle: {
-                            color: '#fff',
-                            fontSize: 14
-                        }
-                    },
-                    //仪表盘详情，用于显示数据。
-                    detail: {
-                        show: false,
-                        offsetCenter: [0, '16%'],
-                        color: '#ffffff',
-                        formatter: function (params) {
-                            return params
-                        },
-                        textStyle: {
-                            fontSize: 44
-                        }
-                    },
-                    data: [{
-                        value: 100
-                    }]
-                },
-                {
-                    type: 'gauge',
-                    radius: '60%',
-                    center: ['50%', '50%'],
-                    splitNumber: 0, //刻度数量
-                    startAngle: 180,
-                    endAngle: 0,
-                    axisLine: {
-                        show: true,
-                        lineStyle: {
-                            width: 150,
-                            color: [
-                                [
-                                    1, new echarts.graphic.LinearGradient(
-                                        0, 0, 1, 0, [{
-                                                offset: 0,
-                                                color: '#012242'
-                                            },
-                                            {
-                                                offset: 1,
-                                                color: '#01376D'
-                                            }
-                                        ]
-                                    )
-                                ]
-                            ]
-                        }
-                    },
-                    //分隔线样式。
-                    splitLine: {
-                        show: false,
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    pointer: {
-                        show: false
-                    },
-                    title: {
-                        show: true,
-                        offsetCenter: [0, getSize(0.5)], // x, y，单位px
-                        textStyle: {
-                            color: '#fff',
-                            fontSize: getSize(0.24),
-                            lineHeight: getSize(0.35)
-                        }
-                    },
-                    //仪表盘详情，用于显示数据。
-                    detail: {
-                        show: true,
-                        offsetCenter: [0, getSize(-0.2)],
-                        color: '#00FCFF',
-                        formatter: function (params) {
-                            return params
-                        },
-                        textStyle: {
-                            fontSize: getSize(0.3)
-                        }
-                    },
-                    data: [gauge_val]
-                }
-            ]
-        };
-        //图表显示
-        myChart.setOption(option)
-    })();
-
-    //水滴图
-    !(function () {
-        var mychart = echarts.init(document.getElementById('water-1'));
-        var value = 0.7152;
-        var data = [];
-        data.push(value);
-        var option = {
-            series: [{
-                type: 'liquidFill',
-                data: data,
-                radius: '80%',
-                amplitude: '10%',
-                waveLength: '100%',
-                color: '#0090FF',
-                outline: {
-                    show: true,
-                    borderDistance: 4,
-                    itemStyle: {
-                        color: 'transparent',
-                        borderColor: '#0090FF',
-                        borderWidth: 1,
-                        shadowBlur: 0,
-                        shadowColor: ' rgba(255,0,0,1)'
-                    }
-                },
-                backgroundStyle: {
-                    color: 'transparent'
-                },
-                label: {
-                    show: true,
-                    formatter: (value * 100) + '%',
-                    fontSize: getSize(0.5),
-                    color: '#facc14',
-                    insideColor: '#facc14',
-                    fontWeight: 'normal',
-                },
-                itemStyle: {
-                    shadowBlur: 0,
-                    color: '#0090FF',
-                }
-            }],
-
-        }
-        mychart.setOption(option);
-    })();
-
-    //雷达图
-    !(function () {
-        // 初始化实例
-        var myChart = echarts.init(document.getElementById('radar-1'));
-        var option = {
-            legend: {
-                show: false,
-            },
-            title: {
-                // text: '总分',
-                subtext: '98.17',
-                x: 'center',
-                top: '40%',
-                subtextStyle: {
-                    color: '#00fff6',
-                    fontWeight: 'normal',
-                    fontSize: getSize(0.48),
-                }
-            },
-            // tooltip: {},
-            radar: [{
-                center: ['50%', '50%'],
-                radius: '55%',
-                indicator: [{
-                        text: '监测',
-                        max: 100
-                    },
-                    {
-                        text: '年代',
-                        max: 100
-                    },
-                    {
-                        text: '体系',
-                        max: 100
-                    },
-                    {
-                        text: '巡检',
-                        max: 100
-                    }
-                ],
-                startAngle: 90, //起始角度
-                splitNumber: 4, //指示器轴的分割段数。
-                // shape: 'circle',//雷达图绘制类型
-                name: { //雷达图每个指示器名称的配置项。
-                    formatter: '{value}',
-                    textStyle: {
-                        color: '#fff'
-                    },
-                    fontSize: getSize(0.3)
-                },
-                nameGap: getSize(0.2),
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#217ed2'
-                    }
-                },
-                splitLine: { //坐标轴在 grid 区域中的分隔线
-                    lineStyle: {
-                        color: '#217ed2',
-                        width: 1,
-                    }
-                },
-                splitArea: { //坐标轴在 grid 区域中的分隔区域，默认不显示
-                    show: false,
-                    areaStyle: {
-                        color: ['#2c2c2d', '#333334', '#3a3a3b', '#333334']
-                    }
-                },
-            }],
-            series: [{
-                name: '雷达图',
-                type: 'radar',
-                data: [{
-                    value: [90, 90, 90, 90],
-                    // name: '各项得分',
-                    symbol: 'none',
-                    type: 'radar',
-                    itemStyle: {
-                        normal: {
-                            color: 'rgba(21, 105, 176, 1)'
-                        }
-                    },
-                    lineStyle: {
-                        normal: {
-                            width: 1,
-                            opacity: 0
-                        }
-                    },
-                    areaStyle: {
-                        normal: {
-                            color: '#1568b0',
-                            opacity: 0.6
-                        }
-                    }
-                }]
-            }]
-        }
-        //图表显示
-        myChart.setOption(option);
     })();
 
 
@@ -3766,221 +4071,7 @@ $(function () {
         });
     })();
 
-    //其他图表-1
-    !(function () {
-        var perArr = [3543135, 296546];
-        var myChart = echarts.init(document.getElementById('other-1'));
-        var spirit_1 = 'image://./assets/img/man.png';
-        var spirit_2 = 'image://./assets/img/men.png';
-        var maxData = 3543135;
-        var option = {
-            // title: {
-            //     text: '男女比例',
-            //     x: 'center',
-            //     top: '8%',
-            //     textStyle: {
-            //         fontWeight: 'normal',
-            //         fontSize: getSize(0.18),
-            //         color: '#fff'
-            //     }
-            // },
-            xAxis: {
-                max: maxData,
-                splitLine: {
-                    show: false
-                },
-                offset: 10,
-                axisLine: {
-                    show: false,
-                },
-                axisLabel: {
-                    show: false,
-                },
-                axisTick: {
-                    show: false
-                },
-            },
-            yAxis: {
-                data: ['男', '女'],
-                inverse: true,
-                axisTick: {
-                    show: false
-                },
-                axisLine: {
-                    show: false
-                },
-                axisLabel: {
-                    margin: 10,
-                    textStyle: {
-                        color: '#fff',
-                        fontSize: 18
-                    }
-                }
-            },
-            grid: {
-                top: '0%',
-                left: '5%',
-                right: '30%',
-                bottom: '5%',
-                containLabel: true
-            },
-            series: [{
-                    type: 'pictorialBar',
-                    symbolRepeat: 'fixed',
-                    symbolMargin: '5%',
-                    symbolClip: true,
-                    symbolSize: 20,
-                    symbolBoundingData: maxData, //这个属性是『指定图形界限的值』。
-                    data: [{
-                            value: perArr[0],
-                            symbol: spirit_1,
-                        },
-                        {
-                            value: perArr[1],
-                            symbol: spirit_2,
-                        }
-                    ],
-                    z: 10
-                },
-                {
-                    // full data
-                    type: 'pictorialBar',
-                    itemStyle: {
-                        normal: {
-                            opacity: 0.1
-                        }
-                    },
-                    label: {
-                        normal: {
-                            show: true,
-                            formatter: '{c}人',
-                            position: 'right',
-                            offset: [3, 5],
-                            textStyle: {
-                                color: '#fff',
-                                fontSize: 18
-                            }
-                        }
-                    },
-                    animationDuration: 0,
-                    symbolRepeat: 'fixed',
-                    symbolMargin: '5%',
-                    symbolSize: 20,
-                    symbolBoundingData: maxData,
-                    data: [{
-                            value: perArr[0],
-                            symbol: spirit_1,
-                        },
-                        {
-                            value: perArr[1],
-                            symbol: spirit_2,
-                        }
-                    ],
-                    z: 5
-                }
-            ]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    })();
-    //其他图表-2
-    !(function () {
-        var myChart = echarts.init(document.getElementById('other-2'));
-        var nameArr = ['办理', '办结', '退回']
-        var item_data = getRomArr(3, 100, 110)
-        var dataArr = [];
-        for (const key in item_data) {
-            dataArr.push({
-                name: nameArr[key],
-                value: item_data[key]
-            })
-        }
-        var seriesObjs = [];
-        var r = getSize(0.8);
-        var colorArr = ['#5cfea8', '#00ccff', '#fb7075'];
-        var placeHolderStyle = {
-            normal: {
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                labelLine: {
-                    show: false
-                },
-                color: 'rgba(0, 0, 0, 0)',
-                borderColor: 'rgba(0, 0, 0, 0.1)',
-                borderWidth: getSize(0.1)
-            }
-        }
-        for (var i = 0; i < dataArr.length; i++) {
-            var seriesObj = {
-                name: dataArr[i].name,
-                type: 'pie',
-                clockWise: true,
-                center: ['30%', '55%'],
-                radius: [r - 1 - i * getSize(0.2), r - i * getSize(0.2)],
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: false
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        borderWidth: getSize(0.1),
-                        borderColor: colorArr[i],
-                    }
-                },
-                hoverAnimation: false,
-                data: [{
-                    value: dataArr[i].value / getArrSum(item_data)
-                }, {
-                    name: 'invisible',
-                    value: 1 - dataArr[i].value / getArrSum(item_data),
-                    // value: dataArr[0].value * 4 / 3 - dataArr[i].value,
-                    itemStyle: placeHolderStyle
-                }]
-                // data: [{
-                //     value: dataArr[i].value
-                // }, {
-                //     name: 'invisible',
-                //     value: dataArr[0].value * 4 / 3 - dataArr[i].value,
-                //     itemStyle: placeHolderStyle
-                // }]
-            }
-            seriesObjs.push(seriesObj)
-        }
-        var option = {
-            color: colorArr,
-            tooltip: {
-                position: 'top',
-                formatter: '{a}：{d}%'
-            },
-            legend: {
-                y: 'center',
-                right: '15%',
-                itemWidth: getSize(0.25),
-                itemHeight: getSize(0.15),
-                itemGap: getSize(0.15),
-                formatter: function (para) {
-                    var str = para + ': ' + dataArr[nameArr.indexOf(para)].value + ' 件';
-                    return str;
-                },
-                textStyle: {
-                    fontSize: getSize(0.16),
-                    color: '#fff'
-                },
-                orient: 'vertical',
-                icon: 'roundRect',
-                data: [dataArr[0].name, dataArr[1].name, dataArr[2].name]
-            },
-            toolbox: {
-                show: false
-            },
-            series: seriesObjs
-        }
-        myChart.setOption(option, true);
-    })();
+
     //圆形进度条
     //文档地址 https://github.com/TheBolliwood/circleChart
     !(function () {
