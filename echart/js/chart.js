@@ -6,7 +6,7 @@
 
 //折线图-1
 var chart_line_1 = function (pxdata, pydata) {
-    var mychart = echarts.init(document.getElementById('line-1'));
+    var mychart = echarts.init(document.getElementById('line-1'),'rc_ksh');
     var dataArr = pydata || [100, 200, 250, 300, 350];
     var xArr = pxdata || ['2015', '2016', '2017', '2018', '2019']
     var seriesObj = {
