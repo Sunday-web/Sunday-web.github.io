@@ -3905,6 +3905,117 @@ var chart_other_2 = function (pxdata, pydata) {
     }
     myChart.setOption(option, true);
 }
+var chart_other_3 = function (pxdata, pydata) {
+    var myChart = echarts.init(document.getElementById('other-3'));
+    var name_arr = pxdata || ['数字经济', '商贸旅游', '金融服务', '文化创意', '商务服务', '体育健康', '智能制造', '建筑规划'];
+    var perArr = pydata || S_mock.array(name_arr.length, 1000, 2000);
+    var spirit_1 = 'image://./assets/img/icon-jinbi.png';
+    // var spirit_2 = 'image://./assets/img/men.png';
+    var maxData = Math.max.apply(null, perArr);
+    var seri_data = [];
+    for (const key in name_arr) {
+        seri_data.push({
+            value: perArr[key],
+            symbol: spirit_1,
+        })
+    }
+    var option = {
+        // title: {
+        //     text: '男女比例',
+        //     x: 'center',
+        //     top: '8%',
+        //     textStyle: {
+        //         fontWeight: 'normal',
+        //         fontSize: getSize(0.18),
+        //         color: '#fff'
+        //     }
+        // },
+        xAxis: {
+            max: maxData,
+            splitLine: {
+                show: false
+            },
+            offset: 10,
+            axisLine: {
+                show: false,
+            },
+            axisLabel: {
+                show: false,
+            },
+            axisTick: {
+                show: false
+            },
+        },
+        yAxis: {
+            data: name_arr,
+            inverse: true,
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#00BAFF'
+                }
+            },
+            axisLabel: {
+                // margin: 10,
+                textStyle: {
+                    color: '#fff',
+                    fontSize: getSize(0.24)
+                }
+            }
+        },
+        grid: {
+            top: '0%',
+            left: '5%',
+            right: '20%',
+            bottom: '5%',
+            containLabel: true
+        },
+        series: [{
+                type: 'pictorialBar',
+                symbolRepeat: 'fixed',
+                symbolMargin: '8%',
+                symbolClip: true,
+                symbolSize: getSize(0.3),
+                symbolBoundingData: maxData, //这个属性是『指定图形界限的值』。
+                data: seri_data,
+                z: 10
+            },
+            {
+                // full data 透明区域
+                type: 'pictorialBar',
+                itemStyle: {
+                    normal: {
+                        opacity: 0
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: '{c} 万元',
+                        position: 'right',
+                        offset: [3, 5],
+                        textStyle: {
+                            color: '#FACC14',
+                            fontSize: getSize(0.24)
+                        }
+                    }
+                },
+                animationDuration: 0,
+                symbolRepeat: 'fixed',
+                symbolMargin: '8%',
+                symbolSize: getSize(0.3),
+                symbolBoundingData: maxData,
+                data: seri_data,
+                z: 5
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+}
 $(function () {
     // 进度条
     $('.progress-item').each(function () {

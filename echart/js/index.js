@@ -36,4 +36,5 @@ $(function () {
 
   chart_other_1();
   chart_other_2();
+  chart_other_3();
 })
