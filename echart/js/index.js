@@ -16,6 +16,9 @@ $(function () {
   chart_bar_8();
   chart_bar_9();
   chart_bar_10();
+  chart_bar_11();
+  chart_bar_12();
+  chart_bar_13();
 
   chart_pie_1(['项目1', '项目2', '项目3', '项目4'], getRomArr(4, 100, 200));
   chart_pie_2();
@@ -31,6 +34,7 @@ $(function () {
   chart_gauge_3();
 
   chart_water_1();
+  chart_water_2();
 
   chart_radar_1();
 
