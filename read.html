@@ -1,0 +1,95 @@
+<!-- 
+  json文件的解析
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>json文件的解析</title>
+  <link rel="stylesheet" href="./css/read.css">
+</head>
+
+<body>
+  <div class="main-wrap">
+    <div class="title">对导出的json文件解析</div>
+    <h1 class="zz-name"></h1>
+    <h3>组内任务统计</h3>
+    <div class="task_num">
+      <div id="left" class="left"></div>
+      <div id="right" class="right"></div>
+    </div>
+    <button class="copy" data-clipboard-target="#left">复制项目名</button>
+    <button class="copy" data-clipboard-target="#right">复制项目数量</button>
+    <h3>组员任务统计</h3>
+    <div class="task_info" id="member">
+      <!-- <div class="item">
+        <div class="name">张三</div>
+        <p></p>
+      </div> -->
+    </div>
+     <button class="copy" data-clipboard-target="#member">复制组员任务统计</button>
+
+  </div>
+
+  <script src="./js/jquery-1.8.3.min.js"></script>
+  <script src="./js/layer/layer.js"></script>
+  <script src="./js/clipboard.min.js"></script>
+  <script>
+    var clipboard = new ClipboardJS('.copy');
+    clipboard.on('success', function (e) {
+      // console.info('Action:', e.action);
+      // console.info('Text:', e.text);
+      // console.info('Trigger:', e.trigger);
+      e.clearSelection();
+      layer.msg('复制成功')
+    });
+    clipboard.on('error', function (e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+      layer.msg('复制失败')
+    });
+    get_json();
+
+    function get_json() {
+      $.get("./json/zsx_2022_01_14.json", function (data, status) {
+        create_task_num(data.task)
+        create_task_info(data.member)
+        $('.zz-name').text(data.zz_name + '组')
+      });
+    }
+
+    function create_task_num(data) {
+      console.log('data', data);
+      let list1 = '';
+      let list2 = '';
+      data.forEach((e, i) => {
+        list1 += `<div>${e.name}</div>`;
+        list2 += `<div>${e.num}</div>`;
+      });
+      $('.task_num .left').empty().append(list1)
+      $('.task_num .right').empty().append(list2)
+    }
+
+    function create_task_info(data) {
+      console.log('data', data);
+      let list = '';
+      data.forEach((e, i) => {
+        let ctx = e.content;
+        list += `
+        <div class="item">
+          <div class="name">${e.name}</div>
+          <p>
+            ${ctx.replace(/\n/g,'<br/>')}
+          </p>
+        </div>
+        `
+      });
+      $('.task_info').empty().append(list)
+    }
+  </script>
+</body>
+
+</html>
