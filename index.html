@@ -1,74 +1,389 @@
-<!-- 
-  组长填写组内任务统计情况
-  点击按钮导出json文件
- -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>组内任务填写</title>
-  <link rel="stylesheet" href="./css/index.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sunday Github Homepage</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://assets-cdn.github.com/favicon.ico">
+  <style>
+    .jumbotron {
+      background: #00B4DB;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #0083B0, #00B4DB);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .toptitle {
+      color: #fafafa !important;
+      padding: 2rem;
+    }
+
+    .projects-header {
+      text-align: center;
+      margin: 60px 0 10px;
+      font-weight: 200;
+      margin-bottom: 40px;
+      display: block;
+    }
+
+    .page-header {
+      padding-bottom: 9px;
+      margin: 40px 0 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .itemBg {
+      max-width: 100%;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      background: #797979;
+      font-size: 2rem;
+      color: #fafafa;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="info">
-    组长填报每周任务统计
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="toptitle">Sunday Github Homepage</h1>
+      <p style="text-align:right;color: #fff;" id="sici"></p>
+    </div>
   </div>
-  <div class="main-content">
-    <h1>一、组长名称</h1>
-    <select name="" id="name">
-      <option value="sd">孙达</option>
-      <option value="wql">王奇利</option>
-      <option value="jxy">金小燕</option>
-      <option value="qcy">乔传阳</option>
-      <option value="zsx">赵世旭</option>
-      <option value="wjf">汪家锋</option>
-    </select>
-    <h1>二、每周任务统计</h1>
-    <div class="task">
-      <div class="tool">
-        <!-- <div class="item add_line">添加一行</div> -->
-      </div>
-      <div class="list">
-        <!-- <div class="item">
-          <div class="left"><input type="text" placeholder="请输入项目名称"></div>
-          <div class="right"><input type="text" placeholder="请输入任务数量"><span class="add_line">添加一行</span></div>
-        </div> -->
-        <div class="item">
-          <textarea id="taskTotal" name="" cols="300" rows="10"></textarea>
+  <div class="container">
+    <div class="projects-header page-header">
+      <h2>项目案例</h2>
+      <p>案例演示</p>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 ">
+        <div class="thumbnail" style="height: 240px;">
+          <img src="./images/wx.png" class="img-responsive">
+          <div class="caption">
+            <h3>
+              <a href="#" title="sunday">Sunday小工具</a>
+            </h3>
+          </div>
         </div>
       </div>
-    </div>
-    <h1>三、组员任务统计</h1>
-    <div class="member">
-      <div class="list">
-        <!-- <div class="item">
-          <div class="name">组员1</div>
-          <div class="content">
-            <textarea name="" cols="30" rows="10"></textarea>
+      <div class="col-sm-12 col-md-6 ">
+        <div class="thumbnail" style="height: 240px;">
+          <img style="background: #333;" src="https://gallery.echartsjs.com/img/logo.png" class="img-responsive">
+          <div class="caption">
+            <h3>
+              <a href="./echart/echart.html" title="sunday">echart图表示例</a>
+            </h3>
           </div>
-        </div> -->
+        </div>
       </div>
-    </div>
-    <div class="footer">
-      <div class="submit">导出json文件</div>
+      <!-- <div class="col-sm-12 col-md-6 ">
+        <div class="thumbnail" style="height: 240px;">
+          <img style="background: #333;" src="https://www.echartsjs.com/zh/images/logo.png" class="img-responsive">
+          <div class="caption">
+            <h3>
+              <a href="./apiExample/rmb/index.html" title="金额小写转大写">金额小写转大写</a>
+            </h3>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-sm-6 col-md-4 col-lg-3 ">
+        <div class="thumbnail" style="height: 336px;">
+          <a href="/sunday-cache/index.html" title="sunday" target="_blank">
+            <div class="itemBg">sunday-cache</div>
+          </a>
+          <div class="caption">
+            <h3>
+              <a href="/sunday-cache/index.html" title="sunday" target="_blank">sunday-cache</a>
+            </h3>
+            <p>短小精悍的前端缓存工具，防止内存“侧漏”</p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-sm-6 col-md-4 col-lg-3 ">
+        <div class="thumbnail" style="height: 336px;">
+          <a href="/apiExample/mypf/index.html" title="sunday" target="_blank">
+            <div class="itemBg">猫眼实时票房</div>
+          </a>
+          <div class="caption">
+            <h3>
+              <a href="/apiExample/mypf/index.html" title="sunday" target="_blank">猫眼实时票房</a>
+            </h3>
+            <p>猫眼实时票房</p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-sm-6 col-md-4 col-lg-3 ">
+        <div class="thumbnail" style="height: 336px;">
+          <a href="/apiExample/lifeNumber/index.html" title="sunday" target="_blank">
+            <div class="itemBg">生命数计算</div>
+          </a>
+          <div class="caption">
+            <h3>
+              <a href="/apiExample/lifeNumber/index.html" title="sunday" target="_blank">生命数计算</a>
+            </h3>
+            <p>生命数计算</p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-sm-6 col-md-4 col-lg-3 ">
+        <div class="thumbnail" style="height: 336px;">
+          <a href="/apiExample/gifs/index.html" title="sunday" target="_blank">
+            <div class="itemBg">gifs</div>
+          </a>
+          <div class="caption">
+            <h3>
+              <a href="/apiExample/gifs/index.html" title="sunday" target="_blank">gifs</a>
+            </h3>
+            <p>动图搜索</p>
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
-  <script src="./js/jquery-1.8.3.min.js"></script>
-  <script src="./js/data.js"></script>
-  <script src="./js/index.js"></script>
-  <script>
-    // 表单有填写信息的时候 关闭窗口的提醒
-    window.onbeforeunload = function (e) {
-      console.log('e', e);
-      var dialogText = 'Dialog text here';
-      e.returnValue = dialogText;
-      return dialogText;
-    };
-  </script>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  // $.get('http://api.apiopen.top/singlePoetry', {}, function (res) {
+  //   if (res.code === 200) {
+  //     siciSuccess(res);
+  //   }
+  // });
+
+
+  // function siciSuccess(res) {
+  //   console.log(res.result.origin);
+  //   console.log(res.result.author);
+  //   console.log(res.result.content);
+  //   $('#sici').text(res.result.content);
+  // }
+  //免费接口地址： https://www.jianshu.com/p/e6f072839282
+
+  //今日诗词api
+  $.ajax({
+    url: 'https://v2.jinrishici.com/one.json',
+    xhrFields: {
+      withCredentials: true
+    },
+    success: function (result, status) {
+      console.log('今日诗词');
+      console.log(result);
+      if (status == 'success') {
+        $('#sici').text(result.data.content);
+      }
+    }
+  })
+
+
+  //百度百科
+  // var kurl =
+  //   'http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=%E9%93%B6%E9%AD%82&bk_length=600';
+  // $.ajax({
+  //   type: "GET",
+  //   url: kurl,
+  //   dataType: "jsonp",
+  //   success: function (data) { //成功的回调函数
+  //     console.log(data);
+  //   }
+  // })
+
+  //豆瓣电影
+  // var kurl =
+  //   'https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=somemessage';
+  // $.ajax({
+  //   type: "GET",
+  //   url: kurl,
+  //   dataType: "jsonp",
+  //   success: function (result) { //成功的回调函数
+  //     console.log('豆瓣电影');
+  //     console.log(result);
+  //   }
+  // });
+
+  //每日一文
+  //https://github.com/jokermonn/-Api/blob/master/OneArticle.md
+  function get_mryw() {
+    var mryw = 'https://interface.meiriyiwen.com/article/today?dev=1';
+    $.ajax({
+      type: "GET",
+      url: mryw,
+      success: function (result) { //成功的回调函数
+        console.log('每日一文');
+        console.log(result);
+      }
+    });
+  }
+  //今日头条
+  //https://github.com/jokermonn/-Api/blob/master/Todaynews.md
+  function get_jrtt() {
+    var jrtt = 'https://is.snssdk.com/api/news/feed/v51/';
+    $.ajax({
+      type: "GET",
+      url: jrtt,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('今日头条');
+        console.log(result);
+      }
+    });
+  }
+  //内涵段子
+  //https://github.com/jokermonn/-Api/blob/master/Neihan.md#recommend
+  function get_nhdz() {
+    var nhdz = 'https://iu.snssdk.com/neihan/stream/mix/v1/';
+    $.ajax({
+      type: "GET",
+      url: nhdz,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('内涵段子');
+        console.log(result);
+      }
+    });
+  }
+
+
+  //万年历
+  function get_wnl() {
+    var wnl = 'https://v.juhe.cn/calendar/day?date=2018-11-2&key=b96a4c6622706ae64b963c8dc16b16f9';
+    $.ajax({
+      type: "GET",
+      url: wnl,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('万年历');
+        console.log(result);
+      }
+    });
+  }
+
+
+  //身份证查询
+  function get_sfzcx() {
+    var sfzcx = 'http://apis.juhe.cn/idcard/index?cardno=XXXXXX&dtype=&key=6e337acf66fabf9a91b5f379c7342cd1';
+    $.ajax({
+      type: "GET",
+      url: sfzcx,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('身份证查询');
+        console.log(result);
+      }
+    });
+  }
+
+
+  //https://www.shenjian.io/index.php?r=market/search&keyword=&type=api&price=1&plan=-1
+  //腾讯滚动新闻
+  function get_txgdxw() {
+    var txgdxw = 'https://api.shenjian.io/?appid=50b1f18df7a8706bcf3d40febdd3f30b';
+    $.ajax({
+      type: "GET",
+      url: txgdxw,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('腾讯滚动新闻');
+        console.log(result);
+      }
+    });
+  }
+
+  //城市天气
+  function get_cstq() {
+    var cstq =
+    'https://api.shenjian.io/weather/city?appid=03339bb65b173f40396274ac6160839f&city_name=北京&only_now=false';
+    $.ajax({
+      type: "GET",
+      url: cstq,
+      dataType: "jsonp",
+      success: function (result) { //成功的回调函数
+        console.log('城市天气');
+        console.log(result);
+      }
+    });
+  }
+
+  //猫眼实时票房
+  var mypf = 'https://api.shenjian.io/promovie/piaofang?appid=2e5ae7e66963ed9ab4e252eab76e239e&date=2018-08-25';
+  $.ajax({
+    type: "GET",
+    url: mypf,
+    dataType: "jsonp",
+    success: function (result) { //成功的回调函数
+      console.log('猫眼实时票房');
+      console.log(result);
+    }
+  });
+
+
+
+
+  //新华字典 不支持jsonp
+  // $.ajax({
+  //   type: "GET",
+  //   url: "https://www.pwxcoo.com/dictionary?type=word&word=吴",
+  //   dataType: "jsonp",
+  //   success: function (result) { //成功的回调函数
+  //     console.log('新华字典');
+  //     console.log(result);
+  //   }
+  // });
+
+
+  //菜谱接口 每日有使用限制
+  function formatterDateTime() {
+    var date = new Date()
+    var month = date.getMonth() + 1
+    var datetime = date.getFullYear() +
+      "" // "年"
+      +
+      (month >= 10 ? month : "0" + month) +
+      "" // "月"
+      +
+      (date.getDate() < 10 ? "0" + date.getDate() : date
+        .getDate()) +
+      "" +
+      (date.getHours() < 10 ? "0" + date.getHours() : date
+        .getHours()) +
+      "" +
+      (date.getMinutes() < 10 ? "0" + date.getMinutes() : date
+        .getMinutes()) +
+      "" +
+      (date.getSeconds() < 10 ? "0" + date.getSeconds() : date
+        .getSeconds());
+    return datetime;
+  }
+
+  function getCp() {
+    $.ajax({
+      type: 'post',
+      url: 'https://route.showapi.com/1164-1',
+      dataType: 'json',
+      data: {
+        "showapi_timestamp": formatterDateTime(),
+        "showapi_appid": '79211', //这里需要改成自己的appid
+        "showapi_sign": '33714eb851a84bd2a06c806d09935c1e', //这里需要改成自己的应用的密钥secret
+        "type": "蛋类",
+        "id": "5819e55df2954c15f83d3bbd",
+        "cpName": "爆浆鸡蛋", //菜谱名称
+        "maxResults": "20", //每页返回的最大结果集,取值在1-50之间
+        "page": "1" //请求页数
+      },
+
+      error: function (XmlHttpRequest, textStatus, errorThrown) {
+        alert("操作失败!");
+      },
+      success: function (result) {
+        console.log(result) //console变量在ie低版本下不能用
+        // alert(result.showapi_res_code)
+      }
+    })
+  }
+</script>
 
 </html>

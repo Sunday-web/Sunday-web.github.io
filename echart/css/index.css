@@ -1,0 +1,156 @@
+.chart {
+  height: 100%;
+  background: #666;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.row {
+  margin-bottom: .4rem;
+}
+
+.flex {
+  clear: both;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-item {
+  flex: 1;
+  -ms-flex: 1;
+  -ms-flex-preferred-size: auto;
+}
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+/* 水平居中 */
+.justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+/* 垂直居中 */
+.align-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
+/* 进度条布局 */
+.mid-rank-wrap {
+  max-height: 4rem;
+  overflow-y: auto;
+}
+
+/* 隐藏滚动条 */
+.mid-rank-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.mid-rank-item {
+  margin-bottom: .2rem;
+}
+
+.mid-rank-item:last-child {
+  margin-bottom: 0;
+}
+
+.mid-rank-item-center {
+  padding: 0 .2rem;
+}
+
+.mid-rank-item-left,
+.mid-rank-item-right {
+  font-size: .2rem;
+  color: #666;
+}
+
+.mid-rank-item-left {
+  flex-basis: 1.2rem;
+  text-align: right;
+}
+
+/* 进度条样式 */
+.bt-progress {
+  height: .2rem;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: .1rem;
+  /* -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1); */
+}
+
+.progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  border-radius: .1rem;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #368dff;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+  -webkit-transition: width .6s ease;
+  -o-transition: width .6s ease;
+  transition: width .6s ease;
+}
+
+.iframe-wrap {
+  height: 10rem;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+.daohang {
+  position: fixed;
+  left: 10%;
+  top: 10%;
+}
+.common-tabbar-wrap {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 0.2rem;
+  font-size: 0.32rem;
+}
+
+.common-tabbar-item {
+  cursor: pointer;
+  border: 1px solid #33A1FF;
+  border-radius: 0.15rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+.tabbar-active {
+  background: #33A1FF;
+}
+/* 4k分辨率 */
+@media screen and (min-width: 2540px) {}
+
+/* 1920分辨率 */
+@media screen and (min-width: 1919px) and (max-width: 1920px) {}
+
+/* 1600分辨率 */
+@media screen and (min-width: 1590px) and (max-width: 1601px) {
+  .daohang {
+    left: 7%;
+  }
+}
