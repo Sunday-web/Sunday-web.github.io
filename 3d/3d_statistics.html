@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>统计</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .red-bg {
+      background-color: red;
+      color: #fff;
+    }
+
+    .yellow-bg {
+      background-color: yellow;
+    }
+
+    .table {
+      border: 1px solid #ccc;
+    }
+
+    .table .th,
+    .table .tr {
+      display: flex;
+    }
+
+    .t_date {
+      width: 180px;
+      padding: 10px 0;
+      text-align: center;
+      border-right: 1px solid #ccc;
+    }
+
+    .t_red {
+      width: 80px;
+      text-align: center;
+      border-left: 1px solid #ccc;
+    }
+
+    .t_number {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .th {
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .tr:last-child {
+      border-bottom: none;
+    }
+
+    .tr span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 50%;
+      text-align: center;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="table">
+      <div class="th">
+        <div class="t_date">日期</div>
+        <div class="t_number">走势</div>
+        <div class="t_red">开奖号</div>
+      </div>
+      <div class="t_content">
+        <div class="tr">
+          <div class="t_date">2020-12-12</div>
+          <div class="t_number">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery-1.8.3.min.js"></script>
+  <!-- 数据请求地址 https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice?name=3d&issueCount=&issueStart=&issueEnd=&dayStart=&dayEnd=&pageNo=1&pageSize=60&week=&systemType=PC-->
+  <script src="data.js"></script>
+  <script>
+    getDomList()
+    //遍历数据 生成dom的数组
+    function getDomList() {
+      let result = DATA.result;
+      let tmp = []
+      result.map(item => {
+        let obj = {
+          date: item.date,
+          numberlist: item.red.split(','),
+          red: item.red
+        }
+        tmp.push(obj);
+      })
+      renderDom(tmp.reverse())
+    }
+    function renderDom(list) {
+      let str = ''
+      list.forEach(item => {
+        //item.numberlist [9,3,8]
+        let numberCount = {};
+        item.numberlist.forEach(num => {
+          numberCount[num] = (numberCount[num] || 0) + 1;
+        });
+        str += `
+        <div class="tr">
+          <div class="t_date">${item.date}</div>
+          <div class="t_number">
+            ${[...Array(10).keys()].map(num => `
+              <span class="${numberCount[num] > 1 ? 'yellow-bg' : (numberCount[num] ? 'red-bg' : '')}">${num}</span>
+            `).join('')}
+          </div>
+          <div class="t_red">${item.red}</div>
+        </div>
+        `
+      });
+      $('.t_content').html(str)
+    }
+  </script>
+</body>
+
+</html>
