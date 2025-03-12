@@ -12,7 +12,7 @@
     }
 
     .wrap {
-      width: 80%;
+      width: 100%;
       margin: 20px auto;
     }
 
@@ -34,15 +34,27 @@
       display: flex;
     }
 
+    .th {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
     .t_date {
-      width: 180px;
+      width: 60px;
       padding: 10px 0;
       text-align: center;
       border-right: 1px solid #ccc;
     }
 
+    .tr .t_date {
+      font-size: 12px;
+    }
+
     .t_red {
-      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
       text-align: center;
       border-left: 1px solid #ccc;
     }
@@ -133,9 +145,10 @@
         item.numberlist.forEach(num => {
           numberCount[num] = (numberCount[num] || 0) + 1;
         });
+        let formattedDate = item.date.replace('-', '<br>');
         str += `
         <div class="tr">
-          <div class="t_date">${item.date}</div>
+          <div class="t_date">${formattedDate}</div>
           <div class="t_number">
             ${[...Array(10).keys()].map(num => `
               <span class="${numberCount[num] > 1 ? 'yellow-bg' : (numberCount[num] ? 'red-bg' : '')}">${num}</span>
