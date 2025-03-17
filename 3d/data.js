@@ -1,77 +1,77 @@
 var DATA = {
-  state: 0，
-  message: '查询成功'，
-  total: 4214，
-  pageNum: 71，
-  pageNo: 1，
-  pageSize: 60，
-  Tflag: 0，
+  state: 0,
+  message: '查询成功',
+  total: 4214,
+  pageNum: 71,
+  pageNo: 1,
+  pageSize: 60,
+  Tflag: 0,
   result: [
-        {
-      name: '3D'，
-      code: '2025065'，
-      detailsLink: '/c/2025/03/16/608685.shtml'，
-      videoLink: ''，
-      date: '2025-03-16(日)'，
-      week: '日'，
-      red: '5,3,8'，
-      blue: ''，
-      blue2: ''，
-      sales: '141132818'，
-      poolmoney: ''，
-      content: ''，
-      addmoney: ''，
-      addmoney2: ''，
-      msg: ''，
-      z2add: ''，
-      m2add: ''，
+    {
+      name: '3D',
+      code: '2025065',
+      detailsLink: '/c/2025/03/16/608685.shtml',
+      videoLink: '',
+      date: '2025-03-16(日)',
+      week: '日',
+      red: '5,3,8',
+      blue: '',
+      blue2: '',
+      sales: '141132818',
+      poolmoney: '',
+      content: '',
+      addmoney: '',
+      addmoney2: '',
+      msg: '',
+      z2add: '',
+      m2add: '',
       prizegrades: [
         {
-          type: 1，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 1,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 2，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 2,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 3，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 3,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 4，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 4,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 5，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 5,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 6，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 6,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 7，
-          typenum: ''，
-          typemoney: ''，
-        }，
-      ]，
-    }，
+          type: 7,
+          typenum: '',
+          typemoney: '',
+        },
+      ],
+    },
     {
-      name: '3D'，
-      code: '2025064'，
-      detailsLink: '/c/2025/03/15/608679.shtml'，
-      videoLink: '/c/2025/03/15/608680.shtml'，
-      date: '2025-03-15(六)'，
-      week: '六'，
-      red: '9,2,8'，
-      blue: ''，
+      name: '3D',
+      code: '2025064',
+      detailsLink: '/c/2025/03/15/608679.shtml',
+      videoLink: '/c/2025/03/15/608680.shtml',
+      date: '2025-03-15(六)',
+      week: '六',
+      red: '9,2,8',
+      blue: '',
       blue2: ''，
       sales: '134319644'，
       poolmoney: ''，
@@ -160,74 +160,74 @@ var DATA = {
         }，
         {
           type: 5，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 6，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 6,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 7，
-          typenum: ''，
-          typemoney: ''，
-        }，
-      ]，
-}，
+          type: 7,
+          typenum: '',
+          typemoney: '',
+        },
+      ],
+    },
     {
-      name: '3D'，
-      code: '2025062'，
-      detailsLink: '/c/2025/03/13/608366.shtml'，
-      videoLink: ''，
-      date: '2025-03-13(四)'，
-      week: '四'，
-      red: '8,1,0'，
-      blue: ''，
-      blue2: ''，
-      sales: '137961302'，
-      poolmoney: ''，
-      content: ''，
-      addmoney: ''，
-      addmoney2: ''，
-      msg: ''，
-      z2add: ''，
-      m2add: ''，
+      name: '3D',
+      code: '2025062',
+      detailsLink: '/c/2025/03/13/608366.shtml',
+      videoLink: '',
+      date: '2025-03-13(四)',
+      week: '四',
+      red: '8,1,0',
+      blue: '',
+      blue2: '',
+      sales: '137961302',
+      poolmoney: '',
+      content: '',
+      addmoney: '',
+      addmoney2: '',
+      msg: '',
+      z2add: '',
+      m2add: '',
       prizegrades: [
         {
-          type: 1，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 1,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 2，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 2,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 3，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 3,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 4，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 4,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 5，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 5,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 6，
-          typenum: ''，
-          typemoney: ''，
-        }，
+          type: 6,
+          typenum: '',
+          typemoney: '',
+        },
         {
-          type: 7，
-          typenum: ''，
-          typemoney: ''，
+          type: 7,
+          typenum: '',
+          typemoney: '',
         },
       ],
     },
@@ -1796,325 +1796,325 @@ var DATA = {
           type: 7,
           typenum: '',
           typemoney: '',
-        },
-      ],
-    },
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025033',
-      detailsLink: '/c/2025/02/12/605069.shtml',
-      videoLink: '',
-      date: '2025-02-12(三)',
-      week: '三',
-      red: '6,0,6',
-      blue: '',
-      blue2: '',
-      sales: '112915394',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025033'，
+      detailsLink: '/c/2025/02/12/605069.shtml'，
+      videoLink: ''，
+      date: '2025-02-12(三)'，
+      week: '三'，
+      red: '6,0,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '112915394'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025032',
-      detailsLink: '/c/2025/02/11/604862.shtml',
-      videoLink: '',
-      date: '2025-02-11(二)',
-      week: '二',
-      red: '4,9,9',
-      blue: '',
-      blue2: '',
-      sales: '112635166',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025032'，
+      detailsLink: '/c/2025/02/11/604862.shtml'，
+      videoLink: ''，
+      date: '2025-02-11(二)'，
+      week: '二'，
+      red: '4,9,9'，
+      blue: ''，
+      blue2: ''，
+      sales: '112635166'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025031',
-      detailsLink: '/c/2025/02/10/604755.shtml',
-      videoLink: '',
-      date: '2025-02-10(一)',
-      week: '一',
-      red: '3,7,9',
-      blue: '',
-      blue2: '',
-      sales: '110862208',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025031'，
+      detailsLink: '/c/2025/02/10/604755.shtml'，
+      videoLink: ''，
+      date: '2025-02-10(一)'，
+      week: '一'，
+      red: '3,7,9'，
+      blue: ''，
+      blue2: ''，
+      sales: '110862208'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025030',
-      detailsLink: '/c/2025/02/09/604548.shtml',
-      videoLink: '',
-      date: '2025-02-09(日)',
-      week: '日',
-      red: '3,0,2',
-      blue: '',
-      blue2: '',
-      sales: '111521330',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025030'，
+      detailsLink: '/c/2025/02/09/604548.shtml'，
+      videoLink: ''，
+      date: '2025-02-09(日)'，
+      week: '日'，
+      red: '3,0,2'，
+      blue: ''，
+      blue2: ''，
+      sales: '111521330'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025029',
-      detailsLink: '/c/2025/02/08/604542.shtml',
-      videoLink: '/c/2025/02/08/604543.shtml',
-      date: '2025-02-08(六)',
-      week: '六',
-      red: '0,9,6',
-      blue: '',
-      blue2: '',
-      sales: '108213326',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025029'，
+      detailsLink: '/c/2025/02/08/604542.shtml'，
+      videoLink: '/c/2025/02/08/604543.shtml'，
+      date: '2025-02-08(六)'，
+      week: '六'，
+      red: '0,9,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '108213326'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025028',
-      detailsLink: '/c/2025/02/07/604336.shtml',
-      videoLink: '',
-      date: '2025-02-07(五)',
-      week: '五',
-      red: '4,0,9',
-      blue: '',
-      blue2: '',
-      sales: '105047830',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025028'，
+      detailsLink: '/c/2025/02/07/604336.shtml'，
+      videoLink: ''，
+      date: '2025-02-07(五)'，
+      week: '五'，
+      red: '4,0,9'，
+      blue: ''，
+      blue2: ''，
+      sales: '105047830'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
+          type: 4，
           typenum: '',
           typemoney: '',
         },
@@ -2144,143 +2144,143 @@ var DATA = {
       week: '四',
       red: '3,8,3',
       blue: '',
-      blue2: '',
-      sales: '112446958',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      blue2: ''，
+      sales: '112446958'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025026',
-      detailsLink: '/c/2025/01/26/604022.shtml',
-      videoLink: '',
-      date: '2025-01-26(日)',
-      week: '日',
-      red: '5,8,8',
-      blue: '',
-      blue2: '',
-      sales: '144082894',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025026'，
+      detailsLink: '/c/2025/01/26/604022.shtml'，
+      videoLink: ''，
+      date: '2025-01-26(日)'，
+      week: '日'，
+      red: '5,8,8'，
+      blue: ''，
+      blue2: ''，
+      sales: '144082894'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025025',
-      detailsLink: '/c/2025/01/25/603916.shtml',
-      videoLink: '/c/2025/01/25/603917.shtml',
-      date: '2025-01-25(六)',
-      week: '六',
-      red: '4,8,6',
-      blue: '',
-      blue2: '',
-      sales: '138271464',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025025'，
+      detailsLink: '/c/2025/01/25/603916.shtml'，
+      videoLink: '/c/2025/01/25/603917.shtml'，
+      date: '2025-01-25(六)'，
+      week: '六'，
+      red: '4,8,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '138271464'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
           type: 4,
           typenum: '',
@@ -2502,151 +2502,151 @@ var DATA = {
         },
         {
           type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025020',
-      detailsLink: '/c/2025/01/20/603082.shtml',
-      videoLink: '',
-      date: '2025-01-20(一)',
-      week: '一',
-      red: '0,5,6',
-      blue: '',
-      blue2: '',
-      sales: '130478370',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025020'，
+      detailsLink: '/c/2025/01/20/603082.shtml'，
+      videoLink: ''，
+      date: '2025-01-20(一)'，
+      week: '一'，
+      red: '0,5,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '130478370'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025019',
-      detailsLink: '/c/2025/01/19/602875.shtml',
-      videoLink: '',
-      date: '2025-01-19(日)',
-      week: '日',
-      red: '7,1,0',
-      blue: '',
-      blue2: '',
-      sales: '131626900',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025019'，
+      detailsLink: '/c/2025/01/19/602875.shtml'，
+      videoLink: ''，
+      date: '2025-01-19(日)'，
+      week: '日'，
+      red: '7,1,0'，
+      blue: ''，
+      blue2: ''，
+      sales: '131626900'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025018',
-      detailsLink: '/c/2025/01/18/602869.shtml',
-      videoLink: '/c/2025/01/18/602870.shtml',
-      date: '2025-01-18(六)',
-      week: '六',
-      red: '8,3,6',
+      name: '3D'，
+      code: '2025018'，
+      detailsLink: '/c/2025/01/18/602869.shtml'，
+      videoLink: '/c/2025/01/18/602870.shtml'，
+      date: '2025-01-18(六)'，
+      week: '六'，
+      red: '8,3,6'，
       blue: '',
       blue2: '',
       sales: '126827786',
@@ -2853,93 +2853,93 @@ var DATA = {
         },
         {
           type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025014',
-      detailsLink: '/c/2025/01/14/602339.shtml',
-      videoLink: '',
-      date: '2025-01-14(二)',
-      week: '二',
-      red: '6,7,9',
-      blue: '',
-      blue2: '',
-      sales: '125072604',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025014'，
+      detailsLink: '/c/2025/01/14/602339.shtml'，
+      videoLink: ''，
+      date: '2025-01-14(二)'，
+      week: '二'，
+      red: '6,7,9'，
+      blue: ''，
+      blue2: ''，
+      sales: '125072604'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025013',
-      detailsLink: '/c/2025/01/13/602232.shtml',
-      videoLink: '',
-      date: '2025-01-13(一)',
-      week: '一',
-      red: '6,0,6',
-      blue: '',
-      blue2: '',
-      sales: '128749584',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025013'，
+      detailsLink: '/c/2025/01/13/602232.shtml'，
+      videoLink: ''，
+      date: '2025-01-13(一)'，
+      week: '一'，
+      red: '6,0,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '128749584'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
+          type: 1，
           typenum: '',
           typemoney: '',
         },
@@ -3059,93 +3059,93 @@ var DATA = {
           type: 2,
           typenum: '',
           typemoney: '',
-        },
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025010',
-      detailsLink: '/c/2025/01/10/602013.shtml',
-      videoLink: '',
-      date: '2025-01-10(五)',
-      week: '五',
-      red: '3,3,3',
-      blue: '',
-      blue2: '',
-      sales: '127921102',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025010'，
+      detailsLink: '/c/2025/01/10/602013.shtml'，
+      videoLink: ''，
+      date: '2025-01-10(五)'，
+      week: '五'，
+      red: '3,3,3'，
+      blue: ''，
+      blue2: ''，
+      sales: '127921102'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025009',
+      name: '3D'，
+      code: '2025009'，
       detailsLink: '/c/2025/01/09/601806.shtml',
       videoLink: '',
       date: '2025-01-09(四)',
@@ -3375,277 +3375,277 @@ var DATA = {
       date: '2025-01-05(日)',
       week: '日',
       red: '0,8,5',
-      blue: '',
-      blue2: '',
-      sales: '127824192',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      blue: ''，
+      blue2: ''，
+      sales: '127824192'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025004',
-      detailsLink: '/c/2025/01/04/601072.shtml',
-      videoLink: '/c/2025/01/04/601073.shtml',
-      date: '2025-01-04(六)',
-      week: '六',
-      red: '6,3,4',
-      blue: '',
-      blue2: '',
-      sales: '127119438',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025004'，
+      detailsLink: '/c/2025/01/04/601072.shtml'，
+      videoLink: '/c/2025/01/04/601073.shtml'，
+      date: '2025-01-04(六)'，
+      week: '六'，
+      red: '6,3,4'，
+      blue: ''，
+      blue2: ''，
+      sales: '127119438'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025003',
-      detailsLink: '/c/2025/01/03/601066.shtml',
-      videoLink: '',
-      date: '2025-01-03(五)',
-      week: '五',
-      red: '2,1,4',
-      blue: '',
-      blue2: '',
-      sales: '132053224',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025003'，
+      detailsLink: '/c/2025/01/03/601066.shtml'，
+      videoLink: ''，
+      date: '2025-01-03(五)'，
+      week: '五'，
+      red: '2,1,4'，
+      blue: ''，
+      blue2: ''，
+      sales: '132053224'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025002',
-      detailsLink: '/c/2025/01/02/600958.shtml',
-      videoLink: '',
-      date: '2025-01-02(四)',
-      week: '四',
-      red: '9,1,6',
-      blue: '',
-      blue2: '',
-      sales: '125620144',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025002'，
+      detailsLink: '/c/2025/01/02/600958.shtml'，
+      videoLink: ''，
+      date: '2025-01-02(四)'，
+      week: '四'，
+      red: '9,1,6'，
+      blue: ''，
+      blue2: ''，
+      sales: '125620144'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025001',
-      detailsLink: '/c/2025/01/01/600852.shtml',
-      videoLink: '',
-      date: '2025-01-01(三)',
-      week: '三',
-      red: '7,0,3',
-      blue: '',
-      blue2: '',
-      sales: '121010930',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      name: '3D'，
+      code: '2025001'，
+      detailsLink: '/c/2025/01/01/600852.shtml'，
+      videoLink: ''，
+      date: '2025-01-01(三)'，
+      week: '三'，
+      red: '7,0,3'，
+      blue: ''，
+      blue2: ''，
+      sales: '121010930'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
-  ],
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
+  ]，
 }
