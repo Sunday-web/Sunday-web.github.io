@@ -11,67 +11,67 @@ var DATA = {
       name: '3D',
       code: '2025065',
       detailsLink: '/c/2025/03/16/608685.shtml',
-      videoLink: '',
-      date: '2025-03-16(日)',
-      week: '日',
-      red: '5,3,8',
-      blue: '',
-      blue2: '',
-      sales: '141132818',
-      poolmoney: '',
-      content: '',
-      addmoney: '',
-      addmoney2: '',
-      msg: '',
-      z2add: '',
-      m2add: '',
+      videoLink: ''，
+      date: '2025-03-16(日)'，
+      week: '日'，
+      red: '5,3,8'，
+      blue: ''，
+      blue2: ''，
+      sales: '141132818'，
+      poolmoney: ''，
+      content: ''，
+      addmoney: ''，
+      addmoney2: ''，
+      msg: ''，
+      z2add: ''，
+      m2add: ''，
       prizegrades: [
         {
-          type: 1,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 1，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 2,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 2，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 3,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 3，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 4,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 4，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 5,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 5，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 6,
-          typenum: '',
-          typemoney: '',
-        },
+          type: 6，
+          typenum: ''，
+          typemoney: ''，
+        }，
         {
-          type: 7,
-          typenum: '',
-          typemoney: '',
-        },
-      ],
-    },
+          type: 7，
+          typenum: ''，
+          typemoney: ''，
+        }，
+      ]，
+    }，
     {
-      name: '3D',
-      code: '2025064',
-      detailsLink: '/c/2025/03/15/608679.shtml',
-      videoLink: '/c/2025/03/15/608680.shtml',
-      date: '2025-03-15(六)',
-      week: '六',
-      red: '9,2,8',
-      blue: '',
+      name: '3D'，
+      code: '2025064'，
+      detailsLink: '/c/2025/03/15/608679.shtml'，
+      videoLink: '/c/2025/03/15/608680.shtml'，
+      date: '2025-03-15(六)'，
+      week: '六'，
+      red: '9,2,8'，
+      blue: ''，
       blue2: ''，
       sales: '134319644'，
       poolmoney: ''，
