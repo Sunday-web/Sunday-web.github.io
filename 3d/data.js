@@ -9,6 +9,62 @@ var DATA = {
   result: [
     {
       name: '3D',
+      code: '2025082',
+      detailsLink: '/c/2025/04/02/611400.shtml',
+      videoLink: '',
+      date: '2025-04-02(三)',
+      week: '三',
+      red: '4,1,7',
+      blue: '',
+      blue2: '',
+      sales: '117814906',
+      poolmoney: '',
+      content: '',
+      addmoney: '',
+      addmoney2: '',
+      msg: '',
+      z2add: '',
+      m2add: '',
+      prizegrades: [
+        {
+          type: 1,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 2,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 3,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 4,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 5,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 6,
+          typenum: '',
+          typemoney: '',
+        },
+        {
+          type: 7,
+          typenum: '',
+          typemoney: '',
+        },
+      ],
+    },
+    {
+      name: '3D',
       code: '2025081',
       detailsLink: '/c/2025/04/01/611293.shtml',
       videoLink: '',
